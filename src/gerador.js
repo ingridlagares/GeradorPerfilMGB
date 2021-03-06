@@ -14,7 +14,7 @@ $(document).ready(function() {
     $("div.section").each(function(){
     	xml += process($(this));
     });
-    xml += ct("resource");
+    xml += ct("gmd:MD_Metadata");
     metadata = xml;
     $("div.right code").text(xml);
     $(".right").show();
@@ -111,15 +111,14 @@ function process(section){
 	var indent = 0;
 	var xml = "";
 	
-  if ($(section).hasClass("ignore-section")) {
+  if ($(section).hasClass("ignore"))
     return xml;
-  }
 
 	if (isWrapper){
 		indent = 1;
 	}
 
-  $(section).find(".tag-group:not([data-refid])>.tag").each(function(){
+  $(section).find(".tag-group:not([data-refid]):not(.ignore)>.tag").each(function(){
     xml += processTag(this,indent);
   });
 
@@ -151,12 +150,13 @@ function processTag(tag, indent){
 		value = inputValue(tagValues[0]);
 	}
 
+  var shadowTag = $(tag).hasClass("shadow-tag");
+
 	$(tag).children(".tag").each(function(){
-		xml += processTag(this,indent + 1);
+		xml += processTag(this, indent + (shadowTag ? 0 : 1));
 	});
 	
-  if ($(tag).hasClass("shadow-tag"))
-    return xml
+  if (shadowTag) return xml;
   
   if (xml.length > 0){
 		xml = tab(indent) + ota(tagName,attr) + br() + xml + tab(indent) + ct(tagName) + br();
