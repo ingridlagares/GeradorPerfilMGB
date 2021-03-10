@@ -393,6 +393,7 @@
 <div class="form other hidden">
 	<div title="gmd:dataQualityInfo" class="section wrapper-tag"><!-- dataQualityInfo-->
 			<span class="tag-group-label">Nível Hierárquico:</span>
+			<div class="tag-group">
 			<div title="gmd:DQ_DataQuality" class="tag"> <!-- DQ_DataQuality-->
 				<div title="gmd:scope" class="tag"> <!-- scope-->
 					<div title="gmd:DQ_Scope" class="tag"> <!-- DQ_Scope-->
@@ -402,6 +403,76 @@
 							</div>
 						</div>
 					</div>
+				</div>
+				<h3 class="other">+ Linhagem</h3>
+				<div class="tag shadow-tag form other hidden">
+					<button type="button" class="add group">+</button>
+					<div class="tag shadow-tag tag-group ignore">
+						<div title="gmd:lineage" class="tag"> <!-- lineage-->
+							<div title="gmd:LI_Lineage" class="tag"> <!-- LI_Lineage-->
+								<div title="gmd:statement" class="tag"> <!-- statement-->
+									<span class="tag-group-label">Declaração:</span>
+									<div title="gco:CharacterString" class="tag">
+										<input class="unbounded-width input-field tag-value" placeholder="Declaração" type="text" title="gco:CharacterString" value="" />
+									</div><button type="button" class="add single-tag">+</button>
+								</div>
+								<span class="divider">&nbsp;</span>
+								<h4>Etapas do Processo</h4>
+								<div title="gmd:processStep" class="tag"> <!-- processStep-->
+									<div title="gmd:LI_ProcessStep" class="tag"> <!-- LI_ProcessStep-->
+										<div title="gmd:description" class="tag"> <!-- description-->
+											<span class="tag-group-label">Descrição:</span>
+											<div title="gco:CharacterString" class="tag">
+												<input class="unbounded-width input-field tag-value" placeholder="Como foi coletado" type="text" title="gco:CharacterString" value="" />
+											</div><button type="button" class="add single-tag">+</button>
+										</div>
+									</div>
+								</div>
+								<span class="divider">&nbsp;</span>
+								<h4>Fonte dos Dados</h4>
+								<div title="gmd:source" class="tag"> <!-- source-->
+								 <div title="gmd:LI_Source" class="tag"> <!-- LI_Source-->
+									<span class="tag-group-label">Descrição:</span>
+									<div title="gmd:description" class="tag"> <!-- description-->
+										<div title="gco:CharacterString" class="tag">
+											<input class="full-width input-field tag-value" placeholder="Palavra-chave" type="text" title="gco:CharacterString" value="" />
+										</div>
+								  </div>
+									<span class="tag-group-label">Extensão da fonte:</span>
+									<div title="gmd:sourceExtent" class="tag"> <!-- sourceExtent-->
+										<div title="gco:CharacterString" class="tag">
+											<input class="full-width input-field tag-value" placeholder="Palavra-chave" type="text" title="gco:CharacterString" value="" />
+										</div>
+								  </div>
+									<span class="tag-group-label"> Denominador da escala da fonte: </span>
+									<div title="gmd:scaleDenominator" class="tag"> <!-- scaleDenominator-->
+										<div title="gco:CharacterString" class="tag">
+											<input class="full-width input-field tag-value" placeholder="Palavra-chave" type="text" title="gco:CharacterString" value="" />
+										</div>
+								  </div>
+							   </div>
+							 </div>
+								<span class="divider">&nbsp;</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<h3 class="other">+ Frequência de Manutenção e Atualização</h3>
+<div class="form other hidden">
+	<div title="gmd:metadataMaintenance" class="section wrapper-tag"><!-- metadataMaintenance-->
+			<span class="tag-group-label">Periodicidade prevista para atualização:</span>
+			<div class="tag-group">
+				<div title="gmd:MD_MaintenanceInformation" class="tag"> <!-- MD_MaintenanceInformation-->
+					<div title="gmd:MD_MaintenanceInformation" class="tag"> <!-- MD_MaintenanceInformation-->
+						<div title="gmd:maintenanceAndUpdateFrequency" class="tag"> <!-- maintenanceAndUpdateFrequency-->
+							<input class="full-width input-field tag-value" placeholder="anual" type="text" title="gmd:MD_MaintenanceFrequencyCode" value="" />
+						</div>
+				</div>
 				</div>
 			</div>
 	</div>
