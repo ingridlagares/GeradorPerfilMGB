@@ -194,13 +194,14 @@
 								</div>
 							</div>
 						</div>
-						
+
 						<div class="tag tag-ref" data-refto="gmd:spatialRepresentationType"></div>
 						<div class="tag tag-ref" data-refto="gmd:spatialResolution"></div>
 						<div class="tag tag-ref" data-refto="gmd:language"></div>
 						<div class="tag tag-ref" data-refto="gmd:characterSet"></div>
 						<div class="tag tag-ref" data-refto="gmd:topicCategory"></div>
 						<div class="tag tag-ref" data-refto="gmd:extentgeo"></div>
+						<div class="tag tag-ref" data-refto="gmd:resourceConstraints"></div>
 					</div> <!-- MD_DataIdentification-->
 				</div>
 			</div>  <!-- identificationInfo-->
@@ -253,357 +254,406 @@
 						<div title="gmd:extent" data-refid="gmd:extentgeo" class="tag"> <!-- extent-->
 							<div title="gmd:EX_Extent" class="tag"> <!-- EX_Extent-->
 								<div title="gmd:geographicElement" class="tag"> <!-- geographicElement-->
-                    <!--
-                    <div title="gmd:EX_BoundingPolygon" class="tag">
-                      <div title="gmd:polygon" class="tag">
-                        <span class="tag-group-label">Polígono delimitador:</span>
-                        <div title="gco:CharacterString" class="tag">
-                          <input class="full-width input-field tag-value" placeholder="png" type="text" title="gco:CharacterString" value="" />
-                        </div>
-                      </div>
-                    </div> -->
-                    <h4>Retângulo Envolvente</h4>
-                    <div title="gmd:EX_GeographicExtent" class="tag"> <!-- EX_GeographicExtent-->
-                    	<div title="gmd:EX_GeographicBoundingBox" class="tag"> <!-- EX_GeographicBoundingBox-->
-                    		<div title="gmd:westBoundLongitude" class="tag"> <!-- westBoundLongitude-->
-                    			<span class="tag-group-label">Longitude limítrofe oeste:</span>
-                    			<div title="gco:Decimal" class="tag"> <!-- MD_SpatialRepresentationTypeCode-->
-                    				<input class="full-width input-field tag-value" placeholder="-45.178" type="text" title="gco:Decimal" value="" />
-                    			</div>
-                    		</div>
-                    		<div title="gmd:eastBoundLongitude" class="tag"> <!-- eastBoundLongitude-->
-                    			<span class="tag-group-label">Longitude limítrofe este:</span>
-                    			<div title="gco:Decimal" class="tag">
-                    				<input class="full-width input-field tag-value" placeholder="-5.452" type="text" title="gco:Decimal" value="" />
-                    			</div>
-                    		</div>
-                    		<div title="gmd:southBoundLongitude" class="tag"> <!-- southBoundLongitude-->
-                    			<span class="tag-group-label">Longitude Limítrofe Sul:</span>
-                    			<div title="gco:Decimal" class="tag">
-                    				<input class="full-width input-field tag-value" placeholder="25.57" type="text" title="gco:Decimal" value="" />
-                    			</div>
-                    		</div>
-                    		<div title="gmd:northBoundLongitude" class="tag"> <!-- northBoundLongitude-->
-                    			<span class="tag-group-label">Longitude Limítrofe Norte:</span>
-                    			<div title="gco:Decimal" class="tag">
-                    				<input class="full-width input-field tag-value" placeholder="-18.81" type="text" title="gco:Decimal" value="" />
-                    			</div>
-                    		</div>
-                    	</div>
-                    </div>
-                    <span class="divider">&nbsp;</span>
-                    <h4>Identificadores geográficos: </h4>
-                    <div title="gmd:EX_GeographicExtent" class="tag"> <!-- EX_GeographicExtent-->
-                    	<div title="gmd:EX_GeographicDescription" class="tag"> <!-- EX_GeographicDescription-->
-                    		<div title="gmd:geographicIdentifier" class="tag"> <!-- geographicIdentifier-->
-                    			<span class="tag-group-label">Indicador Geográfico:</span>
-                    			<div title="gco:CharacterString" class="tag">
-                    				<input class="full-width input-field tag-value" placeholder="IBGE" type="text" title="gco:CharacterString" value="" />
-                    			</div>
-                    		</div>
-                    	</div>
-                    </div>
-                  </div>
-                  <span class="divider">&nbsp;</span>
-                  <h4>Extensão temporal</h4>
-                  <div title="gmd:temporalElement" class="tag"><!-- temporalElement-->
-                  	<div title="gmd:EX_TemporalExtent" class="tag"><!-- EX_TemporalExtent-->
-                  		<div title="gmd:extent" class="tag"><!-- extent-->
-                  			<div title="gml:TimePeriod" class="tag"><!-- TimePeriod-->
-                  				<span class="tag-group-label">Data Inicial:</span>
-                  				<div title="gml:beginPosition" class="tag">
-                  					<input class="full-width input-field tag-value" placeholder="AAAA-MM-DDThh:mm:ss" type="text" title="gml:beginPosition" value="" />
-                  				</div>
-                  				<span class="tag-group-label">Data Final:</span>
-                  				<div title="gml:endPosition" class="tag">
-                  					<input class="full-width input-field tag-value" placeholder="AAAA-MM-DDThh:mm:ss" type="text" title="gml:endPosition" value="" />
-                  				</div>
-                  			</div>
-                  		</div>
-                  	</div>
-                  </div>
-                  <span class="divider">&nbsp;</span>
-                  <h4>Extensão altimétrica-batimétrica</h4>
-                  <div title="gmd:EX_VerticalExtent" class="tag"><!-- EX_VerticalExtent-->
-                  	<div title="gmd:minimumValue" class="tag"> <!-- minimumValue-->
-                  		<span class="tag-group-label">Valor mínimo:</span>
-                  		<div title="gco:Real" class="tag">
-                  			<input class="full-width input-field tag-value" placeholder="" type="text" title="gco:Real" value="" />
-                  		</div>
-                  	</div>
-                  	<div title="gmd:maximumValue" class="tag"> <!-- maximumValue-->
-                  		<span class="tag-group-label">Valor máximo:</span>
-                  		<div title="gco:Real" class="tag">
-                  			<input class="full-width input-field tag-value" placeholder="" type="text" title="gco:Real" value="" />
-                  		</div>
-                  	</div>
-                  	<div title="gmd:unitOfMeasure" class="tag"> <!-- unitOfMeasure-->
-                  		<span class="tag-group-label">Unidade de medida:</span>
-                  		<div title="gco:CharacterString" class="tag">
-                  			<input class="full-width input-field tag-value" placeholder="" type="text" title="gco:CharacterString" value="" />
-                  		</div>
-                  	</div>
-                  	<div title="gmd:verticalDatum" class="tag"> <!-- verticalDatum-->
-                  		<span class="tag-group-label">Datum altimétrico: </span>
-                  		<div title="gco:CharacterString" class="tag">
-                  			<input class="full-width input-field tag-value" placeholder="" type="text" title="gco:CharacterString" value="" />
-                  		</div>
-                  	</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+									<!--
+									<div title="gmd:EX_BoundingPolygon" class="tag">
+									<div title="gmd:polygon" class="tag">
+									<span class="tag-group-label">Polígono delimitador:</span>
+									<div title="gco:CharacterString" class="tag">
+									<input class="full-width input-field tag-value" placeholder="png" type="text" title="gco:CharacterString" value="" />
+								</div>
+							</div>
+						</div> -->
+						<h4>Retângulo Envolvente</h4>
+						<div title="gmd:EX_GeographicExtent" class="tag"> <!-- EX_GeographicExtent-->
+							<div title="gmd:EX_GeographicBoundingBox" class="tag"> <!-- EX_GeographicBoundingBox-->
+								<div title="gmd:westBoundLongitude" class="tag"> <!-- westBoundLongitude-->
+									<span class="tag-group-label">Longitude limítrofe oeste:</span>
+									<div title="gco:Decimal" class="tag"> <!-- MD_SpatialRepresentationTypeCode-->
+										<input class="full-width input-field tag-value" placeholder="-45.178" type="text" title="gco:Decimal" value="" />
+									</div>
+								</div>
+								<div title="gmd:eastBoundLongitude" class="tag"> <!-- eastBoundLongitude-->
+									<span class="tag-group-label">Longitude limítrofe este:</span>
+									<div title="gco:Decimal" class="tag">
+										<input class="full-width input-field tag-value" placeholder="-5.452" type="text" title="gco:Decimal" value="" />
+									</div>
+								</div>
+								<div title="gmd:southBoundLongitude" class="tag"> <!-- southBoundLongitude-->
+									<span class="tag-group-label">Longitude Limítrofe Sul:</span>
+									<div title="gco:Decimal" class="tag">
+										<input class="full-width input-field tag-value" placeholder="25.57" type="text" title="gco:Decimal" value="" />
+									</div>
+								</div>
+								<div title="gmd:northBoundLongitude" class="tag"> <!-- northBoundLongitude-->
+									<span class="tag-group-label">Longitude Limítrofe Norte:</span>
+									<div title="gco:Decimal" class="tag">
+										<input class="full-width input-field tag-value" placeholder="-18.81" type="text" title="gco:Decimal" value="" />
+									</div>
+								</div>
+							</div>
+						</div>
+						<span class="divider">&nbsp;</span>
+						<h4>Identificadores geográficos: </h4>
+						<div title="gmd:EX_GeographicExtent" class="tag"> <!-- EX_GeographicExtent-->
+							<div title="gmd:EX_GeographicDescription" class="tag"> <!-- EX_GeographicDescription-->
+								<div title="gmd:geographicIdentifier" class="tag"> <!-- geographicIdentifier-->
+									<span class="tag-group-label">Indicador Geográfico:</span>
+									<div title="gco:CharacterString" class="tag">
+										<input class="full-width input-field tag-value" placeholder="IBGE" type="text" title="gco:CharacterString" value="" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<span class="divider">&nbsp;</span>
+					<h4>Extensão temporal</h4>
+					<div title="gmd:temporalElement" class="tag"><!-- temporalElement-->
+						<div title="gmd:EX_TemporalExtent" class="tag"><!-- EX_TemporalExtent-->
+							<div title="gmd:extent" class="tag"><!-- extent-->
+								<div title="gml:TimePeriod" class="tag"><!-- TimePeriod-->
+									<span class="tag-group-label">Data Inicial:</span>
+									<div title="gml:beginPosition" class="tag">
+										<input class="full-width input-field tag-value" placeholder="AAAA-MM-DDThh:mm:ss" type="text" title="gml:beginPosition" value="" />
+									</div>
+									<span class="tag-group-label">Data Final:</span>
+									<div title="gml:endPosition" class="tag">
+										<input class="full-width input-field tag-value" placeholder="AAAA-MM-DDThh:mm:ss" type="text" title="gml:endPosition" value="" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<span class="divider">&nbsp;</span>
+					<h4>Extensão altimétrica-batimétrica</h4>
+					<div title="gmd:EX_VerticalExtent" class="tag"><!-- EX_VerticalExtent-->
+						<div title="gmd:minimumValue" class="tag"> <!-- minimumValue-->
+							<span class="tag-group-label">Valor mínimo:</span>
+							<div title="gco:Real" class="tag">
+								<input class="full-width input-field tag-value" placeholder="" type="text" title="gco:Real" value="" />
+							</div>
+						</div>
+						<div title="gmd:maximumValue" class="tag"> <!-- maximumValue-->
+							<span class="tag-group-label">Valor máximo:</span>
+							<div title="gco:Real" class="tag">
+								<input class="full-width input-field tag-value" placeholder="" type="text" title="gco:Real" value="" />
+							</div>
+						</div>
+						<div title="gmd:unitOfMeasure" class="tag"> <!-- unitOfMeasure-->
+							<span class="tag-group-label">Unidade de medida:</span>
+							<div title="gco:CharacterString" class="tag">
+								<input class="full-width input-field tag-value" placeholder="" type="text" title="gco:CharacterString" value="" />
+							</div>
+						</div>
+						<div title="gmd:verticalDatum" class="tag"> <!-- verticalDatum-->
+							<span class="tag-group-label">Datum altimétrico: </span>
+							<div title="gco:CharacterString" class="tag">
+								<input class="full-width input-field tag-value" placeholder="" type="text" title="gco:CharacterString" value="" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
 
-      <h3 class="recommended">+ Recommended Elements</h3>
-      <div id="recommended" class="form recommended hidden">
-      	<div title="subjects" class="section wrapper-tag">
-      		<span class="tag-group-label">Subject(s):</span>
-      		<button type="button" class="add group">+</button>
-      		<div class="tag-group">
-      			<div title="subject" class="tag">
-      				<input class="half-width input-field tag-value" type="text" placeholder="[SUBJECT]" title="subject" value="" />
-      				<input class="half-width input-field tag-attribute" type="text" placeholder="[SUBJECT SCHEME]" title="subjectScheme" value="" />
-      				<input class="full-width input-field tag-attribute" type="text" placeholder="[SUBJECT SCHEME URI]" title="schemeURI" value="" />
-      				<input class="full-width input-field tag-attribute" type="text" placeholder="[SUBJECT VALUE URI]" title="valueURI" value="" />
-      			</div>
-      		</div>
-      	</div>
-      	<span class="divider">&nbsp;</span>
-      	<div title="contributors" class="section wrapper-tag">
-      		<span class="tag-group-label">Contributor(s):</span>
-      		<button type="button" class="add group">+</button>
-      		<div class="tag-group">
-      			<div title="contributor" class="tag">
-      				<div title="contributorName" class="tag">
-      					<input class="half-width input-field tag-value" type="text" placeholder="[CONTRIBUTOR NAME]" title="contributorName" value="" />
-      				</div>
-      				<select class="half-width input-field tag-attribute" title="contributorType"></select>
-      				<div title="givenName" class="tag">
-      					<input class="half-width input-field tag-value" type="text" placeholder="[GIVEN NAME] (optional)" title="givenName" value="" />
-      				</div>
-      				<div title="familyName" class="tag">
-      					<input class="half-width input-field tag-value" type="text" placeholder="[FAMILY NAME] (optional)" title="familyName" value="" />
-      				</div>
-      				<div title="nameIdentifier" class="tag">
-      					<input class="half-width input-field tag-value" type="text" placeholder="[NAME IDENTIFIER]" title="nameIdentifier" value="" />
-      					<input class="half-width input-field tag-attribute" type="text" placeholder="[NAME ID SCHEME]" title="nameIdentifierScheme" value="" />
-      					<input class="unbounded-width input-field tag-attribute" type="text" placeholder="[IDENTIFIER SCHEME URI]" title="schemeURI" value="" /><button type="button" class="add single-tag">+</button>
-      				</div>
-      				<div title="affiliation" class="tag">
-      					<input class="unbounded-width input-field tag-value" type="text" placeholder="[CONTRIBUTOR AFFILIATION]" title="affiliation" value="" /><button type="button" class="add single-tag">+</button>
-      				</div>
-      			</div>
-      		</div>
-      	</div>
-      	<span class="divider">&nbsp;</span>
-      	<div title="dates" class="section wrapper-tag">
-      		<span class="tag-group-label">Date(s):</span>
-      		<button type="button" class="add group">+</button>
-      		<div class="tag-group">
-      			<div title="date" class="tag">
-      				<input class="half-width input-field tag-value" type="text" placeholder="[DATE]" title="date" value="" />
-      				<select class="half-width input-field tag-attribute" title="dateType"></select>
-      			</div>
-      		</div>
-      	</div>
-      	<span class="divider">&nbsp;</span>
-      	<div title="relatedIdentifiers" class="section wrapper-tag">
-      		<span class="tag-group-label">Related Identifier(s):</span>
-      		<button type="button" class="add group">+</button>
-      		<div class="tag-group">
-      			<div title="relatedIdentifier" class="tag">
-      				<input class="full-width input-field tag-value" type="text" placeholder="[RELATED IDENTIFIER]" title="relatedIdentifier" value="" />
-      				<select class="half-width input-field tag-attribute" title="relatedIdentifierType"></select>
-      				<select class="half-width input-field tag-attribute" title="relationType"></select>
-      				<input class="half-width input-field tag-attribute" type="text" placeholder="[METADATA SCHEME]" title="relatedMetadataScheme" value="" />
-      				<input class="half-width input-field tag-attribute" type="text" placeholder="[SCHEME TYPE]" title="schemeType" value="" />
-      				<input class="full-width input-field tag-attribute" type="text" placeholder="[SCHEME URI]" title="schemeURI" value="" />
-      			</div>
-      		</div>
-      	</div>
-      	<span class="divider">&nbsp;</span>
-      	<div title="descriptions" class="section wrapper-tag">
-      		<span class="tag-group-label">Description:</span>
-      		<button type="button" class="add group">+</button>
-      		<div class="tag-group">
-      			<div title="description" class="tag">
-      				<input class="half-width input-field tag-value" type="text" placeholder="[DESCRIPTION]" title="description" value="" />
-      				<select class="half-width input-field tag-attribute" title="descriptionType"></select>
-      			</div>
-      		</div>
-      	</div>
-      	<span class="divider">&nbsp;</span>
-      	<div title="geoLocations" class="section wrapper-tag">
-      		<button type="button" class="add group">+</button>
-      		<div class="tag-group">
-      			<div title="geoLocation" class="tag">
-      				<span class="tag-group-label">Geo Location Place:</span>
-      				<div title="geoLocationPlace" class="tag">
-      					<input class="full-width input-field tag-value" type="text" placeholder="[GEO LOCATION PLACE]" title="geoLocationPlace" value="" />
-      				</div>
-      				<span class="tag-group-label">Geo Location Point:</span>
-      				<div title="geoLocationPoint" class="tag">
-      					<div title="pointLongitude" class="tag">
-      						<input class="half-width input-field tag-value" type="text" placeholder="[POINT LONGITUDE]" title="pointLongitude" value="" />
-      					</div>
-      					<div title="pointLatitude" class="tag">
-      						<input class="half-width input-field tag-value" type="text" placeholder="[POINT LATITUDE]" title="pointLatitude" value="" />
-      					</div>
-      				</div>
-      				<span class="tag-group-label">Geo Location Box:</span>
-      				<div title="geoLocationBox" class="tag">
-      					<div title="westBoundLongitude" class="tag">
-      						<input class="half-width input-field tag-value" type="text" placeholder="[WEST BOUND LONGITUDE]" title="westBoundLongitude" value="" />
-      					</div>
-      					<div title="eastBoundLongitude" class="tag">
-      						<input class="half-width input-field tag-value" type="text" placeholder="[EAST BOUND LONGITUDE]" title="eastBoundLongitude" value="" />
-      					</div>
-      					<div title="southBoundLatitude" class="tag">
-      						<input class="half-width input-field tag-value" type="text" placeholder="[SOUTH BOUND LATITUDE]" title="southBoundLatitude" value="" />
-      					</div>
-      					<div title="northBoundLatitude" class="tag">
-      						<input class="half-width input-field tag-value" type="text" placeholder="[NORTH BOUND LATITUDE]" title="northBoundLatitude" value="" />
-      					</div>
-      				</div>
-      				<span class="tag-group-label">Geo Location Polygon:</span>
-      				<div title="geoLocationPolygon" class="tag">
-      					<div title="polygonPoint" class="tag">
-      						<div title="pointLongitude" class="tag">
-      							<input class="half-width-smaller input-field tag-value" type="text" placeholder="[POINT LONGITUDE]" title="pointLongitude" value="" />
-      						</div>
-      						<div title="pointLatitude" class="tag">
-      							<input class="half-width-smaller input-field tag-value" type="text" placeholder="[POINT LATITUDE]" title="pointLatitude" value="" />
-      						</div>
-      					</div>
-      					<div title="polygonPoint" class="tag">
-      						<div title="pointLongitude" class="tag">
-      							<input class="half-width-smaller input-field tag-value" type="text" placeholder="[POINT LONGITUDE]" title="pointLongitude" value="" />
-      						</div>
-      						<div title="pointLatitude" class="tag">
-      							<input class="half-width-smaller input-field tag-value" type="text" placeholder="[POINT LATITUDE]" title="pointLatitude" value="" />
-      						</div>
-      					</div>
-      					<div title="polygonPoint" class="tag">
-      						<div title="pointLongitude" class="tag">
-      							<input class="half-width-smaller input-field tag-value" type="text" placeholder="[POINT LONGITUDE]" title="pointLongitude" value="" />
-      						</div>
-      						<div title="pointLatitude" class="tag">
-      							<input class="half-width-smaller input-field tag-value" type="text" placeholder="[POINT LATITUDE]" title="pointLatitude" value="" />
-      						</div>
-      					</div>
-      					<div title="polygonPoint" class="tag">
-      						<div title="pointLongitude" class="tag">
-      							<input class="half-width-smaller input-field tag-value" type="text" placeholder="[POINT LONGITUDE]" title="pointLongitude" value="" />
-      						</div>
-      						<div title="pointLatitude" class="tag">
-      							<input class="half-width-smaller input-field tag-value" type="text" placeholder="[POINT LATITUDE]" title="pointLatitude" value="" />
-      						</div><button type="button" class="add single-tag">+</button>
-      					</div>
-      				</div>
-      			</div>
-      		</div>
-      	</div>
-      </div>
-      <h3 class="other">+ Other Elements</h3>
-      <div class="form other hidden">
-      	<div class="section">
-      		<span class="tag-group-label">Language:</span>
-      		<div class="tag-group">
-      			<div title="language" class="tag">
-      				<input class="full-width input-field tag-value" type="text" placeholder="[LANGUAGE]" title="language" value="" />
-      			</div>
-      		</div>
-      	</div>
-      	<span class="divider">&nbsp;</span>
-      	<div title="alternateIdentifiers" class="section wrapper-tag">
-      		<span class="tag-group-label">Alternate Identifier(s):</span>
-      		<button type="button" class="add group">+</button>
-      		<div class="tag-group">
-      			<div title="alternateIdentifier" class="tag">
-      				<input class="half-width input-field tag-value" type="text" placeholder="[ALTERNATE IDENTIFIER]" title="alternateIdentifier" value="" />
-      				<input class="half-width input-field tag-attribute" type="text" placeholder="[ALTERNATE ID TYPE]" title="alternateIdentifierType" value="" />
-      			</div>
-      		</div>
-      	</div>
-      	<span class="divider">&nbsp;</span>
-      	<div title="sizes" class="section wrapper-tag">
-      		<span class="tag-group-label">Size(s):</span>
-      		<button type="button" class="add group">+</button>
-      		<div class="tag-group">
-      			<div title="size" class="tag">
-      				<input class="full-width input-field tag-value" type="text" placeholder="[SIZE]" title="size" value="" />
-      			</div>
-      		</div>
-      	</div>
-      	<span class="divider">&nbsp;</span>
-      	<div title="formats" class="section wrapper-tag">
-      		<span class="tag-group-label">Format(s):</span>
-      		<button type="button" class="add group">+</button>
-      		<div class="tag-group">
-      			<div title="format" class="tag">
-      				<input class="full-width input-field tag-value" type="text" placeholder="[FORMAT]" title="format" value="" />
-      			</div>
-      		</div>
-      	</div>
-      	<span class="divider">&nbsp;</span>
-      	<div class="section">
-      		<span class="tag-group-label">Version:</span>
-      		<div class="tag-group">
-      			<div title="version" class="tag">
-      				<input class="full-width input-field tag-value" type="text" placeholder="[VERSION]" title="version" value="" />
-      			</div>
-      		</div>
-      	</div>
-      	<span class="divider">&nbsp;</span>
-      	<div title="rightsList" class="section wrapper-tag">
-      		<span class="tag-group-label">Rights List:</span>
-      		<button type="button" class="add group">+</button>
-      		<div class="tag-group">
-      			<div title="rights" class="tag">
-      				<input class="full-width input-field tag-value" type="text" placeholder="[RIGHTS]" title="rights" value="" />
-      				<input class="full-width input-field tag-attribute" type="text" placeholder="[RIGHTS URI]" title="rightsURI" value="" />
-      			</div>
-      		</div>
-      	</div>
-      	<span class="divider">&nbsp;</span>
-      	<div title="fundingReferences" class="section wrapper-tag">
-      		<span class="tag-group-label">Funding Reference:</span>
-      		<button type="button" class="add group">+</button>
-      		<div class="tag-group">
-      			<div title="fundingReference" class="tag">
-      				<div title="funderName" class="tag">
-      					<input class="full-width input-field tag-value" type="text" placeholder="[FUNDER NAME]" title="funderName" value="" />
-      				</div>
-      				<div title="funderIdentifier" class="tag">
-      					<input class="half-width input-field tag-value" type="text" placeholder="[FUNDER IDENTIFIER]" title="funderIdentifier" value="" />
-      					<select class="half-width input-field tag-attribute" title="funderIdentifierType"></select>
-      				</div>
-      				<div title="awardNumber" class="tag">
-      					<input class="half-width input-field tag-value" type="text" placeholder="[AWARD NUMBER]" title="awardNumber" value="" />
-      					<input class="half-width input-field tag-attribute" type="text" placeholder="[AWARD URI]" title="awardURI" value="" />
-      				</div>
-      				<div title="awardTitle" class="tag">
-      					<input class="full-width input-field tag-value" type="text" placeholder="[AWARD TITLE]" title="awardTitle" value="" />
-      				</div>
-      			</div>
-      		</div>
-      	</div>
-      </div>
-    </div>
-    <br />
-    <div class="right hidden">
-    	<h3 class="results">Metadata</h3>
-    	<div class="form results">
-    		<pre><code style="display:inline-block;"></code></pre>
-    	</div>
-    	<br />
-    	<button type="button" id="download" onclick="save()">Save as file</button>
-    	<button type="button" id="reset">Reset</button>
-    	<button type="button" id="selectall">Select All</button>
-    	<span class="output" id="output"></span>
-    </div>
-  </body>
-  </html>
+<h3 class="other">+ Informação de Restrição</h3>
+<div class="form other hidden">
+	<div title="" class="section ignore"> <!-- identificationInfo-->
+		<div title="gmd:resourceConstraints" data-refid="gmd:resourceConstraints" class="tag"> <!-- resourceConstraints-->
+			<span class="tag-group-label">Restrições de Segurança:</span>
+			<div title="gmd:MD_SecurityConstraints" class="tag"> <!-- MD_SecurityConstraints-->
+				<div title="gmd:classification" class="tag"> <!-- classification-->
+					<div title="gmd:MD_ClassificationCode" class="tag"> <!-- classification-->
+						<input class="full-width input-field tag-value" placeholder="License" type="text" title="gmd:MD_ClassificationCode" value="" />
+					</div>
+				</div>
+			</div>
+			<span class="tag-group-label">Restrições Legais:</span>
+			<div title="gmd:MD_LegalConstraints" class="tag"> <!-- MD_LegalConstraints-->
+				<span class="tag-group-label">Restrições de Uso:</span>
+				<div title="gmd:useConstraints" class="tag"> <!-- useConstraints-->
+					<div title="gmd:MD_RestrictionCode" class="tag"> <!-- classification-->
+						<input class="full-width input-field tag-value" placeholder="License" type="text" title="gmd:MD_RestrictionCode" value="" />
+					</div>
+				</div>
+				<span class="tag-group-label">Restrições de Acesso:</span>
+				<div title="gmd:accessConstraints" class="tag"> <!-- accessConstraints-->
+					<div title="gmd:MD_RestrictionCode" class="tag"> <!-- classification-->
+						<input class="full-width input-field tag-value" placeholder="License" type="text" title="gmd:MD_RestrictionCode" value="" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<h3 class="other">+ Qualidade</h3>
+<div class="form other hidden">
+	<div title="gmd:dataQualityInfo" class="section wrapper-tag"><!-- dataQualityInfo-->
+			<span class="tag-group-label">Nível Hierárquico:</span>
+			<div title="gmd:DQ_DataQuality" class="tag"> <!-- DQ_DataQuality-->
+				<div title="gmd:scope" class="tag"> <!-- scope-->
+					<div title="gmd:DQ_Scope" class="tag"> <!-- DQ_Scope-->
+						<div title="gmd:level" class="tag"> <!-- level-->
+							<div title="gmd:MD_ScopeCode" class="tag"> <!-- MD_ScopeCode-->
+								<input class="full-width input-field tag-value" placeholder="License" type="text" title="gmd:MD_ScopeCode" value="" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+</div>
+
+<h3 class="recommended">+ Recommended Elements</h3>
+<div id="recommended" class="form recommended hidden">
+	<div title="subjects" class="section wrapper-tag">
+		<span class="tag-group-label">Subject(s):</span>
+		<button type="button" class="add group">+</button>
+		<div class="tag-group">
+			<div title="subject" class="tag">
+				<input class="half-width input-field tag-value" type="text" placeholder="[SUBJECT]" title="subject" value="" />
+				<input class="half-width input-field tag-attribute" type="text" placeholder="[SUBJECT SCHEME]" title="subjectScheme" value="" />
+				<input class="full-width input-field tag-attribute" type="text" placeholder="[SUBJECT SCHEME URI]" title="schemeURI" value="" />
+				<input class="full-width input-field tag-attribute" type="text" placeholder="[SUBJECT VALUE URI]" title="valueURI" value="" />
+			</div>
+		</div>
+	</div>
+	<span class="divider">&nbsp;</span>
+	<div title="contributors" class="section wrapper-tag">
+		<span class="tag-group-label">Contributor(s):</span>
+		<button type="button" class="add group">+</button>
+		<div class="tag-group">
+			<div title="contributor" class="tag">
+				<div title="contributorName" class="tag">
+					<input class="half-width input-field tag-value" type="text" placeholder="[CONTRIBUTOR NAME]" title="contributorName" value="" />
+				</div>
+				<select class="half-width input-field tag-attribute" title="contributorType"></select>
+				<div title="givenName" class="tag">
+					<input class="half-width input-field tag-value" type="text" placeholder="[GIVEN NAME] (optional)" title="givenName" value="" />
+				</div>
+				<div title="familyName" class="tag">
+					<input class="half-width input-field tag-value" type="text" placeholder="[FAMILY NAME] (optional)" title="familyName" value="" />
+				</div>
+				<div title="nameIdentifier" class="tag">
+					<input class="half-width input-field tag-value" type="text" placeholder="[NAME IDENTIFIER]" title="nameIdentifier" value="" />
+					<input class="half-width input-field tag-attribute" type="text" placeholder="[NAME ID SCHEME]" title="nameIdentifierScheme" value="" />
+					<input class="unbounded-width input-field tag-attribute" type="text" placeholder="[IDENTIFIER SCHEME URI]" title="schemeURI" value="" /><button type="button" class="add single-tag">+</button>
+				</div>
+				<div title="affiliation" class="tag">
+					<input class="unbounded-width input-field tag-value" type="text" placeholder="[CONTRIBUTOR AFFILIATION]" title="affiliation" value="" /><button type="button" class="add single-tag">+</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<span class="divider">&nbsp;</span>
+	<div title="dates" class="section wrapper-tag">
+		<span class="tag-group-label">Date(s):</span>
+		<button type="button" class="add group">+</button>
+		<div class="tag-group">
+			<div title="date" class="tag">
+				<input class="half-width input-field tag-value" type="text" placeholder="[DATE]" title="date" value="" />
+				<select class="half-width input-field tag-attribute" title="dateType"></select>
+			</div>
+		</div>
+	</div>
+	<span class="divider">&nbsp;</span>
+	<div title="relatedIdentifiers" class="section wrapper-tag">
+		<span class="tag-group-label">Related Identifier(s):</span>
+		<button type="button" class="add group">+</button>
+		<div class="tag-group">
+			<div title="relatedIdentifier" class="tag">
+				<input class="full-width input-field tag-value" type="text" placeholder="[RELATED IDENTIFIER]" title="relatedIdentifier" value="" />
+				<select class="half-width input-field tag-attribute" title="relatedIdentifierType"></select>
+				<select class="half-width input-field tag-attribute" title="relationType"></select>
+				<input class="half-width input-field tag-attribute" type="text" placeholder="[METADATA SCHEME]" title="relatedMetadataScheme" value="" />
+				<input class="half-width input-field tag-attribute" type="text" placeholder="[SCHEME TYPE]" title="schemeType" value="" />
+				<input class="full-width input-field tag-attribute" type="text" placeholder="[SCHEME URI]" title="schemeURI" value="" />
+			</div>
+		</div>
+	</div>
+	<span class="divider">&nbsp;</span>
+	<div title="descriptions" class="section wrapper-tag">
+		<span class="tag-group-label">Description:</span>
+		<button type="button" class="add group">+</button>
+		<div class="tag-group">
+			<div title="description" class="tag">
+				<input class="half-width input-field tag-value" type="text" placeholder="[DESCRIPTION]" title="description" value="" />
+				<select class="half-width input-field tag-attribute" title="descriptionType"></select>
+			</div>
+		</div>
+	</div>
+	<span class="divider">&nbsp;</span>
+	<div title="geoLocations" class="section wrapper-tag">
+		<button type="button" class="add group">+</button>
+		<div class="tag-group">
+			<div title="geoLocation" class="tag">
+				<span class="tag-group-label">Geo Location Place:</span>
+				<div title="geoLocationPlace" class="tag">
+					<input class="full-width input-field tag-value" type="text" placeholder="[GEO LOCATION PLACE]" title="geoLocationPlace" value="" />
+				</div>
+				<span class="tag-group-label">Geo Location Point:</span>
+				<div title="geoLocationPoint" class="tag">
+					<div title="pointLongitude" class="tag">
+						<input class="half-width input-field tag-value" type="text" placeholder="[POINT LONGITUDE]" title="pointLongitude" value="" />
+					</div>
+					<div title="pointLatitude" class="tag">
+						<input class="half-width input-field tag-value" type="text" placeholder="[POINT LATITUDE]" title="pointLatitude" value="" />
+					</div>
+				</div>
+				<span class="tag-group-label">Geo Location Box:</span>
+				<div title="geoLocationBox" class="tag">
+					<div title="westBoundLongitude" class="tag">
+						<input class="half-width input-field tag-value" type="text" placeholder="[WEST BOUND LONGITUDE]" title="westBoundLongitude" value="" />
+					</div>
+					<div title="eastBoundLongitude" class="tag">
+						<input class="half-width input-field tag-value" type="text" placeholder="[EAST BOUND LONGITUDE]" title="eastBoundLongitude" value="" />
+					</div>
+					<div title="southBoundLatitude" class="tag">
+						<input class="half-width input-field tag-value" type="text" placeholder="[SOUTH BOUND LATITUDE]" title="southBoundLatitude" value="" />
+					</div>
+					<div title="northBoundLatitude" class="tag">
+						<input class="half-width input-field tag-value" type="text" placeholder="[NORTH BOUND LATITUDE]" title="northBoundLatitude" value="" />
+					</div>
+				</div>
+				<span class="tag-group-label">Geo Location Polygon:</span>
+				<div title="geoLocationPolygon" class="tag">
+					<div title="polygonPoint" class="tag">
+						<div title="pointLongitude" class="tag">
+							<input class="half-width-smaller input-field tag-value" type="text" placeholder="[POINT LONGITUDE]" title="pointLongitude" value="" />
+						</div>
+						<div title="pointLatitude" class="tag">
+							<input class="half-width-smaller input-field tag-value" type="text" placeholder="[POINT LATITUDE]" title="pointLatitude" value="" />
+						</div>
+					</div>
+					<div title="polygonPoint" class="tag">
+						<div title="pointLongitude" class="tag">
+							<input class="half-width-smaller input-field tag-value" type="text" placeholder="[POINT LONGITUDE]" title="pointLongitude" value="" />
+						</div>
+						<div title="pointLatitude" class="tag">
+							<input class="half-width-smaller input-field tag-value" type="text" placeholder="[POINT LATITUDE]" title="pointLatitude" value="" />
+						</div>
+					</div>
+					<div title="polygonPoint" class="tag">
+						<div title="pointLongitude" class="tag">
+							<input class="half-width-smaller input-field tag-value" type="text" placeholder="[POINT LONGITUDE]" title="pointLongitude" value="" />
+						</div>
+						<div title="pointLatitude" class="tag">
+							<input class="half-width-smaller input-field tag-value" type="text" placeholder="[POINT LATITUDE]" title="pointLatitude" value="" />
+						</div>
+					</div>
+					<div title="polygonPoint" class="tag">
+						<div title="pointLongitude" class="tag">
+							<input class="half-width-smaller input-field tag-value" type="text" placeholder="[POINT LONGITUDE]" title="pointLongitude" value="" />
+						</div>
+						<div title="pointLatitude" class="tag">
+							<input class="half-width-smaller input-field tag-value" type="text" placeholder="[POINT LATITUDE]" title="pointLatitude" value="" />
+						</div><button type="button" class="add single-tag">+</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<h3 class="other">+ Other Elements</h3>
+<div class="form other hidden">
+	<div class="section">
+		<span class="tag-group-label">Language:</span>
+		<div class="tag-group">
+			<div title="language" class="tag">
+				<input class="full-width input-field tag-value" type="text" placeholder="[LANGUAGE]" title="language" value="" />
+			</div>
+		</div>
+	</div>
+	<span class="divider">&nbsp;</span>
+	<div title="alternateIdentifiers" class="section wrapper-tag">
+		<span class="tag-group-label">Alternate Identifier(s):</span>
+		<button type="button" class="add group">+</button>
+		<div class="tag-group">
+			<div title="alternateIdentifier" class="tag">
+				<input class="half-width input-field tag-value" type="text" placeholder="[ALTERNATE IDENTIFIER]" title="alternateIdentifier" value="" />
+				<input class="half-width input-field tag-attribute" type="text" placeholder="[ALTERNATE ID TYPE]" title="alternateIdentifierType" value="" />
+			</div>
+		</div>
+	</div>
+	<span class="divider">&nbsp;</span>
+	<div title="sizes" class="section wrapper-tag">
+		<span class="tag-group-label">Size(s):</span>
+		<button type="button" class="add group">+</button>
+		<div class="tag-group">
+			<div title="size" class="tag">
+				<input class="full-width input-field tag-value" type="text" placeholder="[SIZE]" title="size" value="" />
+			</div>
+		</div>
+	</div>
+	<span class="divider">&nbsp;</span>
+	<div title="formats" class="section wrapper-tag">
+		<span class="tag-group-label">Format(s):</span>
+		<button type="button" class="add group">+</button>
+		<div class="tag-group">
+			<div title="format" class="tag">
+				<input class="full-width input-field tag-value" type="text" placeholder="[FORMAT]" title="format" value="" />
+			</div>
+		</div>
+	</div>
+	<span class="divider">&nbsp;</span>
+	<div class="section">
+		<span class="tag-group-label">Version:</span>
+		<div class="tag-group">
+			<div title="version" class="tag">
+				<input class="full-width input-field tag-value" type="text" placeholder="[VERSION]" title="version" value="" />
+			</div>
+		</div>
+	</div>
+	<span class="divider">&nbsp;</span>
+	<div title="rightsList" class="section wrapper-tag">
+		<span class="tag-group-label">Rights List:</span>
+		<button type="button" class="add group">+</button>
+		<div class="tag-group">
+			<div title="rights" class="tag">
+				<input class="full-width input-field tag-value" type="text" placeholder="[RIGHTS]" title="rights" value="" />
+				<input class="full-width input-field tag-attribute" type="text" placeholder="[RIGHTS URI]" title="rightsURI" value="" />
+			</div>
+		</div>
+	</div>
+	<span class="divider">&nbsp;</span>
+	<div title="fundingReferences" class="section wrapper-tag">
+		<span class="tag-group-label">Funding Reference:</span>
+		<button type="button" class="add group">+</button>
+		<div class="tag-group">
+			<div title="fundingReference" class="tag">
+				<div title="funderName" class="tag">
+					<input class="full-width input-field tag-value" type="text" placeholder="[FUNDER NAME]" title="funderName" value="" />
+				</div>
+				<div title="funderIdentifier" class="tag">
+					<input class="half-width input-field tag-value" type="text" placeholder="[FUNDER IDENTIFIER]" title="funderIdentifier" value="" />
+					<select class="half-width input-field tag-attribute" title="funderIdentifierType"></select>
+				</div>
+				<div title="awardNumber" class="tag">
+					<input class="half-width input-field tag-value" type="text" placeholder="[AWARD NUMBER]" title="awardNumber" value="" />
+					<input class="half-width input-field tag-attribute" type="text" placeholder="[AWARD URI]" title="awardURI" value="" />
+				</div>
+				<div title="awardTitle" class="tag">
+					<input class="full-width input-field tag-value" type="text" placeholder="[AWARD TITLE]" title="awardTitle" value="" />
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+<br />
+<div class="right hidden">
+	<h3 class="results">Metadata</h3>
+	<div class="form results">
+		<pre><code style="display:inline-block;"></code></pre>
+	</div>
+	<br />
+	<button type="button" id="download" onclick="save()">Save as file</button>
+	<button type="button" id="reset">Reset</button>
+	<button type="button" id="selectall">Select All</button>
+	<span class="output" id="output"></span>
+</div>
+</body>
+</html>
