@@ -392,8 +392,8 @@
 <h3 class="other">+ Qualidade</h3>
 <div class="form other hidden">
 	<div title="gmd:dataQualityInfo" class="section wrapper-tag"><!-- dataQualityInfo-->
-			<span class="tag-group-label">Nível Hierárquico:</span>
-			<div class="tag-group">
+		<span class="tag-group-label">Nível Hierárquico:</span>
+		<div class="tag-group">
 			<div title="gmd:DQ_DataQuality" class="tag"> <!-- DQ_DataQuality-->
 				<div title="gmd:scope" class="tag"> <!-- scope-->
 					<div title="gmd:DQ_Scope" class="tag"> <!-- DQ_Scope-->
@@ -431,27 +431,27 @@
 								<span class="divider">&nbsp;</span>
 								<h4>Fonte dos Dados</h4>
 								<div title="gmd:source" class="tag"> <!-- source-->
-								 <div title="gmd:LI_Source" class="tag"> <!-- LI_Source-->
-									<span class="tag-group-label">Descrição:</span>
-									<div title="gmd:description" class="tag"> <!-- description-->
-										<div title="gco:CharacterString" class="tag">
-											<input class="full-width input-field tag-value" placeholder="Palavra-chave" type="text" title="gco:CharacterString" value="" />
+									<div title="gmd:LI_Source" class="tag"> <!-- LI_Source-->
+										<span class="tag-group-label">Descrição:</span>
+										<div title="gmd:description" class="tag"> <!-- description-->
+											<div title="gco:CharacterString" class="tag">
+												<input class="full-width input-field tag-value" placeholder="Palavra-chave" type="text" title="gco:CharacterString" value="" />
+											</div>
 										</div>
-								  </div>
-									<span class="tag-group-label">Extensão da fonte:</span>
-									<div title="gmd:sourceExtent" class="tag"> <!-- sourceExtent-->
-										<div title="gco:CharacterString" class="tag">
-											<input class="full-width input-field tag-value" placeholder="Palavra-chave" type="text" title="gco:CharacterString" value="" />
+										<span class="tag-group-label">Extensão da fonte:</span>
+										<div title="gmd:sourceExtent" class="tag"> <!-- sourceExtent-->
+											<div title="gco:CharacterString" class="tag">
+												<input class="full-width input-field tag-value" placeholder="Palavra-chave" type="text" title="gco:CharacterString" value="" />
+											</div>
 										</div>
-								  </div>
-									<span class="tag-group-label"> Denominador da escala da fonte: </span>
-									<div title="gmd:scaleDenominator" class="tag"> <!-- scaleDenominator-->
-										<div title="gco:CharacterString" class="tag">
-											<input class="full-width input-field tag-value" placeholder="Palavra-chave" type="text" title="gco:CharacterString" value="" />
+										<span class="tag-group-label"> Denominador da escala da fonte: </span>
+										<div title="gmd:scaleDenominator" class="tag"> <!-- scaleDenominator-->
+											<div title="gco:CharacterString" class="tag">
+												<input class="full-width input-field tag-value" placeholder="Palavra-chave" type="text" title="gco:CharacterString" value="" />
+											</div>
 										</div>
-								  </div>
-							   </div>
-							 </div>
+									</div>
+								</div>
 								<span class="divider">&nbsp;</span>
 							</div>
 						</div>
@@ -465,18 +465,122 @@
 <h3 class="other">+ Frequência de Manutenção e Atualização</h3>
 <div class="form other hidden">
 	<div title="gmd:metadataMaintenance" class="section wrapper-tag"><!-- metadataMaintenance-->
-			<span class="tag-group-label">Periodicidade prevista para atualização:</span>
-			<div class="tag-group">
+		<span class="tag-group-label">Periodicidade prevista para atualização:</span>
+		<div class="tag-group">
+			<div title="gmd:MD_MaintenanceInformation" class="tag"> <!-- MD_MaintenanceInformation-->
 				<div title="gmd:MD_MaintenanceInformation" class="tag"> <!-- MD_MaintenanceInformation-->
-					<div title="gmd:MD_MaintenanceInformation" class="tag"> <!-- MD_MaintenanceInformation-->
-						<div title="gmd:maintenanceAndUpdateFrequency" class="tag"> <!-- maintenanceAndUpdateFrequency-->
-							<input class="full-width input-field tag-value" placeholder="anual" type="text" title="gmd:MD_MaintenanceFrequencyCode" value="" />
-						</div>
-				</div>
+					<div title="gmd:maintenanceAndUpdateFrequency" class="tag"> <!-- maintenanceAndUpdateFrequency-->
+						<input class="full-width input-field tag-value" placeholder="anual" type="text" title="gmd:MD_MaintenanceFrequencyCode" value="" />
+					</div>
 				</div>
 			</div>
+		</div>
 	</div>
 </div>
+
+<h3 class="other">+ Informação de Representação Espacial</h3>
+<div class="form other hidden">
+	<div title="gmd:spatialRepresentationInfo" class="section wrapper-tag"><!-- spatialRepresentationInfo-->
+		<div class="tag-group">
+			<div title="gmd:MD_SpatialRepresentation" class="tag"> <!-- MD_SpatialRepresentation-->
+				<h3 class="other">+ Representação Espacial Vetorial (Obrigatório para dados veotriais)</h3>
+				<div class="tag shadow-tag form other hidden">
+					<button type="button" class="add group">+</button>
+					<div class="tag shadow-tag tag-group ignore">
+						<div title="gmd:MD_VectorSpatialRepresentation" class="tag"><!-- MD_VectorSpatialRepresentation-->
+							<div title="gmd:topologyLevel" class="tag"><!-- topologyLevel-->
+								<span class="tag-group-label">Nível Topológico:</span>
+								<div title="gmd:MD_TopologyLevelCode" class="tag">
+									<input class="full-width input-field tag-value" placeholder="code" type="text" title="gmd:MD_TopologyLevelCode" value="" />
+								</div>
+							</div>
+							<div title="gmd:geometricObjects" class="tag"><!-- topologyLevel-->
+								<span class="tag-group-label">Tipo dos Objetos Geométricos</span>
+								<div title="gmd:MD_GeometricObjectTypeCode" class="tag">
+									<input class="full-width input-field tag-value" placeholder="code" type="text" title="gmd:MD_GeometricObjectTypeCode" value="" />
+								</div>
+							</div>
+						</div>
+						<span class="divider">&nbsp;</span>
+					</div>
+				</div>
+				<h3 class="other">+ Representação Espacial Matricial (Obrigatório para dados matriciais de Sensoriamento Remoto / imagens)</h3>
+				<div class="tag shadow-tag form other hidden">
+					<div class="tag shadow-tag tag-group ignore">
+					 <div title="gmd:MD_GridSpatialRepresentation" class="tag"><!-- MD_GridSpatialRepresentation-->
+						<h3 class="other">+ Representação Espacial Matricial Georretificada</h3>
+						<div class="tag shadow-tag form other hidden">
+							<div class="tag shadow-tag tag-group ignore">
+								<div title="gmd:MD_Georectified" class="tag"><!-- MD_Georectified-->
+									<div title="gmd:checkPointAvailability" class="tag"><!-- checkPointAvailability-->
+										<span class="tag-group-label">Disponibilidade dos Pontos de Controle:</span>
+										<div title="gco:Boolean" class="tag">
+											<input class="full-width input-field tag-value" placeholder="code" type="text" title="gco:Boolean" value="" />
+										</div>
+									</div>
+									<div title="gmd:checkPointDescription" class="tag"><!-- checkPointDescription-->
+										<span class="tag-group-label">Descrição dos Pontos de Controle:</span>
+										<div title="gco:CharacterString" class="tag">
+											<input class="full-width input-field tag-value" placeholder="code" type="text" title="gco:CharacterString" value="" />
+										</div>
+									</div>
+									<div title="gmd:cornerPoints" class="tag"><!-- cornerPoints-->
+										<span class="tag-group-label">Pontos Extremos:</span>
+										<div title="gco:CharacterString" class="tag">
+											<input class="full-width input-field tag-value" placeholder="code" type="text" title="gco:CharacterString" value="" />
+										</div>
+									</div>
+									<div title="gmd:pointInPixel" class="tag"><!-- pointInPixel-->
+										<span class="tag-group-label">Referência no Pixel:</span>
+										<div title="gmd:MD_PixelOrientationCode" class="tag">
+											<input class="full-width input-field tag-value" placeholder="code" type="text" title="gmd:MD_PixelOrientationCode" value="" />
+										</div>
+									</div>
+									<div title="gmd:transformationDimensionDescription" class="tag"><!-- transformationDimensionDescription-->
+										<span class="tag-group-label">Descrição da Transformação:</span>
+										<div title="gco:CharacterString" class="tag">
+											<input class="full-width input-field tag-value" placeholder="code" type="text" title="gco:CharacterString" value="" />
+										</div>
+									</div>
+								<span class="divider">&nbsp;</span>
+							</div>
+						</div>
+					</div>
+						<h3 class="other">+ Representação Espacial Matricial Georreferenciável</h3>
+						<div class="tag shadow-tag form other hidden">
+							<button type="button" class="add group">+</button>
+							<div class="tag shadow-tag tag-group ignore">
+								<div title="gmd:MD_Georeferenceable" class="tag"><!-- MD_Georectified-->
+									<div title="gmd:controlPointAvailability" class="tag"><!-- topologyLevel-->
+										<span class="tag-group-label">Disponibilidade de Pontos de Controle:</span>
+										<div title="gco:Boolean" class="tag">
+											<input class="full-width input-field tag-value" placeholder="code" type="text" title="gco:Boolean" value="" />
+										</div>
+									</div>
+									<div title="gmd:orientationParameterAvailability" class="tag"><!-- orientationParameterAvailability-->
+										<span class="tag-group-label">Disponibilidade de Parâmetros de Orientação</span>
+										<div title="gco:Boolean" class="tag">
+											<input class="full-width input-field tag-value" placeholder="code" type="text" title="gco:Boolean" value="" />
+										</div>
+									</div>
+									<div title="gmd:georeferencedParameters" class="tag"><!-- georeferencedParameters-->
+										<span class="tag-group-label">Parâmetros Georreferenciáveis</span>
+										<div title="gco:CharacterString" class="tag">
+											<input class="full-width input-field tag-value" placeholder="code" type="text" title="gco:CharacterString" value="" />
+										</div>
+									</div>
+								<span class="divider">&nbsp;</span>
+							</div>
+							</div>
+						</div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
 
 <h3 class="recommended">+ Recommended Elements</h3>
 <div id="recommended" class="form recommended hidden">
