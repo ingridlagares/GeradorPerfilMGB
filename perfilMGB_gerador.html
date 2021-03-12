@@ -483,7 +483,7 @@
 	<div title="gmd:spatialRepresentationInfo" class="section wrapper-tag"><!-- spatialRepresentationInfo-->
 		<div class="tag-group">
 			<div title="gmd:MD_SpatialRepresentation" class="tag"> <!-- MD_SpatialRepresentation-->
-				<h3 class="other">+ Representação Espacial Vetorial (Obrigatório para dados veotriais)</h3>
+				<h3 class="other">+ Representação Espacial Vetorial (Obrigatório para dados vetoriais)</h3>
 				<div class="tag shadow-tag form other hidden">
 					<button type="button" class="add group">+</button>
 					<div class="tag shadow-tag tag-group ignore">
@@ -581,7 +581,63 @@
 	</div>
 </div>
 
-
+<h3 class="other">+ Informação de Conteúdo</h3>
+<div class="form other hidden">
+	<div title="gmd:contentInfo" class="section wrapper-tag"><!-- contentInfo-->
+		<div class="tag-group">
+			<div title="gmd:MD_ContentInformation" class="tag"> <!-- MD_ContentInformation-->
+				<h3 class="other">+ Descrição do Catálogo de Feições (Obrigatório para dados vetoriais)</h3>
+				<div class="tag shadow-tag form other hidden">
+					<button type="button" class="add group">+</button>
+					<div class="tag shadow-tag tag-group ignore">
+						<div title="gmd:MD_FeatureCatalogueDescription" class="tag"><!-- MD_FeatureCatalogueDescription-->
+							<div title="gmd:includedWithDataset" class="tag"><!-- includedWithDataset-->
+								<span class="tag-group-label">Catálogo Incluído no CDG:</span>
+								<div title="gco:Boolean" class="tag">
+									<input class="full-width input-field tag-value" placeholder="code" type="text" title="gco:Boolean" value="" />
+								</div>
+							</div>
+							<div title="gmd:featureCatalogueCitation" class="tag"><!-- featureCatalogueCitation-->
+								<span class="tag-group-label">Citação do Catálogo de Feições</span>
+								<div title="gco:CharacterString" class="tag">
+									<input class="full-width input-field tag-value" placeholder="code" type="text" title="gco:CharacterString" value="" />
+								</div>
+							</div>
+						</div>
+						<span class="divider">&nbsp;</span>
+					</div>
+				</div>
+				<h3 class="other">+ Descrição do Catálogo de Dados Matriciais (Obrigatório para dados matriciais)</h3>
+				<div class="tag shadow-tag form other hidden">
+					<button type="button" class="add group">+</button>
+					<div class="tag shadow-tag tag-group ignore">
+						<div title="gmd:MD_CoverageDescription" class="tag"><!-- MD_CoverageDescription-->
+							<div title="gmd:attributeDescription" class="tag"><!-- attributeDescription-->
+								<span class="tag-group-label">Descrição de Atributos:</span>
+								<div title="gco:RecordType" class="tag">
+									<input class="full-width input-field tag-value" placeholder="code" type="text" title="gco:RecordType" value="" />
+								</div>
+							</div>
+							<div title="gmd:contentType" class="tag"><!-- contentType-->
+								<span class="tag-group-label">Tipo de Conteúdo:</span>
+								<div title="gmd:MD_CoverageContentTypeCode" class="tag">
+									<input class="full-width input-field tag-value" placeholder="code" type="text" title="gmd:MD_CoverageContentTypeCode" value="" />
+								</div>
+							</div>
+							<div title="gmd:MD_ImageDescription" class="tag"><!-- MD_ImageDescription-->
+								<span class="tag-group-label">Descrição de Imagem</span>
+								<div title="gco:CharacterString" class="tag">
+									<input class="full-width input-field tag-value" placeholder="code" type="text" title="gco:CharacterString" value="" />
+								</div>
+							</div>
+						</div>
+						<span class="divider">&nbsp;</span>
+					</div>
+				</div>
+		</div>
+		</div>
+	</div>
+</div>
 <h3 class="recommended">+ Recommended Elements</h3>
 <div id="recommended" class="form recommended hidden">
 	<div title="subjects" class="section wrapper-tag">
