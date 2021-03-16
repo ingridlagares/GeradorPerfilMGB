@@ -97,8 +97,16 @@ $(document).ready(function() {
 });
 
 var optionValues = {};
-optionValues["codeListValue#CI_DateTypeCode"] = ["creation", "publication", "revision"];
+optionValues["descriptionType"] = ["Abstract", "Methods", "SeriesInformation", "TableOfContents", "TechnicalInfo", "Other"];
+optionValues["relatedIdentifierType"] = ["ARK", "arXiv", "bibcode", "DOI", "EAN13", "EISSN", "Handle", "IGSN", "ISBN", "ISSN", "ISTC", "LISSN", "LSID", "PMID", "PURL", "UPC", "URL", "URN"];
+optionValues["relationType"] = ["IsCitedBy", "Cites", "IsSupplementTo", "IsSupplementedBy", "IsContinuedBy", "Continues", "HasMetadata", "IsMetadataFor","IsNewVersionOf", "IsPreviousVersionOf", "IsPartOf", "HasPart", "IsReferencedBy", "References", "IsDocumentedBy", "Documents", "IsCompiledBy", "Compiles", "IsVariantFormOf", "IsOriginalFormOf", "IsIdenticalTo", "IsReviewedBy", "Reviews", "IsDerivedFrom", "IsSourceOf"];
+optionValues["resourceTypeGeneral"] = ["Audiovisual", "Collection", "Dataset", "Event", "Image", "InteractiveResource", "Model", "PhysicalObject", "Service", "Software", "Sound", "Text", "Workflow", "Other"];
+optionValues["dateType"] = ["Accepted", "Available", "Copyrighted", "Collected", "Created", "Issued", "Submitted", "Updated", "Valid"];
+optionValues["contributorType"] = ["ContactPerson", "DataCollector", "DataCurator", "DataManager", "Distributor", "Editor", "HostingInstitution", "Producer", "ProjectLeader", "ProjectManager", "ProjectMember", "RegistrationAgency", "RegistrationAuthority", "RelatedPerson", "Researcher", "ResearchGroup", "RightsHolder", "Sponsor", "Supervisor", "WorkPackageLeader", "Other"];
+optionValues["titleType"] = ["AlternativeTitle", "Subtitle", "TranslatedTitle", "Other"];
+optionValues["funderIdentifierType"] = ["Crossref Funder ID", "GRID", "ISNI", "Other"];
 optionValues["codeListValue#CI_RoleCode"] = ["author", "custodian", "distributor", "originator", "owner", "pointOfContact", "principalInvestigator", "processor", "publisher", "resourceProvider", "user"];
+optionValues["codeListValue#CI_DateTypeCode"] = ["creation", "publication", "revision"];
 optionValues["codeListValue#CI_OnLineFunctionCode"] = ["download", "information", "offlineAccess", "order", "search"];
 optionValues["codeListValue#CI_PresentationFormCode"] = ["documentDigital", "documentHardcopy", "imageDigital", "imageHardcopy", "mapDigital", "mapHardcopy", "modelDigital", "modelHardcopy", "profileDigital", "profileHardcopy", "tableDigital", "tableHardcopy", "videoDigital", "videoHardcopy"];
 optionValues["codeListValue#DQ_EvaluationMethodTypeCode"] = ["directExternal", "directInternal", "indirect"];
@@ -118,13 +126,13 @@ optionValues["codeListValue#MD_MediumFormatCode"] = ["cpio", "highSierra", "iso9
 optionValues["codeListValue#MD_MediumNameCode"] = ["1quarterInchCartridgeTape", "3480Cartridge", "3490Cartridge", "3580Cartridge", "3halfInchFloppy", "4mmCartridgeTape", "5quarterInchFloppy", "7trackTape", "8mmCartridgeTape", "9trackType", "cdRom", "digitalLinearTape", "dvd", "dvdRom", "hardcopy", "onLine", "satellite", "telephoneLink"];
 optionValues["codeListValue#MD_ObligationCode"] = ["conditional", "mandatory", "optional"];
 optionValues["codeListValue#MD_PixelOrientationCode"] = ["center", "lowerLeft", "lowerRight", "upperLeft", "upperRight"];
-optionValues["codeListValue#MD_ProgressCode"] = ["completed", "historicalArchive", "obsolete", "onGoing", "planned", "required", "underDevelopment"]];
 optionValues["codeListValue#MD_RestrictionCode"] = ["copyright", "intellectualPropertyRights", "license", "otherRestrictions", "patent", "patentPending", "restricted", "trademark"];
 optionValues["codeListValue#MD_ScopeCode"] = ["attribute", "attributeType", "collectionHardware", "collectionSession", "dataset", "dimensionGroup", "feature", "featureType", "fieldSession", "model", "nonGeographicDataset", "propertyType", "series", "service", "software", "tile"];
 optionValues["codeListValue#MD_SpatialRepresentationTypeCode"] = ["grid", "stereoModel", "textTable", "tin", "vector", "video"];
 optionValues["codeListValue#MD_TopicCategoryCode"] = ["biota", "boundaries", "climatologyMeteorologyAtmosphere", "economy", "elevation", "environment", "farming", "geoscientificInformation", "health", "imageryBaseMapsEarthCover", "inlandWaters", "intelligenceMilitary", "location", "oceans", "planningCadastre", "society", "structure", "transportation", "utilitiesCommunication"];
 optionValues["codeListValue#MD_TopologyLevelCode"] = ["abstract", "fullPlanarGraph", "fullSurfaceGraph", "fullTopology3D", "geometryOnly", "planarGraph", "surfaceGraph", "topology1D", "topology3D"];
 optionValues["codeListValue#MX_ScopeCode"] = ["attribute", "attributeType", "collectionHardware", "collectionSession", "dataset", "dimensionGroup", "feature", "featureType", "fieldSession", "initiative", "model", "nonGeographicDataset", "otherAggregate", "platformSeries", "productionSeries", "propertyType", "sensor", "sensorSeries", "series", "service", "software", "stereomate", "tile", "transferAggregate"];
+optionValues["codeListValue#MD_ProgressCode"] = ["completed", "historicalArchive", "obsolete", "onGoing", "planned", "required", "underDevelopment"];
 
 function process(section){
 	var isWrapper = $(section).hasClass("wrapper-tag");
