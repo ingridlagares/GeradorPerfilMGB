@@ -32,8 +32,9 @@
 										</div>
 										<div title="gmd:dateType" class="tag"> <!-- gmd:dateType-->
 											<span class="tag-group-label">Tipo de data:</span>
-											<div title="gmd:CI_DateTypeCode" class="tag">
-												<input class="full-width input-field tag-value" placeholder="Referência da data" type="text" title="gmd:CI_DateTypeCode" value="" />
+											<div title="gmd:CI_DateTypeCode" class="tag self-closing">
+												<select title="codeListValue#CI_DateTypeCode" class="full-width input-field tag-attribute tag-value"></select>
+												<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode"/>
 											</div>
 										</div>
 									</div>
@@ -48,8 +49,9 @@
 						</div>
 						<div title="gmd:status" class="tag"> <!-- gmd:status-->
 							<span class="tag-group-label">Status:</span>
-							<div title="gmd:MD_ProgressCode" class="tag">
-								<input class="full-width input-field tag-value" placeholder="Referência da data" type="text" title="gmd:MD_ProgressCode" value="" />
+							<div title="gmd:MD_ProgressCode" class="tag self-closing">
+								<select title="codeListValue#MD_ProgressCode" class="full-width input-field tag-attribute tag-value"></select>
+								<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_ProgressCode"/>
 							</div>
 						</div>
 						<h3 class="other">+ Responsável</h3>
@@ -73,12 +75,8 @@
 										<div title="gmd:role" class="tag"> <!-- role-->
 											<span class="tag-group-label">Função:</span>
 											<div title="gmd:CI_RoleCode" class="tag self-closing">
-												<!-- Instrução pra guigui:
-													* Colocar self-closing na tag pai, tag-attribute nos atributos, e tag-value no atributo principal (que dá o valor da tag)
-													* Se na console der erro de sarr is undefined é pq falta definir as opções do select na optionValues
-												-->
 												<select title="codeListValue#CI_RoleCode" class="full-width input-field tag-attribute tag-value"></select>
-												<input type="hidden" title="codeList" class="tag-attribute" value="http://www.isotc211.org/2005/resources/codeList.xml#CI_RoleCode"/>
+												<input type="hidden" title="codeList" class="tag-attribute" value="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode"/>
 											</div>
 										</div>
 										<div title="gmd:contactInfo" class="tag"> <!-- contactInfo-->
@@ -160,8 +158,9 @@
 										</div>
 										<div title="gmd:type" class="tag"> <!-- type-->
 											<span class="tag-group-label">Tipo de Palavra-chave:</span>
-											<div title="gmd:MD_KeywordTypeCode" class="tag">
-												<input class="full-width input-field tag-value" placeholder="Palavra-chave" type="text" title="gmd:MD_KeywordTypeCode" value="" />
+											<div title="gmd:MD_KeywordTypeCode" class="tag self-closing">
+												<select title="codeListValue#MD_KeywordTypeCode" class="full-width input-field tag-attribute tag-value"></select>
+												<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_KeywordTypeCode"/>
 											</div>
 										</div>
 										<span class="divider">&nbsp;</span>
@@ -216,8 +215,9 @@
 			<div title="" class="section ignore"> <!-- identificationInfo-->
 				<div title="gmd:spatialRepresentationType" data-refid="gmd:spatialRepresentationType" class="tag"> <!-- spatialRepresentationType-->
 					<span class="tag-group-label">Tipo de Representação Espacial:</span>
-					<div title="gmd:MD_SpatialRepresentationTypeCode" class="tag"> <!-- MD_SpatialRepresentationTypeCode-->
-						<input class="full-width input-field tag-value" placeholder="vector" type="text" title="gmd:MD_SpatialRepresentationTypeCode" value="" />
+					<div title="gmd:MD_SpatialRepresentationTypeCode" class="tag self-closing"> <!-- MD_SpatialRepresentationTypeCode-->
+						<select title="codeListValue#MD_SpatialRepresentationTypeCode" class="full-width input-field tag-attribute tag-value"></select>
+						<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_SpatialRepresentationTypeCode"/>
 					</div>
 				</div>
 				<div title="gmd:spatialResolution" data-refid="gmd:spatialResolution" class="tag"> <!-- spatialResolution-->
@@ -236,20 +236,22 @@
 				</div>
 				<div title="gmd:language" data-refid="gmd:language" class="tag"> <!-- language-->
 					<span class="tag-group-label">Idioma:</span>
-					<div title="gmd:LanguageCode" class="tag"> <!-- gmd:LanguageCode-->
-						<input class="full-width input-field tag-value" placeholder="por" type="text" title="gmd:LanguageCode" value="" />
+					<div title="gco:CharacterString" class="tag">
+						<input class="full-width input-field tag-value" type="text" title="gco:CharacterString" value="por" />
 					</div>
 				</div>
 				<div title="gmd:characterSet" data-refid="gmd:characterSet" class="tag"> <!-- gmd:characterSet-->
 					<span class="tag-group-label">Norma de Codificação de Caracteres:</span>
-					<div title="gmd:MD_CharacterSetCode" class="tag"> <!-- gmd:LanguageCode-->
-						<input class="full-width input-field tag-value" placeholder="utf8" type="text" title="gmd:MD_CharacterSetCode" value="" />
+					<div title="gmd:MD_CharacterSetCode" class="tag self-closing"> <!-- gmd:LanguageCode-->
+						<select title="codeListValue#MD_CharacterSetCode" class="full-width input-field tag-attribute tag-value"></select>
+						<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_CharacterSetCode"/>
 					</div>
 				</div>
 				<div title="gmd:gmd:topicCategory" data-refid="gmd:topicCategory" class="tag"> <!-- gmd:topicCategory-->
 					<span class="tag-group-label">Categoria Temática:</span>
-					<div title="gmd:MD_TopicCategoryCode" class="tag"> <!-- gmd:LanguageCode-->
-						<input class="full-width input-field tag-value" placeholder="biota" type="text" title="gmd:MD_TopicCategoryCode" value="" />
+					<div title="gmd:MD_TopicCategoryCode" class="tag self-closing"> <!-- gmd:LanguageCode-->
+						<select title="codeListValue#MD_TopicCategoryCode" class="full-width input-field tag-attribute tag-value"></select>
+						<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_TopicCategoryCode"/>
 					</div>
 				</div>
 				<h3 class="other">+ Extensão Geográfica</h3>
@@ -346,7 +348,7 @@
 						<div title="gmd:unitOfMeasure" class="tag"> <!-- unitOfMeasure-->
 							<span class="tag-group-label">Unidade de medida:</span>
 							<div title="gco:CharacterString" class="tag">
-								<input class="full-width input-field tag-value" placeholder="" type="text" title="gco:CharacterString" value="" />
+								<input class="full-width input-field tag-value" placeholder="metros" type="text" title="gco:CharacterString" value="" />
 							</div>
 						</div>
 						<div title="gmd:verticalDatum" class="tag"> <!-- verticalDatum-->
@@ -370,23 +372,26 @@
 			<span class="tag-group-label">Restrições de Segurança:</span>
 			<div title="gmd:MD_SecurityConstraints" class="tag"> <!-- MD_SecurityConstraints-->
 				<div title="gmd:classification" class="tag"> <!-- classification-->
-					<div title="gmd:MD_ClassificationCode" class="tag"> <!-- classification-->
-						<input class="full-width input-field tag-value" placeholder="License" type="text" title="gmd:MD_ClassificationCode" value="" />
+					<div title="gmd:MD_ClassificationCode" class="tag self-closing"> <!-- classification-->
+						<select title="codeListValue#MD_RestrictionCode" class="full-width input-field tag-attribute tag-value"></select>
+						<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_RestrictionCode"/>
 					</div>
 				</div>
 			</div>
-			<span class="tag-group-label">Restrições Legais:</span>
+			<h4>Restrições Legais</h4>
 			<div title="gmd:MD_LegalConstraints" class="tag"> <!-- MD_LegalConstraints-->
 				<span class="tag-group-label">Restrições de Uso:</span>
 				<div title="gmd:useConstraints" class="tag"> <!-- useConstraints-->
-					<div title="gmd:MD_RestrictionCode" class="tag"> <!-- classification-->
-						<input class="full-width input-field tag-value" placeholder="License" type="text" title="gmd:MD_RestrictionCode" value="" />
+					<div title="gmd:MD_RestrictionCode" class="tag self-closing"> <!-- classification-->
+						<select title="codeListValue#MD_RestrictionCode" class="full-width input-field tag-attribute tag-value"></select>
+						<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_RestrictionCode"/>
 					</div>
 				</div>
 				<span class="tag-group-label">Restrições de Acesso:</span>
 				<div title="gmd:accessConstraints" class="tag"> <!-- accessConstraints-->
-					<div title="gmd:MD_RestrictionCode" class="tag"> <!-- classification-->
-						<input class="full-width input-field tag-value" placeholder="License" type="text" title="gmd:MD_RestrictionCode" value="" />
+					<div title="gmd:MD_RestrictionCode" class="tag self-closing"> <!-- classification-->
+						<select title="codeListValue#MD_RestrictionCode" class="full-width input-field tag-attribute tag-value"></select>
+						<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_RestrictionCode"/>
 					</div>
 				</div>
 			</div>
@@ -404,7 +409,8 @@
 						<div title="gmd:level" class="tag"> <!-- level-->
 							<span class="tag-group-label">Nível Hierárquico:</span>
 							<div title="gmd:MD_ScopeCode" class="tag"> <!-- MD_ScopeCode-->
-								<input class="full-width input-field tag-value" placeholder="License" type="text" title="gmd:MD_ScopeCode" value="" />
+								<select title="codeListValue#MD_ScopeCode" class="full-width input-field tag-attribute tag-value"></select>
+								<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_ScopeCode"/>
 							</div>
 						</div>
 					</div>
@@ -473,9 +479,10 @@
 		<span class="tag-group-label">Periodicidade prevista para atualização:</span>
 		<div class="tag-group">
 			<div title="gmd:MD_MaintenanceInformation" class="tag"> <!-- MD_MaintenanceInformation-->
-				<div title="gmd:MD_MaintenanceInformation" class="tag"> <!-- MD_MaintenanceInformation-->
-					<div title="gmd:maintenanceAndUpdateFrequency" class="tag"> <!-- maintenanceAndUpdateFrequency-->
-						<input class="full-width input-field tag-value" placeholder="anual" type="text" title="gmd:MD_MaintenanceFrequencyCode" value="" />
+				<div title="gmd:maintenanceAndUpdateFrequency" class="tag"> <!-- maintenanceAndUpdateFrequency-->
+					<div title="gmd:MD_MaintenanceFrequencyCode" class="tag self-closing"> <!-- maintenanceAndUpdateFrequency-->
+						<select title="codeListValue#MD_MaintenanceFrequencyCode" class="full-width input-field tag-attribute tag-value"></select>
+						<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_MaintenanceFrequencyCode"/>
 					</div>
 				</div>
 			</div>
@@ -495,14 +502,16 @@
 						<div title="gmd:MD_VectorSpatialRepresentation" class="tag"><!-- MD_VectorSpatialRepresentation-->
 							<div title="gmd:topologyLevel" class="tag"><!-- topologyLevel-->
 								<span class="tag-group-label">Nível Topológico:</span>
-								<div title="gmd:MD_TopologyLevelCode" class="tag">
-									<input class="full-width input-field tag-value" placeholder="code" type="text" title="gmd:MD_TopologyLevelCode" value="" />
+								<div title="gmd:MD_TopologyLevelCode" class="tag self-closing">
+									<select title="codeListValue#MD_TopologyLevelCode" class="full-width input-field tag-attribute tag-value"></select>
+									<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_TopologyLevelCode"/>
 								</div>
 							</div>
 							<div title="gmd:geometricObjects" class="tag"><!-- topologyLevel-->
 								<span class="tag-group-label">Tipo dos Objetos Geométricos</span>
-								<div title="gmd:MD_GeometricObjectTypeCode" class="tag">
-									<input class="full-width input-field tag-value" placeholder="code" type="text" title="gmd:MD_GeometricObjectTypeCode" value="" />
+								<div title="gmd:MD_GeometricObjectTypeCode" class="tag self-closing">
+									<select title="codeListValue#MD_GeometricObjectTypeCode" class="full-width input-field tag-attribute tag-value"></select>
+									<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_GeometricObjectTypeCode"/>
 								</div>
 							</div>
 						</div>
@@ -537,8 +546,9 @@
 										</div>
 										<div title="gmd:pointInPixel" class="tag"><!-- pointInPixel-->
 											<span class="tag-group-label">Referência no Pixel:</span>
-											<div title="gmd:MD_PixelOrientationCode" class="tag">
-												<input class="full-width input-field tag-value" placeholder="code" type="text" title="gmd:MD_PixelOrientationCode" value="" />
+											<div title="gmd:MD_PixelOrientationCode" class="tag self-closing">
+												<select title="codeListValue#MD_PixelOrientationCode" class="full-width input-field tag-attribute tag-value"></select>
+												<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_PixelOrientationCode"/>
 											</div>
 										</div>
 										<div title="gmd:transformationDimensionDescription" class="tag"><!-- transformationDimensionDescription-->
@@ -625,8 +635,9 @@
 							</div>
 							<div title="gmd:contentType" class="tag"><!-- contentType-->
 								<span class="tag-group-label">Tipo de Conteúdo:</span>
-								<div title="gmd:MD_CoverageContentTypeCode" class="tag">
-									<input class="full-width input-field tag-value" placeholder="code" type="text" title="gmd:MD_CoverageContentTypeCode" value="" />
+								<div title="gmd:MD_CoverageContentTypeCode" class="tag self-closing">
+									<select title="codeListValue#MD_CoverageContentTypeCode" class="full-width input-field tag-attribute tag-value"></select>
+									<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_CoverageContentTypeCode"/>
 								</div>
 							</div>
 							<div title="gmd:MD_ImageDescription" class="tag"><!-- MD_ImageDescription-->
@@ -692,8 +703,9 @@
 									<div title="gmd:MD_Medium" class="tag"><!-- MD_Medium-->
 										<div title="gmd:name" class="tag"><!-- name-->
 											<span class="tag-group-label">Acesso Offline</span>
-											<div title="gmd:MD_MediumNameCode" class="tag">
-												<input class="full-width input-field tag-value" placeholder="code" type="text" title="gmd:MD_MediumNameCode" value="" />
+											<div title="gmd:MD_MediumNameCode" class="tag self-closing">
+												<select title="codeListValue#MD_MediumNameCode" class="full-width input-field tag-attribute tag-value"></select>
+												<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_MediumNameCode"/>
 											</div>
 										</div>
 									</div>
@@ -832,8 +844,9 @@
 	<div title="gmd:characterSet"  class="section wrapper-tag"><!-- characterSet-->
 		<div class="tag-group">
 			<span class="tag-group-label">Norma de Codificação dos Metadados:</span>
-			<div title="gmd:MD_CharacterSetCode" class="tag"> <!-- gco:CharacterString-->
-				<input class="full-width input-field tag-value" placeholder="utf8" type="text" title="gmd:MD_CharacterSetCode" value="" />
+			<div title="gmd:MD_CharacterSetCode" class="tag self-closing"> <!-- gco:CharacterString-->
+				<select title="codeListValue#MD_CharacterSetCode" class="full-width input-field tag-attribute tag-value"></select>
+				<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_CharacterSetCode"/>
 			</div>
 		</div>
 	</div>
@@ -942,157 +955,6 @@
 		</div>
 	</div>
 	<span class="divider">&nbsp;</span>
-</div>
-
-<h3 class="recommended">+ Recommended Elements</h3>
-<div id="recommended" class="form recommended hidden">
-	<div title="subjects" class="section wrapper-tag">
-		<span class="tag-group-label">Subject(s):</span>
-		<button type="button" class="add group">+</button>
-		<div class="tag-group">
-			<div title="subject" class="tag">
-				<input class="half-width input-field tag-value" type="text" placeholder="[SUBJECT]" title="subject" value="" />
-				<input class="half-width input-field tag-attribute" type="text" placeholder="[SUBJECT SCHEME]" title="subjectScheme" value="" />
-				<input class="full-width input-field tag-attribute" type="text" placeholder="[SUBJECT SCHEME URI]" title="schemeURI" value="" />
-				<input class="full-width input-field tag-attribute" type="text" placeholder="[SUBJECT VALUE URI]" title="valueURI" value="" />
-			</div>
-		</div>
-	</div>
-	<span class="divider">&nbsp;</span>
-	<div title="contributors" class="section wrapper-tag">
-		<span class="tag-group-label">Contributor(s):</span>
-		<button type="button" class="add group">+</button>
-		<div class="tag-group">
-			<div title="contributor" class="tag">
-				<div title="contributorName" class="tag">
-					<input class="half-width input-field tag-value" type="text" placeholder="[CONTRIBUTOR NAME]" title="contributorName" value="" />
-				</div>
-				<select class="half-width input-field tag-attribute" title="contributorType"></select>
-				<div title="givenName" class="tag">
-					<input class="half-width input-field tag-value" type="text" placeholder="[GIVEN NAME] (optional)" title="givenName" value="" />
-				</div>
-				<div title="familyName" class="tag">
-					<input class="half-width input-field tag-value" type="text" placeholder="[FAMILY NAME] (optional)" title="familyName" value="" />
-				</div>
-				<div title="nameIdentifier" class="tag">
-					<input class="half-width input-field tag-value" type="text" placeholder="[NAME IDENTIFIER]" title="nameIdentifier" value="" />
-					<input class="half-width input-field tag-attribute" type="text" placeholder="[NAME ID SCHEME]" title="nameIdentifierScheme" value="" />
-					<input class="unbounded-width input-field tag-attribute" type="text" placeholder="[IDENTIFIER SCHEME URI]" title="schemeURI" value="" /><button type="button" class="add single-tag">+</button>
-				</div>
-				<div title="affiliation" class="tag">
-					<input class="unbounded-width input-field tag-value" type="text" placeholder="[CONTRIBUTOR AFFILIATION]" title="affiliation" value="" /><button type="button" class="add single-tag">+</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<span class="divider">&nbsp;</span>
-	<div title="dates" class="section wrapper-tag">
-		<span class="tag-group-label">Date(s):</span>
-		<button type="button" class="add group">+</button>
-		<div class="tag-group">
-			<div title="date" class="tag">
-				<input class="half-width input-field tag-value" type="text" placeholder="[DATE]" title="date" value="" />
-				<select class="half-width input-field tag-attribute" title="dateType"></select>
-			</div>
-		</div>
-	</div>
-	<span class="divider">&nbsp;</span>
-	<div title="relatedIdentifiers" class="section wrapper-tag">
-		<span class="tag-group-label">Related Identifier(s):</span>
-		<button type="button" class="add group">+</button>
-		<div class="tag-group">
-			<div title="relatedIdentifier" class="tag">
-				<input class="full-width input-field tag-value" type="text" placeholder="[RELATED IDENTIFIER]" title="relatedIdentifier" value="" />
-				<select class="half-width input-field tag-attribute" title="relatedIdentifierType"></select>
-				<select class="half-width input-field tag-attribute" title="relationType"></select>
-				<input class="half-width input-field tag-attribute" type="text" placeholder="[METADATA SCHEME]" title="relatedMetadataScheme" value="" />
-				<input class="half-width input-field tag-attribute" type="text" placeholder="[SCHEME TYPE]" title="schemeType" value="" />
-				<input class="full-width input-field tag-attribute" type="text" placeholder="[SCHEME URI]" title="schemeURI" value="" />
-			</div>
-		</div>
-	</div>
-	<span class="divider">&nbsp;</span>
-	<div title="descriptions" class="section wrapper-tag">
-		<span class="tag-group-label">Description:</span>
-		<button type="button" class="add group">+</button>
-		<div class="tag-group">
-			<div title="description" class="tag">
-				<input class="half-width input-field tag-value" type="text" placeholder="[DESCRIPTION]" title="description" value="" />
-				<select class="half-width input-field tag-attribute" title="descriptionType"></select>
-			</div>
-		</div>
-	</div>
-	<span class="divider">&nbsp;</span>
-	<div title="geoLocations" class="section wrapper-tag">
-		<button type="button" class="add group">+</button>
-		<div class="tag-group">
-			<div title="geoLocation" class="tag">
-				<span class="tag-group-label">Geo Location Place:</span>
-				<div title="geoLocationPlace" class="tag">
-					<input class="full-width input-field tag-value" type="text" placeholder="[GEO LOCATION PLACE]" title="geoLocationPlace" value="" />
-				</div>
-				<span class="tag-group-label">Geo Location Point:</span>
-				<div title="geoLocationPoint" class="tag">
-					<div title="pointLongitude" class="tag">
-						<input class="half-width input-field tag-value" type="text" placeholder="[POINT LONGITUDE]" title="pointLongitude" value="" />
-					</div>
-					<div title="pointLatitude" class="tag">
-						<input class="half-width input-field tag-value" type="text" placeholder="[POINT LATITUDE]" title="pointLatitude" value="" />
-					</div>
-				</div>
-				<span class="tag-group-label">Geo Location Box:</span>
-				<div title="geoLocationBox" class="tag">
-					<div title="westBoundLongitude" class="tag">
-						<input class="half-width input-field tag-value" type="text" placeholder="[WEST BOUND LONGITUDE]" title="westBoundLongitude" value="" />
-					</div>
-					<div title="eastBoundLongitude" class="tag">
-						<input class="half-width input-field tag-value" type="text" placeholder="[EAST BOUND LONGITUDE]" title="eastBoundLongitude" value="" />
-					</div>
-					<div title="southBoundLatitude" class="tag">
-						<input class="half-width input-field tag-value" type="text" placeholder="[SOUTH BOUND LATITUDE]" title="southBoundLatitude" value="" />
-					</div>
-					<div title="northBoundLatitude" class="tag">
-						<input class="half-width input-field tag-value" type="text" placeholder="[NORTH BOUND LATITUDE]" title="northBoundLatitude" value="" />
-					</div>
-				</div>
-				<span class="tag-group-label">Geo Location Polygon:</span>
-				<div title="geoLocationPolygon" class="tag">
-					<div title="polygonPoint" class="tag">
-						<div title="pointLongitude" class="tag">
-							<input class="half-width-smaller input-field tag-value" type="text" placeholder="[POINT LONGITUDE]" title="pointLongitude" value="" />
-						</div>
-						<div title="pointLatitude" class="tag">
-							<input class="half-width-smaller input-field tag-value" type="text" placeholder="[POINT LATITUDE]" title="pointLatitude" value="" />
-						</div>
-					</div>
-					<div title="polygonPoint" class="tag">
-						<div title="pointLongitude" class="tag">
-							<input class="half-width-smaller input-field tag-value" type="text" placeholder="[POINT LONGITUDE]" title="pointLongitude" value="" />
-						</div>
-						<div title="pointLatitude" class="tag">
-							<input class="half-width-smaller input-field tag-value" type="text" placeholder="[POINT LATITUDE]" title="pointLatitude" value="" />
-						</div>
-					</div>
-					<div title="polygonPoint" class="tag">
-						<div title="pointLongitude" class="tag">
-							<input class="half-width-smaller input-field tag-value" type="text" placeholder="[POINT LONGITUDE]" title="pointLongitude" value="" />
-						</div>
-						<div title="pointLatitude" class="tag">
-							<input class="half-width-smaller input-field tag-value" type="text" placeholder="[POINT LATITUDE]" title="pointLatitude" value="" />
-						</div>
-					</div>
-					<div title="polygonPoint" class="tag">
-						<div title="pointLongitude" class="tag">
-							<input class="half-width-smaller input-field tag-value" type="text" placeholder="[POINT LONGITUDE]" title="pointLongitude" value="" />
-						</div>
-						<div title="pointLatitude" class="tag">
-							<input class="half-width-smaller input-field tag-value" type="text" placeholder="[POINT LATITUDE]" title="pointLatitude" value="" />
-						</div><button type="button" class="add single-tag">+</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 </div>
 
 </div>
