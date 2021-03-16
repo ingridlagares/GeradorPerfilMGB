@@ -72,8 +72,13 @@
 										</div>
 										<div title="gmd:role" class="tag"> <!-- role-->
 											<span class="tag-group-label">Função:</span>
-											<div title="gmd:CI_RoleCode" class="tag">
-												<input class="full-width input-field tag-value" placeholder="Referência da data" type="text" title="gmd:CI_RoleCode" value="" />
+											<div title="gmd:CI_RoleCode" class="tag self-closing">
+												<!-- Instrução pra guigui:
+													* Colocar self-closing na tag pai, tag-attribute nos atributos, e tag-value no atributo principal (que dá o valor da tag)
+													* Se na console der erro de sarr is undefined é pq falta definir as opções do select na optionValues
+												-->
+												<select title="codeListValue#CI_RoleCode" class="full-width input-field tag-attribute tag-value"></select>
+												<input type="hidden" title="codeList" class="tag-attribute" value="http://www.isotc211.org/2005/resources/codeList.xml#CI_RoleCode"/>
 											</div>
 										</div>
 										<div title="gmd:contactInfo" class="tag"> <!-- contactInfo-->
@@ -1089,91 +1094,7 @@
 		</div>
 	</div>
 </div>
-<h3 class="other">+ Other Elements</h3>
-<div class="form other hidden">
-	<div class="section">
-		<span class="tag-group-label">Language:</span>
-		<div class="tag-group">
-			<div title="language" class="tag">
-				<input class="full-width input-field tag-value" type="text" placeholder="[LANGUAGE]" title="language" value="" />
-			</div>
-		</div>
-	</div>
-	<span class="divider">&nbsp;</span>
-	<div title="alternateIdentifiers" class="section wrapper-tag">
-		<span class="tag-group-label">Alternate Identifier(s):</span>
-		<button type="button" class="add group">+</button>
-		<div class="tag-group">
-			<div title="alternateIdentifier" class="tag">
-				<input class="half-width input-field tag-value" type="text" placeholder="[ALTERNATE IDENTIFIER]" title="alternateIdentifier" value="" />
-				<input class="half-width input-field tag-attribute" type="text" placeholder="[ALTERNATE ID TYPE]" title="alternateIdentifierType" value="" />
-			</div>
-		</div>
-	</div>
-	<span class="divider">&nbsp;</span>
-	<div title="sizes" class="section wrapper-tag">
-		<span class="tag-group-label">Size(s):</span>
-		<button type="button" class="add group">+</button>
-		<div class="tag-group">
-			<div title="size" class="tag">
-				<input class="full-width input-field tag-value" type="text" placeholder="[SIZE]" title="size" value="" />
-			</div>
-		</div>
-	</div>
-	<span class="divider">&nbsp;</span>
-	<div title="formats" class="section wrapper-tag">
-		<span class="tag-group-label">Format(s):</span>
-		<button type="button" class="add group">+</button>
-		<div class="tag-group">
-			<div title="format" class="tag">
-				<input class="full-width input-field tag-value" type="text" placeholder="[FORMAT]" title="format" value="" />
-			</div>
-		</div>
-	</div>
-	<span class="divider">&nbsp;</span>
-	<div class="section">
-		<span class="tag-group-label">Version:</span>
-		<div class="tag-group">
-			<div title="version" class="tag">
-				<input class="full-width input-field tag-value" type="text" placeholder="[VERSION]" title="version" value="" />
-			</div>
-		</div>
-	</div>
-	<span class="divider">&nbsp;</span>
-	<div title="rightsList" class="section wrapper-tag">
-		<span class="tag-group-label">Rights List:</span>
-		<button type="button" class="add group">+</button>
-		<div class="tag-group">
-			<div title="rights" class="tag">
-				<input class="full-width input-field tag-value" type="text" placeholder="[RIGHTS]" title="rights" value="" />
-				<input class="full-width input-field tag-attribute" type="text" placeholder="[RIGHTS URI]" title="rightsURI" value="" />
-			</div>
-		</div>
-	</div>
-	<span class="divider">&nbsp;</span>
-	<div title="fundingReferences" class="section wrapper-tag">
-		<span class="tag-group-label">Funding Reference:</span>
-		<button type="button" class="add group">+</button>
-		<div class="tag-group">
-			<div title="fundingReference" class="tag">
-				<div title="funderName" class="tag">
-					<input class="full-width input-field tag-value" type="text" placeholder="[FUNDER NAME]" title="funderName" value="" />
-				</div>
-				<div title="funderIdentifier" class="tag">
-					<input class="half-width input-field tag-value" type="text" placeholder="[FUNDER IDENTIFIER]" title="funderIdentifier" value="" />
-					<select class="half-width input-field tag-attribute" title="funderIdentifierType"></select>
-				</div>
-				<div title="awardNumber" class="tag">
-					<input class="half-width input-field tag-value" type="text" placeholder="[AWARD NUMBER]" title="awardNumber" value="" />
-					<input class="half-width input-field tag-attribute" type="text" placeholder="[AWARD URI]" title="awardURI" value="" />
-				</div>
-				<div title="awardTitle" class="tag">
-					<input class="full-width input-field tag-value" type="text" placeholder="[AWARD TITLE]" title="awardTitle" value="" />
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+
 </div>
 <br />
 <div class="right hidden">

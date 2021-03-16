@@ -6,7 +6,7 @@ $(document).ready(function() {
   var header = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + br() + "<gmd:MD_Metadata xmlns=\"" + kernelNamespace + "\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"" + kernelSchemaLocation + "\">" + br();
   $("select[title]").each(function(){
 	 var tagName = name($(this));
-	 ps($(this),optionValues[tagName]);
+	 ps($(this), optionValues[tagName]);
   });
   $("body").on("keyup", "input", function(event) {
     event.preventDefault();
@@ -30,7 +30,7 @@ $(document).ready(function() {
   $("#selectall").bind("click", function(event) {
     event.preventDefault();
     st($("div code").get(0));
-  });  
+  });
   $("button.add.group").bind("click", function(event) {
     event.preventDefault();
     var d = $(this).parent().find(".tag-group:first").clone();
@@ -42,7 +42,7 @@ $(document).ready(function() {
     $("<button/>", {"class":"delete group", type:"button", text:"-"}).appendTo($(d).find(".tag:first"));
     d.appendTo($(this).parent());
   });
-  
+
   $("div.section").on("mouseenter mouseleave focusin focusout", "button.delete.group, button.delete.single-tag", function(event){
 	 event.preventDefault();
 	 $(this).parent().toggleClass("remove-highlight");
@@ -97,20 +97,40 @@ $(document).ready(function() {
 });
 
 var optionValues = {};
-optionValues["descriptionType"] = ["Abstract", "Methods", "SeriesInformation", "TableOfContents", "TechnicalInfo", "Other"];
-optionValues["relatedIdentifierType"] = ["ARK", "arXiv", "bibcode", "DOI", "EAN13", "EISSN", "Handle", "IGSN", "ISBN", "ISSN", "ISTC", "LISSN", "LSID", "PMID", "PURL", "UPC", "URL", "URN"];
-optionValues["relationType"] = ["IsCitedBy", "Cites", "IsSupplementTo", "IsSupplementedBy", "IsContinuedBy", "Continues", "HasMetadata", "IsMetadataFor","IsNewVersionOf", "IsPreviousVersionOf", "IsPartOf", "HasPart", "IsReferencedBy", "References", "IsDocumentedBy", "Documents", "IsCompiledBy", "Compiles", "IsVariantFormOf", "IsOriginalFormOf", "IsIdenticalTo", "IsReviewedBy", "Reviews", "IsDerivedFrom", "IsSourceOf"];
-optionValues["resourceTypeGeneral"] = ["Audiovisual", "Collection", "Dataset", "Event", "Image", "InteractiveResource", "Model", "PhysicalObject", "Service", "Software", "Sound", "Text", "Workflow", "Other"];
-optionValues["dateType"] = ["Accepted", "Available", "Copyrighted", "Collected", "Created", "Issued", "Submitted", "Updated", "Valid"];
-optionValues["contributorType"] = ["ContactPerson", "DataCollector", "DataCurator", "DataManager", "Distributor", "Editor", "HostingInstitution", "Producer", "ProjectLeader", "ProjectManager", "ProjectMember", "RegistrationAgency", "RegistrationAuthority", "RelatedPerson", "Researcher", "ResearchGroup", "RightsHolder", "Sponsor", "Supervisor", "WorkPackageLeader", "Other"];
-optionValues["titleType"] = ["AlternativeTitle", "Subtitle", "TranslatedTitle", "Other"];
-optionValues["funderIdentifierType"] = ["Crossref Funder ID", "GRID", "ISNI", "Other"];
+optionValues["codeListValue#CI_DateTypeCode"] = ["creation", "publication", "revision"];
+optionValues["codeListValue#CI_RoleCode"] = ["author", "custodian", "distributor", "originator", "owner", "pointOfContact", "principalInvestigator", "processor", "publisher", "resourceProvider", "user"];
+optionValues["codeListValue#CI_OnLineFunctionCode"] = ["download", "information", "offlineAccess", "order", "search"];
+optionValues["codeListValue#CI_PresentationFormCode"] = ["documentDigital", "documentHardcopy", "imageDigital", "imageHardcopy", "mapDigital", "mapHardcopy", "modelDigital", "modelHardcopy", "profileDigital", "profileHardcopy", "tableDigital", "tableHardcopy", "videoDigital", "videoHardcopy"];
+optionValues["codeListValue#DQ_EvaluationMethodTypeCode"] = ["directExternal", "directInternal", "indirect"];
+optionValues["codeListValue#DS_AssociationTypeCode"] = ["crossReference", "largerWorkCitation", "partOfSeamlessDatabase", "source", "stereoMate"];
+optionValues["codeListValue#DS_InitiativeTypeCode"] = ["campaign", "collection", "exercise", "experiment", "investigation", "mission", "operation", "platform", "process", "program", "project", "sensor", "study", "task", "trial"];
+optionValues["codeListValue#MD_CellGeometryCode"] = ["area", "point"];
+optionValues["codeListValue#MD_CharacterSetCode"] = ["8859part1", "8859part10", "8859part11", "8859part13", "8859part14", "8859part15", "8859part16", "8859part2", "8859part3", "8859part4", "8859part5", "8859part6", "8859part7", "8859part8", "8859part9", "GB2312", "big5", "ebcdic", "eucJP", "eucKR", "jis", "shiftJIS", "ucs2", "ucs4", "usAscii", "utf16", "utf7", "utf8"];
+optionValues["codeListValue#MD_ClassificationCode"] = ["confidential", "restricted", "secret", "topSecret", "unclassified"];
+optionValues["codeListValue#MD_CoverageContentTypeCode"] = ["image", "physicalMeasurement", "thematicClassification"];
+optionValues["codeListValue#MD_DatatypeCode"] = ["abstractClass", "aggregateClass", "association", "characterString", "class", "codelist", "codelistElement", "datatypeClass", "enumeration", "integer", "interfaceClass", "metaClass", "specifiedClass", "typeClass", "unionClass"];
+optionValues["codeListValue#MD_DimensionNameTypeCode"] = ["column", "crossTrack", "line", "row", "sample", "time", "track", "vertical"];
+optionValues["codeListValue#MD_GeometricObjectTypeCode"] = ["complex", "composite", "curve", "point", "solid", "surface"];
+optionValues["codeListValue#MD_ImagingConditionCode"] = ["blurredImage", "cloud", "degradingObliquity", "fog", "heavySmokeOrDust", "night", "rain", "semiDarkness", "shadow", "snow", "terrainMasking"];
+optionValues["codeListValue#MD_KeywordTypeCode"] = ["discipline", "place", "stratum", "temporal", "theme"];
+optionValues["codeListValue#MD_MaintenanceFrequencyCode"] = ["annually", "asNeeded", "biannually", "continual", "daily", "fortnightly", "irregular", "monthly", "notPlanned", "quarterly", "unknown", "weekly"];
+optionValues["codeListValue#MD_MediumFormatCode"] = ["cpio", "highSierra", "iso9660", "iso9660AppleHFS", "iso9660RockRidge", "tar"];
+optionValues["codeListValue#MD_MediumNameCode"] = ["1quarterInchCartridgeTape", "3480Cartridge", "3490Cartridge", "3580Cartridge", "3halfInchFloppy", "4mmCartridgeTape", "5quarterInchFloppy", "7trackTape", "8mmCartridgeTape", "9trackType", "cdRom", "digitalLinearTape", "dvd", "dvdRom", "hardcopy", "onLine", "satellite", "telephoneLink"];
+optionValues["codeListValue#MD_ObligationCode"] = ["conditional", "mandatory", "optional"];
+optionValues["codeListValue#MD_PixelOrientationCode"] = ["center", "lowerLeft", "lowerRight", "upperLeft", "upperRight"];
+optionValues["codeListValue#MD_ProgressCode"] = ["completed", "historicalArchive", "obsolete", "onGoing", "planned", "required", "underDevelopment"]];
+optionValues["codeListValue#MD_RestrictionCode"] = ["copyright", "intellectualPropertyRights", "license", "otherRestrictions", "patent", "patentPending", "restricted", "trademark"];
+optionValues["codeListValue#MD_ScopeCode"] = ["attribute", "attributeType", "collectionHardware", "collectionSession", "dataset", "dimensionGroup", "feature", "featureType", "fieldSession", "model", "nonGeographicDataset", "propertyType", "series", "service", "software", "tile"];
+optionValues["codeListValue#MD_SpatialRepresentationTypeCode"] = ["grid", "stereoModel", "textTable", "tin", "vector", "video"];
+optionValues["codeListValue#MD_TopicCategoryCode"] = ["biota", "boundaries", "climatologyMeteorologyAtmosphere", "economy", "elevation", "environment", "farming", "geoscientificInformation", "health", "imageryBaseMapsEarthCover", "inlandWaters", "intelligenceMilitary", "location", "oceans", "planningCadastre", "society", "structure", "transportation", "utilitiesCommunication"];
+optionValues["codeListValue#MD_TopologyLevelCode"] = ["abstract", "fullPlanarGraph", "fullSurfaceGraph", "fullTopology3D", "geometryOnly", "planarGraph", "surfaceGraph", "topology1D", "topology3D"];
+optionValues["codeListValue#MX_ScopeCode"] = ["attribute", "attributeType", "collectionHardware", "collectionSession", "dataset", "dimensionGroup", "feature", "featureType", "fieldSession", "initiative", "model", "nonGeographicDataset", "otherAggregate", "platformSeries", "productionSeries", "propertyType", "sensor", "sensorSeries", "series", "service", "software", "stereomate", "tile", "transferAggregate"];
 
 function process(section){
 	var isWrapper = $(section).hasClass("wrapper-tag");
 	var indent = 0;
 	var xml = "";
-	
+
   if ($(section).hasClass("ignore"))
     return xml;
 
@@ -127,8 +147,8 @@ function process(section){
 			var wrapperName = name(section);
 			xml = ot(wrapperName) + br() + xml + ct(wrapperName) + br();
 		}
-	}	
-	
+	}
+
 	return xml;
 }
 
@@ -143,46 +163,52 @@ function processTag(tag, indent){
 	var value;
 	var tagName = name(tag);
 	var attr = attribs(tag);
-	
+  var selfClosing = $(tag).hasClass("self-closing");
+
 	var tagValues = $(tag).children(".tag-value");
-	
-	if ($(tagValues).length){
-		value = inputValue(tagValues[0]);
-	}
+
+  if ($(tagValues).length) {
+    if ( $(this).is("select") ){
+			value = selectValue(tagValues[0]);
+		} else {
+      value = inputValue(tagValues[0]);
+    }
+  }
 
   var shadowTag = $(tag).hasClass("shadow-tag");
 
 	$(tag).children(".tag").each(function(){
 		xml += processTag(this, indent + (shadowTag ? 0 : 1));
 	});
-	
+
   if (shadowTag) return xml;
-  
+
   if (xml.length > 0){
-		xml = tab(indent) + ota(tagName,attr) + br() + xml + tab(indent) + ct(tagName) + br();
-	}
-	else if(typeof value !== "undefined" && (value.length > 0 || ($(tag).hasClass("allow-empty") && attr.length > 0))){
-		xml = tab(indent) + ota(tagName,attr) + value + ct(tagName) + br();
-	}
-	
+		  xml = tab(indent) + ota(tagName,attr) + br() + xml + tab(indent) + ct(tagName) + br();
+	}	else if (typeof value !== "undefined" && (value.length > 0 || ($(tag).hasClass("allow-empty") && attr.length > 0))){
+	    if (!selfClosing) {
+        xml = tab(indent) + ota(tagName,attr) + value + ct(tagName) + br();
+      } else {
+        xml = tab(indent) + scota(tagName,attr) + br();
+      }
+  }
+
 	return xml;
 }
 
 function attribs(element){
 	var attribs = "";
-	
+
 	$(element).children(".tag-attribute").each(function(){
 		var value = "";
-		var n = name(this);
-		
-		if ( $(this).is("input") ){
-			value = inputValue(this);
-		}
-		
+		var n = name(this).replace(/#.*/g, "");
+
 		if ( $(this).is("select") ){
 			value = selectValue(this);
-		}
-		
+		} else {
+      value = inputValue(this);
+    }
+
 		if (value.length > 0){
 			if (attribs.length > 0){
 				attribs += " ";
@@ -190,7 +216,7 @@ function attribs(element){
 			attribs += n + "=\"" + value +"\"";
 		}
 	});
-	
+
 	return attribs;
 }
 
@@ -207,8 +233,7 @@ function name(tag){
 }
 
 function ps(s, sarr) {
-  var i = $(s).attr("title");
-  addO(s, "", "[" + i + "]");
+  addO(s, "", "" );
   for (var i = 0;i < sarr.length;i++) {
     addO(s, sarr[i], sarr[i]);
   }
@@ -233,6 +258,18 @@ function tab(number){
 		tabs = "\t";
 	}
 	return tabs;
+}
+
+function scota(tag, attr) {
+  if (attr.length > 0){
+		return "<" + tag +" "+ attr + "/>";
+	} else {
+		return scot(tag);
+	}
+}
+
+function scot(tag) {
+		return "<" + tag + "/>";
 }
 
 function ota(tag,attr) {
