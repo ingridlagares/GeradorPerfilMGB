@@ -10,6 +10,7 @@
 </head>
 <body>
 	<h2 class="pagetitle">Gerador de Metadados - Perfil MGB</h2>
+<form id="main-form">
 	<div class="left">
 		<h3 class="other">+ Identificação</h3>
 		<div class="form other hidden">
@@ -18,23 +19,23 @@
 					<div title="gmd:MD_DataIdentification" class="tag">
 						<div title="gmd:citation" class="tag"> <!-- citation-->
 							<div title="gmd:CI_Citation" class="tag"> <!-- CI_Citation-->
-								<span class="tag-group-label">Título:</span>
+								<span class="tag-group-label">Título (obrigatório):</span>
 								<div title="gmd:title" class="tag">
-									<input class="full-width input-field tag-value" placeholder="Designação pela qual são conhecidos os recursos" type="text" title="gmd:title" value="" />
+									<input class="full-width input-field tag-value" data-desc="Título (Identificação)" placeholder="Atlas Geográfico Escolar" type="text" title="gmd:title" value="" required/>
 								</div>
 								<div title="gmd:date" class="tag"> <!-- date-->
 									<div title="gmd:CI_Date" class="tag"> <!-- CI_Date-->
 										<div title="gmd:date" class="tag"> <!-- gmd:date-->
-											<span class="tag-group-label">Data:</span>
+											<span class="tag-group-label">Data (obrigatório):</span>
 											<div title="gco:Date" class="tag">
-												<input class="full-width input-field tag-value" placeholder="Data dos recursos" type="text" title="gco:Date" value="" />
+												<input class="full-width input-field tag-value" data-desc="Data (Identificação)" placeholder="AAAA-MM-DD" type="date" title="gco:Date" value="" required/>
 											</div>
 										</div>
 										<div title="gmd:dateType" class="tag"> <!-- gmd:dateType-->
-											<span class="tag-group-label">Tipo de data:</span>
+											<span class="tag-group-label">Tipo de data (obrigatório):</span>
 											<div title="gmd:CI_DateTypeCode" class="tag self-closing">
-												<select title="codeListValue#CI_DateTypeCode" class="full-width input-field tag-attribute tag-value"></select>
-												<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode"/>
+												<select title="codeListValue#CI_DateTypeCode" data-desc="Tipo de Data (Identificação)" class="full-width input-field tag-attribute tag-value" required></select>
+												<input type="hidden" title="codeList" class="tag-attribute"  value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode"/>
 											</div>
 										</div>
 									</div>
@@ -42,19 +43,19 @@
 							</div>
 						</div>
 						<div title="gmd:abstract" class="tag"> <!-- gmd:abstract-->
-							<span class="tag-group-label">Resumo:</span>
+							<span class="tag-group-label">Resumo (obrigatório):</span>
 							<div title="gco:CharacterString" class="tag">
-								<input class="full-width input-field tag-value" placeholder="Descrição resumida" type="text" title="gco:CharacterString" value="" />
+								<input class="full-width input-field tag-value" data-desc="Resumo (Identificação)" placeholder="O Atlas é um conjunto de dados sobre diversos temas, sistematicamente organizados e servindo de referência para a construção de informações de acordo com a necessidade do usuário." type="text" title="gco:CharacterString" value="" required/>
 							</div>
 						</div>
 						<div title="gmd:status" class="tag"> <!-- gmd:status-->
-							<span class="tag-group-label">Status:</span>
+							<span class="tag-group-label">Status (obrigatório):</span>
 							<div title="gmd:MD_ProgressCode" class="tag self-closing">
-								<select title="codeListValue#MD_ProgressCode" class="full-width input-field tag-attribute tag-value"></select>
+								<select title="codeListValue#MD_ProgressCode" data-desc="Status (Identificação)" class="full-width input-field tag-attribute tag-value" required></select>
 								<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_ProgressCode"/>
 							</div>
 						</div>
-						<h3 class="other">+ Responsável</h3>
+						<h3 class="other">+ Responsável (obrigatório)</h3>
 						<div class="tag shadow-tag form other hidden">
 							<button type="button" class="add group">+</button>
 							<div class="tag shadow-tag tag-group ignore">
@@ -63,19 +64,19 @@
 										<div title="gmd:individualName" class="tag"> <!-- individualName-->
 											<span class="tag-group-label">Nome:</span>
 											<div title="gco:CharacterString" class="tag">
-												<input class="full-width input-field tag-value" placeholder="Nome do responsável" type="text" title="gco:CharacterString" value="" />
+												<input class="full-width input-field tag-value" placeholder="Francisco Edson Mendonça Gomes" type="text" title="gco:CharacterString" value="" />
 											</div>
 										</div>
 										<div title="gmd:organisationName" class="tag"> <!-- organisationName-->
 											<span class="tag-group-label">Nome da Organização:</span>
 											<div title="gco:CharacterString" class="tag">
-												<input class="full-width input-field tag-value" placeholder="Organização responsável" type="text" title="gco:CharacterString" value="" />
+												<input class="full-width input-field tag-value" data-desc="Nome da Organização (Identificação)" placeholder="Fundação Instituto Brasileiro de Geografia e Estatística – IBGE" type="text" title="gco:CharacterString" value="" required/>
 											</div>
 										</div>
 										<div title="gmd:role" class="tag"> <!-- role-->
 											<span class="tag-group-label">Função:</span>
 											<div title="gmd:CI_RoleCode" class="tag self-closing">
-												<select title="codeListValue#CI_RoleCode" class="full-width input-field tag-attribute tag-value"></select>
+												<select title="codeListValue#CI_RoleCode" data-desc="Função (Identificação)" class="full-width input-field tag-attribute tag-value" required></select>
 												<input type="hidden" title="codeList" class="tag-attribute" value="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode"/>
 											</div>
 										</div>
@@ -86,13 +87,13 @@
 														<div title="gmd:voice" class="tag"> <!-- voice-->
 															<span class="tag-group-label">Telefone:</span>
 															<div title="gco:CharacterString" class="tag">
-																<input class="full-width input-field tag-value" placeholder="Telefone" type="text" title="gco:CharacterString" value="" />
+																<input class="full-width input-field tag-value" placeholder="3878.0229" type="number" title="gco:CharacterString" value="" />
 															</div>
 														</div>
 														<div title="gmd:facsimile" class="tag"> <!-- facsimile-->
 															<span class="tag-group-label">Fax:</span>
 															<div title="gco:CharacterString" class="tag">
-																<input class="full-width input-field tag-value" placeholder="Fax" type="text" title="gco:CharacterString" value="" />
+																<input class="full-width input-field tag-value" placeholder="3574.0174" type="number" title="gco:CharacterString" value="" />
 															</div>
 														</div>
 													</div>
@@ -102,19 +103,19 @@
 														<div title="gmd:address" class="tag"> <!-- address-->
 															<span class="tag-group-label">Endereço:</span>
 															<div title="gco:CharacterString" class="tag">
-																<input class="full-width input-field tag-value" placeholder="Endereço" type="text" title="gco:CharacterString" value="" />
+																<input class="full-width input-field tag-value" placeholder="Av. Antonio Sales, 1418" type="text" title="gco:CharacterString" value="" />
 															</div>
 														</div>
 														<div title="gmd:city" class="tag"> <!-- city-->
 															<span class="tag-group-label">Cidade:</span>
 															<div title="gco:CharacterString" class="tag">
-																<input class="full-width input-field tag-value" placeholder="Cidade" type="text" title="gco:CharacterString" value="" />
+																<input class="full-width input-field tag-value" placeholder="Fortaleza" type="text" title="gco:CharacterString" value="" />
 															</div>
 														</div>
 														<div title="gmd:administrativeArea" class="tag"> <!-- administrativeArea-->
 															<span class="tag-group-label">Área Administrativa:</span>
 															<div title="gmd:UF_TypeCode" class="tag">
-																<input class="full-width input-field tag-value" placeholder="Área Administrativa" type="text" title="gmd:UF_TypeCode" value="" />
+																<input class="full-width input-field tag-value" placeholder="Ceará" type="text" title="gmd:UF_TypeCode" value="" />
 															</div>
 														</div>
 														<div title="gmd:postalCode" class="tag"> <!-- postalCode-->
@@ -126,13 +127,13 @@
 														<div title="gmd:country" class="tag"> <!-- country-->
 															<span class="tag-group-label">País:</span>
 															<div title="gco:CharacterString" class="tag">
-																<input class="full-width input-field tag-value" placeholder="País" type="text" title="gco:CharacterString" value="" />
+																<input class="full-width input-field tag-value" placeholder="br" type="text" title="gco:CharacterString" value="" />
 															</div>
 														</div>
 														<div title="gmd:electronicMailAddress" class="tag"> <!-- electronicMailAddress-->
 															<span class="tag-group-label">Email:</span>
 															<div title="gco:CharacterString" class="tag">
-																<input class="full-width input-field tag-value" placeholder="País" type="text" title="gco:CharacterString" value="" />
+																<input class="full-width input-field tag-value" placeholder="Email" type="email" title="gco:CharacterString" value="" />
 															</div>
 														</div>
 													</div>
@@ -153,7 +154,7 @@
 										<div title="gmd:keyword" class="tag"> <!-- keyword-->
 											<span class="tag-group-label">Palavra-chave:</span>
 											<div title="gco:CharacterString" class="tag">
-												<input class="unbounded-width input-field tag-value" placeholder="Palavra-chave" type="text" title="gco:CharacterString" value="" />
+												<input class="unbounded-width input-field tag-value" placeholder="Atlas Escolar" type="text" title="gco:CharacterString" value="" />
 											</div><button type="button" class="add single-tag">+</button>
 										</div>
 										<div title="gmd:type" class="tag"> <!-- type-->
@@ -178,7 +179,7 @@
 										<div title="gmd:fileName" class="tag"> <!-- keyword-->
 											<span class="tag-group-label">Url do arquivo:</span>
 											<div title="gco:CharacterString" class="tag">
-												<input class="unbounded-width input-field tag-value" placeholder="Caminho onde o arquivo está localizado" type="text" title="gco:CharacterString" value="" />
+												<input class="unbounded-width input-field tag-value" placeholder="http://www.metadados.geo.ibge.gov.br:80/geonetwork_ibge/srv/por/resources.get?uuid=960a0333-5765-43cc-9f30-c9c70056facc&fname=GIM_FIGMGB_Ortofoto25273ne_set2011_s.png" type="text" title="gco:CharacterString" value="" />
 											</div>
 										</div>
 										<div title="gmd:fileDescription" class="tag"> <!-- fileDescription-->
@@ -254,7 +255,7 @@
 						<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_TopicCategoryCode"/>
 					</div>
 				</div>
-				<h3 class="other">+ Extensão Geográfica</h3>
+				<h3 class="other">+ Extensão Geográfica (obrigatório)</h3>
 				<div class="form other hidden">
 					<button type="button" class="add group">+</button>
 					<div class="tag-group tag shadow-tag">
@@ -306,7 +307,7 @@
 								<div title="gmd:geographicIdentifier" class="tag"> <!-- geographicIdentifier-->
 									<span class="tag-group-label">Indicador Geográfico:</span>
 									<div title="gco:CharacterString" class="tag">
-										<input class="full-width input-field tag-value" placeholder="IBGE" type="text" title="gco:CharacterString" value="" />
+										<input class="full-width input-field tag-value" placeholder="Geocódigo: 3303906" type="text" title="gco:CharacterString" value="" />
 									</div>
 								</div>
 							</div>
@@ -336,13 +337,13 @@
 						<div title="gmd:minimumValue" class="tag"> <!-- minimumValue-->
 							<span class="tag-group-label">Valor mínimo:</span>
 							<div title="gco:Real" class="tag">
-								<input class="full-width input-field tag-value" placeholder="" type="text" title="gco:Real" value="" />
+								<input class="full-width input-field tag-value" placeholder="0" type="text" title="gco:Real" value="" />
 							</div>
 						</div>
 						<div title="gmd:maximumValue" class="tag"> <!-- maximumValue-->
 							<span class="tag-group-label">Valor máximo:</span>
 							<div title="gco:Real" class="tag">
-								<input class="full-width input-field tag-value" placeholder="" type="text" title="gco:Real" value="" />
+								<input class="full-width input-field tag-value" placeholder="200" type="text" title="gco:Real" value="" />
 							</div>
 						</div>
 						<div title="gmd:unitOfMeasure" class="tag"> <!-- unitOfMeasure-->
@@ -354,7 +355,7 @@
 						<div title="gmd:verticalDatum" class="tag"> <!-- verticalDatum-->
 							<span class="tag-group-label">Datum altimétrico: </span>
 							<div title="gco:CharacterString" class="tag">
-								<input class="full-width input-field tag-value" placeholder="" type="text" title="gco:CharacterString" value="" />
+								<input class="full-width input-field tag-value" placeholder="Marégrafo de Imbituba" type="text" title="gco:CharacterString" value="" />
 							</div>
 						</div>
 					</div>
@@ -369,11 +370,11 @@
 <div class="form other hidden">
 	<div title="" class="section ignore"> <!-- identificationInfo-->
 		<div title="gmd:resourceConstraints" data-refid="gmd:resourceConstraints" class="tag"> <!-- resourceConstraints-->
-			<span class="tag-group-label">Restrições de Segurança:</span>
+			<span class="tag-group-label">Restrições de Segurança (obrigatório):</span>
 			<div title="gmd:MD_SecurityConstraints" class="tag"> <!-- MD_SecurityConstraints-->
 				<div title="gmd:classification" class="tag"> <!-- classification-->
 					<div title="gmd:MD_ClassificationCode" class="tag self-closing"> <!-- classification-->
-						<select title="codeListValue#MD_RestrictionCode" class="full-width input-field tag-attribute tag-value"></select>
+						<select title="codeListValue#MD_RestrictionCode" data-desc="Restrição de Segurança (Informação de Restrição)" class="full-width input-field tag-attribute tag-value" required></select>
 						<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_RestrictionCode"/>
 					</div>
 				</div>
@@ -407,9 +408,9 @@
 				<div title="gmd:scope" class="tag"> <!-- scope-->
 					<div title="gmd:DQ_Scope" class="tag"> <!-- DQ_Scope-->
 						<div title="gmd:level" class="tag"> <!-- level-->
-							<span class="tag-group-label">Nível Hierárquico:</span>
+							<span class="tag-group-label">Nível Hierárquico (obrigatório):</span>
 							<div title="gmd:MD_ScopeCode" class="tag"> <!-- MD_ScopeCode-->
-								<select title="codeListValue#MD_ScopeCode" class="full-width input-field tag-attribute tag-value"></select>
+								<select title="codeListValue#MD_ScopeCode" data-desc="Nível Hierárquico (Qualidade)" class="full-width input-field tag-attribute tag-value" required></select>
 								<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_ScopeCode"/>
 							</div>
 						</div>
@@ -422,9 +423,9 @@
 						<div title="gmd:lineage" class="tag"> <!-- lineage-->
 							<div title="gmd:LI_Lineage" class="tag"> <!-- LI_Lineage-->
 								<div title="gmd:statement" class="tag"> <!-- statement-->
-									<span class="tag-group-label">Declaração:</span>
+									<span class="tag-group-label">Declaração (obrigatório):</span>
 									<div title="gco:CharacterString" class="tag">
-										<input class="unbounded-width input-field tag-value" placeholder="Declaração" type="text" title="gco:CharacterString" value="" />
+										<input class="unbounded-width input-field tag-value" data-desc="Declaração (Qualidade)" placeholder="A informação é obtida através de processos fotogramétricos com fotografias à escala 1:30000." type="text" title="gco:CharacterString" value="" required/>
 									</div><button type="button" class="add single-tag">+</button>
 								</div>
 								<span class="divider">&nbsp;</span>
@@ -476,12 +477,12 @@
 <h3 class="other">+ Frequência de Manutenção e Atualização</h3>
 <div class="form other hidden">
 	<div title="gmd:metadataMaintenance" class="section wrapper-tag"><!-- metadataMaintenance-->
-		<span class="tag-group-label">Periodicidade prevista para atualização:</span>
+		<span class="tag-group-label">Periodicidade prevista para atualização (obrigatório):</span>
 		<div class="tag-group">
 			<div title="gmd:MD_MaintenanceInformation" class="tag"> <!-- MD_MaintenanceInformation-->
 				<div title="gmd:maintenanceAndUpdateFrequency" class="tag"> <!-- maintenanceAndUpdateFrequency-->
 					<div title="gmd:MD_MaintenanceFrequencyCode" class="tag self-closing"> <!-- maintenanceAndUpdateFrequency-->
-						<select title="codeListValue#MD_MaintenanceFrequencyCode" class="full-width input-field tag-attribute tag-value"></select>
+						<select title="codeListValue#MD_MaintenanceFrequencyCode"  data-desc="Periodicidade (Frequência de Manutenção)" class="full-width input-field tag-attribute tag-value" required></select>
 						<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_MaintenanceFrequencyCode"/>
 					</div>
 				</div>
@@ -659,7 +660,7 @@
 	<div title="gmd:distributionInfo" class="section wrapper-tag"><!-- distributionInfo-->
 		<div class="tag-group">
 			<div title="gmd:MD_Distribution" class="tag"> <!-- MD_Distribution-->
-				<h3 class="other">+ Formato de Distribuição</h3>
+				<h3 class="other">+ Formato de Distribuição (obrigatório)</h3>
 				<div class="tag shadow-tag form other hidden">
 					<button type="button" class="add group">+</button>
 					<div class="tag shadow-tag tag-group ignore">
@@ -668,13 +669,13 @@
 								<div title="gmd:name" class="tag"><!-- name-->
 									<span class="tag-group-label">Nome do Formato:</span>
 									<div title="gco:CharacterString" class="tag">
-										<input class="full-width input-field tag-value" placeholder="code" type="text" title="gco:CharacterString" value="" />
+										<input class="full-width input-field tag-value" data-desc="Nome do Formato (Distribuição)" placeholder="ESRI" type="text" title="gco:CharacterString" value="" required/>
 									</div>
 								</div>
 								<div title="gmd:version" class="tag"><!-- version-->
 									<span class="tag-group-label">Versão do Formato</span>
 									<div title="gco:CharacterString" class="tag">
-										<input class="full-width input-field tag-value" placeholder="code" type="text" title="gco:CharacterString" value="" />
+										<input class="full-width input-field tag-value" data-desc="Versão do Formato (Distribuição)" placeholder="9.2" type="text" title="gco:CharacterString" value="" required/>
 									</div>
 								</div>
 							</div>
@@ -693,7 +694,7 @@
 										<div title="gmd:linkage" class="tag"><!-- linkage-->
 											<span class="tag-group-label">Acesso Online:</span>
 											<div title="gmd:URL" class="tag">
-												<input class="full-width input-field tag-value" placeholder="URL" type="text" title="gmd:URL" value="" />
+												<input class="full-width input-field tag-value" placeholder="http://www.ibge.gov.br/home/geociencias/geografia/atlas" type="text" title="gmd:URL" value="" />
 											</div>
 										</div>
 									</div>
@@ -716,7 +717,7 @@
 						<span class="divider">&nbsp;</span>
 					</div>
 				</div>
-				<h3 class="other">+ Contato do Distribuidor</h3>
+				<h3 class="other">+ Contato do Distribuidor (Obrigatório)</h3>
 				<div class="tag shadow-tag form other hidden">
 					<button type="button" class="add group">+</button>
 					<div class="tag shadow-tag tag-group ignore">
@@ -818,7 +819,7 @@
 		<div class="tag-group">
 			<span class="tag-group-label">Data dos Metadados:</span>
 			<div title="gco:DateTime" class="tag"> <!-- gco:DateTime-->
-				<input class="full-width input-field tag-value" placeholder="2012-01-12T16:56:25" type="text" title="gco:DateTime" value="" />
+				<input class="full-width input-field tag-value" data-desc="Data (Metadados)" placeholder="2012-01-12T16:56:25" type="date" title="gco:DateTime" value="" required/>
 			</div>
 		</div>
 	</div>
@@ -827,25 +828,25 @@
 		<div class="tag-group">
 			<span class="tag-group-label">Identificador Único dos Metadados:</span>
 			<div title="gco:CharacterString" class="tag"> <!-- gco:CharacterString-->
-				<input class="full-width input-field tag-value" placeholder="960a0333" type="text" title="gco:CharacterString" value="" />
+				<input class="full-width input-field tag-value" data-desc="Identificador (Metadados)" placeholder="18c55ed0-86b6-11eb-9881-0800200c9a66" type="text" title="gco:CharacterString" value="" required/>
 			</div>
 		</div>
 	</div>
 	<span class="divider">&nbsp;</span>
 	<div title="gmd:language"  class="section wrapper-tag"><!-- language-->
 		<div class="tag-group">
-			<span class="tag-group-label">Idioma dos Metadados:</span>
+			<span class="tag-group-label">Idioma dos Metadados (obrigatório):</span>
 			<div title="gco:CharacterString" class="tag"> <!-- gco:CharacterString-->
-				<input class="full-width input-field tag-value" placeholder="por" type="text" title="gco:CharacterString" value="" />
+				<input class="full-width input-field tag-value" data-desc="Idioma (Metadados)" placeholder="por" type="text" title="gco:CharacterString" value="" required/>
 			</div>
 		</div>
 	</div>
 	<span class="divider">&nbsp;</span>
 	<div title="gmd:characterSet"  class="section wrapper-tag"><!-- characterSet-->
 		<div class="tag-group">
-			<span class="tag-group-label">Norma de Codificação dos Metadados:</span>
+			<span class="tag-group-label">Norma de Codificação dos Metadados (obrigatório):</span>
 			<div title="gmd:MD_CharacterSetCode" class="tag self-closing"> <!-- gco:CharacterString-->
-				<select title="codeListValue#MD_CharacterSetCode" class="full-width input-field tag-attribute tag-value"></select>
+				<select title="codeListValue#MD_CharacterSetCode" data-desc="Norma de Codificação (Metadados)" class="full-width input-field tag-attribute tag-value" required></select>
 				<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_CharacterSetCode"/>
 			</div>
 		</div>
@@ -853,7 +854,7 @@
 	<span class="divider">&nbsp;</span>
 	<div title="gmd:contact"  class="section wrapper-tag"><!-- contact-->
 		<div class="tag-group">
-			<span class="tag-group-label">Responsável pelos Metadados:</span>
+			<span class="tag-group-label">Responsável pelos Metadados (obrigatório):</span>
 			<div title="gmd:CI_ResponsibleParty" class="tag"> <!-- CI_ResponsibleParty-->
 				<div title="gmd:individualName" class="tag"> <!-- individualName-->
 					<span class="tag-group-label">Nome:</span>
@@ -941,7 +942,7 @@
 		<div class="tag-group">
 			<span class="tag-group-label">Nome da Norma de metadados Utilizada:</span>
 			<div title="gco:CharacterString" class="tag"> <!-- gco:CharacterString-->
-				<input class="full-width input-field tag-value" placeholder="ISO 19115:2003" type="text" title="gco:CharacterString" value="" />
+				<input class="full-width input-field tag-value" data-desc="Norma de Metadados (Metadados)" placeholder="" type="text" title="gco:CharacterString" value="ISO 19115:2003" required/>
 			</div>
 		</div>
 	</div>
@@ -950,7 +951,7 @@
 		<div class="tag-group">
 			<span class="tag-group-label">Versão da Norma de Metadados:</span>
 			<div title="gco:CharacterString" class="tag"> <!-- gco:CharacterString-->
-				<input class="full-width input-field tag-value" placeholder="1.0" type="text" title="gco:CharacterString" value="" />
+				<input class="full-width input-field tag-value" placeholder="1.0" type="text" title="gco:CharacterString" value="2003" />
 			</div>
 		</div>
 	</div>
@@ -959,13 +960,14 @@
 
 </div>
 <br />
+</form>
 <div class="right hidden">
 	<h3 class="results">Metadata</h3>
 	<div class="form results">
 		<pre><code style="display:inline-block;"></code></pre>
 	</div>
 	<br />
-	<button type="button" id="download" onclick="save()">Save as file</button>
+	<button type="button" id="download">Save as file</button>
 	<button type="button" id="reset">Reset</button>
 	<button type="button" id="selectall">Select All</button>
 	<span class="output" id="output"></span>

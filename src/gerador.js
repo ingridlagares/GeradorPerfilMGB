@@ -8,6 +8,7 @@ $(document).ready(function() {
 	 var tagName = name($(this));
 	 ps($(this), optionValues[tagName]);
   });
+  $("#download").bind("click", save);
   $("body").on("keyup", "input", function(event) {
     event.preventDefault();
     var xml = header;
@@ -355,6 +356,17 @@ function save() {
   if (false) {
     alert("Not currently supported in Internet Explorer");
   } else {
-    downloadFile();
+    var invalids = [];
+    $("#main-form").find("input:invalid").each(function() {
+      invalids.push($(this).attr("data-desc"));
+    });
+    $("#main-form").find("select:invalid").each(function() {
+      invalids.push($(this).attr("data-desc"));
+    });
+    if (invalids.length) {
+      alert("Por favor preencha os campos:\n" + invalids.join("\n"));
+    } else {
+      downloadFile();
+    }
   }
 }
