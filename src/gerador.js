@@ -1,8 +1,8 @@
 $(document).ready(function() {
-  var header = "<gmd:MD_Metadata " + "xsi:schemaLocation=\"" + "http://www.isotc211.org/2005/gmd http://www.isotc211.org/2005/gmd/gmd.xsd" + "\">" + br();
-  $("select[title]").each(function(){
-	 var tagName = name($(this));
-	 ps($(this), optionValues[tagName]);
+  //var header = "<gmd:MD_Metadata " + "xsi:schemaLocation=\"" + "http://www.isotc211.org/2005/gmd http://www.isotc211.org/2005/gmd/gmd.xsd" + "\>" + br();
+  var header = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + br() + "<gmd:MD_Metadata xmlns:gmd=\"http://www.isotc211.org/2005/gmd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:gco=\"http://www.isotc211.org/2005/gco\" xmlns:geonet=\"http://www.fao.org/geonetwork\" xmlns:gml=\"http://www.opengis.net/gml\" xmlns:gts=\"http://www.isotc211.org/2005/gts\"" + ">" + br();  $("select[title]").each(function(){
+   var tagName = name($(this));
+   ps($(this), optionValues[tagName]);
   });
   $("#download").bind("click", save);
   $("body").on("keyup", "input", function(event) {
@@ -358,7 +358,7 @@ function save() {
     });
     $("#main-form").find("select:invalid").each(function() {
       invalids.push($(this).attr("data-desc"));
-    });
+    }); 
     if (invalids.length) {
       alert("Por favor preencha os campos:\n" + invalids.join("\n"));
     } else {
