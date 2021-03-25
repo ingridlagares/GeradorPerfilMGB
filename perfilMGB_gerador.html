@@ -24,7 +24,7 @@
 									<input class="full-width input-field tag-value" data-desc="Título (Identificação)" placeholder="Atlas Geográfico Escolar" type="text" title="gmd:title" value="" required/>
 								</div>
 								<span class="divider">&nbsp;</span>
-								<button type="button" class="add group">+</button>
+								<button type="button" class="add main-button group">+</button>
 								<div class="tag shadow-tag tag-group ignore">
 									<div title="gmd:date" class="tag"> <!-- date-->
 										<div title="gmd:CI_Date" class="tag"> <!-- CI_Date-->
@@ -41,9 +41,9 @@
 													<input type="hidden" title="codeList" class="tag-attribute"  value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode"/>
 												</div>
 											</div>
+											<span class="divider">&nbsp;</span>
 										</div>
 									</div>
-									<span class="divider">&nbsp;</span>
 							  </div>
 							</div>
 						</div>
@@ -62,7 +62,7 @@
 						</div>
 						<h3 class="other">+ Responsável (obrigatório)</h3>
 						<div class="tag shadow-tag form other hidden">
-							<button type="button" class="add group">+</button>
+							<button type="button" class="add main-button group">+</button>
 							<div class="tag shadow-tag tag-group ignore">
 								<div title="gmd:pointOfContact" class="tag"> <!-- pointOfContact-->
 									<div title="gmd:CI_ResponsibleParty" class="tag"> <!-- CI_ResponsibleParty-->
@@ -75,15 +75,18 @@
 										<div title="gmd:organisationName" class="tag"> <!-- organisationName-->
 											<span class="tag-group-label">Nome da Organização:</span>
 											<div title="gco:CharacterString" class="tag">
-												<input class="full-width input-field tag-value" data-desc="Nome da Organização (Identificação)" placeholder="Fundação Instituto Brasileiro de Geografia e Estatística – IBGE" type="text" title="gco:CharacterString" value="" required/>
+												<input class="unbounded-width input-field tag-value" data-desc="Nome da Organização (Identificação)" placeholder="Fundação Instituto Brasileiro de Geografia e Estatística – IBGE" type="text" title="gco:CharacterString" value="" required/>
 											</div>
+											<button type="button" class="add single-tag">+</button>
 										</div>
+
 										<div title="gmd:role" class="tag"> <!-- role-->
 											<span class="tag-group-label">Função:</span>
 											<div title="gmd:CI_RoleCode" class="tag self-closing">
-												<select title="codeListValue#CI_RoleCode" data-desc="Função (Identificação)" class="full-width input-field tag-attribute tag-value" required></select>
+												<select title="codeListValue#CI_RoleCode" data-desc="Função (Identificação)" class="unbounded-width input-field tag-attribute tag-value" required></select>
 												<input type="hidden" title="codeList" class="tag-attribute" value="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode"/>
 											</div>
+											<button type="button" class="add single-tag">+</button>
 										</div>
 										<div title="gmd:contactInfo" class="tag"> <!-- contactInfo-->
 											<div title="gmd:CI_Contact" class="tag"> <!-- CI_Contact-->
@@ -152,7 +155,7 @@
 
 						<h3 class="other">+ Palavra Chave</h3>
 						<div class="tag shadow-tag form other hidden">
-							<button type="button" class="add group">+</button>
+							<button type="button" class="add main-button group">+</button>
 							<div class="tag shadow-tag tag-group ignore">
 								<div title="gmd:descriptiveKeywords" class="tag"> <!-- descriptiveKeywords-->
 									<div title="gmd:MD_Keywords" class="tag"> <!-- MD_Keywords-->
@@ -177,9 +180,9 @@
 
 						<h3 class="other">+ Pré Visualização Gráfica</h3>
 						<div class="tag shadow-tag form other hidden">
-							<button type="button" class="add group">+</button>
-							<div class="tag shadow-tag tag-group ignore">
-								<div title="gmd:graphicOverview" class="tag"> <!-- graphicOverview-->
+							<div title="gmd:graphicOverview" class="tag"> <!-- graphicOverview-->
+								<button type="button" class="add main-button group">+</button>
+								<div class="tag shadow-tag tag-group ignore">
 									<div title="gmd:MD_BrowseGraphic" class="tag"> <!-- MD_BrowseGraphic-->
 										<div title="gmd:fileName" class="tag"> <!-- keyword-->
 											<span class="tag-group-label">Url do arquivo:</span>
@@ -222,9 +225,10 @@
 				<div title="gmd:spatialRepresentationType" data-refid="gmd:spatialRepresentationType" class="tag"> <!-- spatialRepresentationType-->
 					<span class="tag-group-label">Tipo de Representação Espacial:</span>
 					<div title="gmd:MD_SpatialRepresentationTypeCode" class="tag self-closing"> <!-- MD_SpatialRepresentationTypeCode-->
-						<select title="codeListValue#MD_SpatialRepresentationTypeCode" class="full-width input-field tag-attribute tag-value"></select>
+						<select title="codeListValue#MD_SpatialRepresentationTypeCode" class="unbounded-width input-field tag-attribute tag-value"></select>
 						<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_SpatialRepresentationTypeCode"/>
 					</div>
+					<button type="button" class="add single-tag">+</button>
 				</div>
 				<div title="gmd:spatialResolution" data-refid="gmd:spatialResolution" class="tag"> <!-- spatialResolution-->
 					<div title="gmd:MD_Resolution" class="tag"> <!-- MD_Resolution-->
@@ -233,8 +237,9 @@
 								<div title="gmd:denominator" class="tag"> <!-- denominator-->
 									<span class="tag-group-label">Escala:</span>
 									<div title="gco:Integer" class="tag"> <!-- MD_SpatialRepresentationTypeCode-->
-										<input class="full-width input-field tag-value" placeholder="2000" type="text" title="gco:Integer" value="" />
+										<input class="unbounded-width input-field tag-value" placeholder="2000" type="text" title="gco:Integer" value="" />
 									</div>
+									<button type="button" class="add single-tag">+</button>
 								</div>
 							</div>
 						</div>
@@ -262,7 +267,7 @@
 				</div>
 				<h3 class="other">+ Extensão Geográfica (obrigatório)</h3>
 				<div class="form other hidden">
-					<button type="button" class="add group">+</button>
+					<button type="button" class="add main-button group">+</button>
 					<div class="tag-group tag shadow-tag">
 						<div title="gmd:extent" data-refid="gmd:extentgeo" class="tag"> <!-- extent-->
 							<div title="gmd:EX_Extent" class="tag"> <!-- EX_Extent-->
@@ -423,7 +428,7 @@
 				</div>
 				<h3 class="other">+ Linhagem</h3>
 				<div class="tag shadow-tag form other hidden">
-					<button type="button" class="add group">+</button>
+					<button type="button" class="add main-button group">+</button>
 					<div class="tag shadow-tag tag-group ignore">
 						<div title="gmd:lineage" class="tag"> <!-- lineage-->
 							<div title="gmd:LI_Lineage" class="tag"> <!-- LI_Lineage-->
@@ -505,7 +510,7 @@
 			<div title="gmd:MD_SpatialRepresentation" class="tag"> <!-- MD_SpatialRepresentation-->
 				<h3 class="other">+ Representação Espacial Vetorial (Obrigatório para dados vetoriais)</h3>
 				<div class="tag shadow-tag form other hidden">
-					<button type="button" class="add group">+</button>
+					<button type="button" class="add main-button group">+</button>
 					<div class="tag shadow-tag tag-group ignore">
 						<div title="gmd:MD_VectorSpatialRepresentation" class="tag"><!-- MD_VectorSpatialRepresentation-->
 							<div title="gmd:topologyLevel" class="tag"><!-- topologyLevel-->
@@ -571,7 +576,7 @@
 							</div>
 							<h3 class="other">+ Representação Espacial Matricial Georreferenciável</h3>
 							<div class="tag shadow-tag form other hidden">
-								<button type="button" class="add group">+</button>
+								<button type="button" class="add main-button group">+</button>
 								<div class="tag shadow-tag tag-group ignore">
 									<div title="gmd:MD_Georeferenceable" class="tag"><!-- MD_Georectified-->
 										<div title="gmd:controlPointAvailability" class="tag"><!-- topologyLevel-->
@@ -611,7 +616,7 @@
 			<div title="gmd:MD_ContentInformation" class="tag"> <!-- MD_ContentInformation-->
 				<h3 class="other">+ Descrição do Catálogo de Feições (Obrigatório para dados vetoriais)</h3>
 				<div class="tag shadow-tag form other hidden">
-					<button type="button" class="add group">+</button>
+					<button type="button" class="add main-button group">+</button>
 					<div class="tag shadow-tag tag-group ignore">
 						<div title="gmd:MD_FeatureCatalogueDescription" class="tag"><!-- MD_FeatureCatalogueDescription-->
 							<div title="gmd:includedWithDataset" class="tag"><!-- includedWithDataset-->
@@ -632,7 +637,7 @@
 				</div>
 				<h3 class="other">+ Descrição do Catálogo de Dados Matriciais (Obrigatório para dados matriciais)</h3>
 				<div class="tag shadow-tag form other hidden">
-					<button type="button" class="add group">+</button>
+					<button type="button" class="add main-button group">+</button>
 					<div class="tag shadow-tag tag-group ignore">
 						<div title="gmd:MD_CoverageDescription" class="tag"><!-- MD_CoverageDescription-->
 							<div title="gmd:attributeDescription" class="tag"><!-- attributeDescription-->
@@ -669,7 +674,7 @@
 			<div title="gmd:MD_Distribution" class="tag"> <!-- MD_Distribution-->
 				<h3 class="other">+ Formato de Distribuição (obrigatório)</h3>
 				<div class="tag shadow-tag form other hidden">
-					<button type="button" class="add group">+</button>
+					<button type="button" class="add main-button group">+</button>
 					<div class="tag shadow-tag tag-group ignore">
 						<div title="gmd:distributionFormat" class="tag"><!-- distributionFormat-->
 							<div title="gmd:MD_Format" class="tag"><!-- MD_Format-->
@@ -692,7 +697,7 @@
 				</div>
 				<h3 class="other">+ Opções de Transferência Digital de Distribuição</h3>
 				<div class="tag shadow-tag form other hidden">
-					<button type="button" class="add group">+</button>
+					<button type="button" class="add main-button group">+</button>
 					<div class="tag shadow-tag tag-group ignore">
 						<div title="gmd:transferOptions" class="tag"><!-- transferOptions-->
 							<div title="gmd:MD_DigitalTransferOption" class="tag"><!-- MD_DigitalTransferOption-->
@@ -726,7 +731,7 @@
 				</div>
 				<h3 class="other">+ Contato do Distribuidor (Obrigatório)</h3>
 				<div class="tag shadow-tag form other hidden">
-					<button type="button" class="add group">+</button>
+					<button type="button" class="add main-button group">+</button>
 					<div class="tag shadow-tag tag-group ignore">
 						<div title="gmd:distributor" class="tag"> <!-- distributor-->
 							<div title="gmd:pointOfContact" class="tag"> <!-- pointOfContact-->

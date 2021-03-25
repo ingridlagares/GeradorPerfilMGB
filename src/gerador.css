@@ -1,8 +1,8 @@
-/* verde escuro: #23833D 
-   verde claro: #8CC954 
-   preto: #323031  
+/* verde escuro: #23833D
+   verde claro: #8CC954
+   preto: #323031
    cinza escuro: #3D3B3C
-   cinza claro: #5F5B6B 
+   cinza claro: #5F5B6B
    azulc laro: E4E4E4 E8E8E8*/
 
 body {
@@ -38,7 +38,7 @@ select.half-width {
     width: 80%
 }
 .left {
-	float: left;	
+	float: left;
 }
 .right {
 	float: right;
@@ -54,7 +54,7 @@ div.form {
 }
 div.form div {
     width: 100%;
-    display: inline;    
+    display: inline;
 }
 div.tag {
 	margin-bottom: 4px;
@@ -77,10 +77,13 @@ select {
     margin: 2px;
     float: right
 }
+button.main-button {
+    margin-left: 100px;
+}
+
 button.add {
     width: 1.8em;
     font-weight: 400;
-    margin-left: 4px;
     margin-top: 3px;
 }
 
@@ -159,11 +162,11 @@ div.left h3 {
 .remove-highlight select {
     border-color: rgb(239, 6, 6);
     border-style: solid;
-    border-width: 1px;    
+    border-width: 1px;
     border-radius: 5px;
-    -webkit-transition:all 0.1s linear 0s, border-color 0s;    
+    -webkit-transition:all 0.1s linear 0s, border-color 0s;
     transition: all 0.1s linear 0s, border-color 0s;
-    
+
 }
 
 h3.recommended:hover,
