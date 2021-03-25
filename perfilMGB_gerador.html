@@ -239,17 +239,18 @@
 									<div title="gco:Integer" class="tag"> <!-- MD_SpatialRepresentationTypeCode-->
 										<input class="unbounded-width input-field tag-value" placeholder="2000" type="text" title="gco:Integer" value="" />
 									</div>
-									<button type="button" class="add single-tag">+</button>
 								</div>
 							</div>
 						</div>
+						<button type="button" class="add single-tag">+</button>
 					</div>
 				</div>
+				<span class="tag-group-label">Idioma:</span>
 				<div title="gmd:language" data-refid="gmd:language" class="tag"> <!-- language-->
-					<span class="tag-group-label">Idioma:</span>
 					<div title="gco:CharacterString" class="tag">
-						<input class="full-width input-field tag-value" type="text" title="gco:CharacterString" value="por" />
+						<input class="unbounded-width input-field tag-value" type="text" title="gco:CharacterString" value="por" />
 					</div>
+					<button type="button" class="add single-tag">+</button>
 				</div>
 				<div title="gmd:characterSet" data-refid="gmd:characterSet" class="tag"> <!-- gmd:characterSet-->
 					<span class="tag-group-label">Norma de Codificação de Caracteres:</span>
@@ -261,9 +262,10 @@
 				<div title="gmd:topicCategory" data-refid="gmd:topicCategory" class="tag"> <!-- gmd:topicCategory-->
 					<span class="tag-group-label">Categoria Temática:</span>
 					<div title="gmd:MD_TopicCategoryCode" class="tag self-closing"> <!-- gmd:LanguageCode-->
-						<select title="codeListValue#MD_TopicCategoryCode" class="full-width input-field tag-attribute tag-value"></select>
+						<select title="codeListValue#MD_TopicCategoryCode" class="unbounded-width input-field tag-attribute tag-value"></select>
 						<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_TopicCategoryCode"/>
 					</div>
+					<button type="button" class="add single-tag">+</button>
 				</div>
 				<h3 class="other">+ Extensão Geográfica (obrigatório)</h3>
 				<div class="form other hidden">
@@ -283,34 +285,37 @@
 						</div> -->
 						<h4>Retângulo Envolvente</h4>
 						<div title="gmd:EX_GeographicExtent" class="tag"> <!-- EX_GeographicExtent-->
-							<div title="gmd:EX_GeographicBoundingBox" class="tag"> <!-- EX_GeographicBoundingBox-->
-								<div title="gmd:westBoundLongitude" class="tag"> <!-- westBoundLongitude-->
-									<span class="tag-group-label">Longitude limítrofe oeste:</span>
-									<div title="gco:Decimal" class="tag"> <!-- MD_SpatialRepresentationTypeCode-->
-										<input class="full-width input-field tag-value" placeholder="-45.178" type="text" title="gco:Decimal" value="" />
+							<button type="button" class="add button group">+</button>
+							<div class="tag-group tag shadow-tag">
+								<div title="gmd:EX_GeographicBoundingBox" class="tag"> <!-- EX_GeographicBoundingBox-->
+									<div title="gmd:westBoundLongitude" class="tag"> <!-- westBoundLongitude-->
+										<span class="tag-group-label">Longitude limítrofe oeste:</span>
+										<div title="gco:Decimal" class="tag"> <!-- MD_SpatialRepresentationTypeCode-->
+											<input class="full-width input-field tag-value" placeholder="-45.178" type="text" title="gco:Decimal" value="" />
+										</div>
 									</div>
-								</div>
-								<div title="gmd:eastBoundLongitude" class="tag"> <!-- eastBoundLongitude-->
-									<span class="tag-group-label">Longitude limítrofe este:</span>
-									<div title="gco:Decimal" class="tag">
-										<input class="full-width input-field tag-value" placeholder="-5.452" type="text" title="gco:Decimal" value="" />
+									<div title="gmd:eastBoundLongitude" class="tag"> <!-- eastBoundLongitude-->
+										<span class="tag-group-label">Longitude limítrofe este:</span>
+										<div title="gco:Decimal" class="tag">
+											<input class="full-width input-field tag-value" placeholder="-5.452" type="text" title="gco:Decimal" value="" />
+										</div>
 									</div>
-								</div>
-								<div title="gmd:southBoundLongitude" class="tag"> <!-- southBoundLongitude-->
-									<span class="tag-group-label">Longitude Limítrofe Sul:</span>
-									<div title="gco:Decimal" class="tag">
-										<input class="full-width input-field tag-value" placeholder="25.57" type="text" title="gco:Decimal" value="" />
+									<div title="gmd:southBoundLongitude" class="tag"> <!-- southBoundLongitude-->
+										<span class="tag-group-label">Longitude Limítrofe Sul:</span>
+										<div title="gco:Decimal" class="tag">
+											<input class="full-width input-field tag-value" placeholder="25.57" type="text" title="gco:Decimal" value="" />
+										</div>
 									</div>
-								</div>
-								<div title="gmd:northBoundLongitude" class="tag"> <!-- northBoundLongitude-->
-									<span class="tag-group-label">Longitude Limítrofe Norte:</span>
-									<div title="gco:Decimal" class="tag">
-										<input class="full-width input-field tag-value" placeholder="-18.81" type="text" title="gco:Decimal" value="" />
+									<div title="gmd:northBoundLongitude" class="tag"> <!-- northBoundLongitude-->
+										<span class="tag-group-label">Longitude Limítrofe Norte:</span>
+										<div title="gco:Decimal" class="tag">
+											<input class="full-width input-field tag-value" placeholder="-18.81" type="text" title="gco:Decimal" value="" />
+										</div>
 									</div>
+															<span class="divider">&nbsp;</span>
 								</div>
 							</div>
 						</div>
-						<span class="divider">&nbsp;</span>
 						<h4>Identificadores geográficos: </h4>
 						<div title="gmd:EX_GeographicExtent" class="tag"> <!-- EX_GeographicExtent-->
 							<div title="gmd:EX_GeographicDescription" class="tag"> <!-- EX_GeographicDescription-->
@@ -369,6 +374,7 @@
 							</div>
 						</div>
 					</div>
+					<span class="big-divider">&nbsp;</span>
 				</div>
 			</div>
 		</div>

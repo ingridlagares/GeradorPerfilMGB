@@ -181,10 +181,18 @@ h2 {
     text-align: center;
 }
 span.divider {
-    border-bottom: 2px #5F5B6B solid;
+    border-bottom: 2px #075f21 solid;
     float: left;
     line-height: 3px;
     margin-bottom: 5px;
+    width: 100%
+}
+
+span.big-divider {
+    border-bottom: 4px #8cc954 solid;
+    float: left;
+    line-height: 3px;
+    margin-bottom: 15px;
     width: 100%
 }
 pre {
