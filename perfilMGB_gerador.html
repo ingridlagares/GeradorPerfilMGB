@@ -23,23 +23,28 @@
 								<div title="gmd:title" class="tag">
 									<input class="full-width input-field tag-value" data-desc="Título (Identificação)" placeholder="Atlas Geográfico Escolar" type="text" title="gmd:title" value="" required/>
 								</div>
-								<div title="gmd:date" class="tag"> <!-- date-->
-									<div title="gmd:CI_Date" class="tag"> <!-- CI_Date-->
-										<div title="gmd:date" class="tag"> <!-- gmd:date-->
-											<span class="tag-group-label">Data (obrigatório):</span>
-											<div title="gco:Date" class="tag">
-												<input class="full-width input-field tag-value" data-desc="Data (Identificação)" placeholder="AAAA-MM-DD" type="date" title="gco:Date" value="" required/>
+								<span class="divider">&nbsp;</span>
+								<button type="button" class="add group">+</button>
+								<div class="tag shadow-tag tag-group ignore">
+									<div title="gmd:date" class="tag"> <!-- date-->
+										<div title="gmd:CI_Date" class="tag"> <!-- CI_Date-->
+											<div title="gmd:date" class="tag"> <!-- gmd:date-->
+												<span class="tag-group-label">Data (obrigatório):</span>
+												<div title="gco:Date" class="tag">
+													<input class="full-width input-field tag-value" data-desc="Data (Identificação)" placeholder="AAAA-MM-DD" type="date" title="gco:Date" value="" required/>
+												</div>
 											</div>
-										</div>
-										<div title="gmd:dateType" class="tag"> <!-- gmd:dateType-->
-											<span class="tag-group-label">Tipo de data (obrigatório):</span>
-											<div title="gmd:CI_DateTypeCode" class="tag self-closing">
-												<select title="codeListValue#CI_DateTypeCode" data-desc="Tipo de Data (Identificação)" class="full-width input-field tag-attribute tag-value" required></select>
-												<input type="hidden" title="codeList" class="tag-attribute"  value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode"/>
+											<div title="gmd:dateType" class="tag"> <!-- gmd:dateType-->
+												<span class="tag-group-label">Tipo de data (obrigatório):</span>
+												<div title="gmd:CI_DateTypeCode" class="tag self-closing">
+													<select title="codeListValue#CI_DateTypeCode" data-desc="Tipo de Data (Identificação)" class="full-width input-field tag-attribute tag-value" required></select>
+													<input type="hidden" title="codeList" class="tag-attribute"  value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode"/>
+												</div>
 											</div>
 										</div>
 									</div>
-								</div>
+									<span class="divider">&nbsp;</span>
+							  </div>
 							</div>
 						</div>
 						<div title="gmd:abstract" class="tag"> <!-- gmd:abstract-->
