@@ -386,29 +386,34 @@
 <div class="form other hidden">
 	<div title="" class="section ignore"> <!-- identificationInfo-->
 		<div title="gmd:resourceConstraints" data-refid="gmd:resourceConstraints" class="tag"> <!-- resourceConstraints-->
-			<span class="tag-group-label">Restrições de Segurança (obrigatório):</span>
-			<div title="gmd:MD_SecurityConstraints" class="tag"> <!-- MD_SecurityConstraints-->
-				<div title="gmd:classification" class="tag"> <!-- classification-->
-					<div title="gmd:MD_ClassificationCode" class="tag self-closing"> <!-- classification-->
-						<select title="codeListValue#MD_RestrictionCode" data-desc="Restrição de Segurança (Informação de Restrição)" class="full-width input-field tag-attribute tag-value" required></select>
-						<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_RestrictionCode"/>
-					</div>
-				</div>
-			</div>
 			<h4>Restrições Legais</h4>
 			<div title="gmd:MD_LegalConstraints" class="tag"> <!-- MD_LegalConstraints-->
 				<span class="tag-group-label">Restrições de Uso:</span>
 				<div title="gmd:useConstraints" class="tag"> <!-- useConstraints-->
 					<div title="gmd:MD_RestrictionCode" class="tag self-closing"> <!-- classification-->
-						<select title="codeListValue#MD_RestrictionCode" class="full-width input-field tag-attribute tag-value"></select>
+						<select title="codeListValue#MD_RestrictionCode" class="unbounded-width input-field tag-attribute tag-value"></select>
 						<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_RestrictionCode"/>
-					</div>
+					</div><button type="button" class="add single-tag">+</button>
 				</div>
 				<span class="tag-group-label">Restrições de Acesso:</span>
 				<div title="gmd:accessConstraints" class="tag"> <!-- accessConstraints-->
 					<div title="gmd:MD_RestrictionCode" class="tag self-closing"> <!-- classification-->
-						<select title="codeListValue#MD_RestrictionCode" class="full-width input-field tag-attribute tag-value"></select>
+						<select title="codeListValue#MD_RestrictionCode" class="unbounded-width input-field tag-attribute tag-value"></select>
 						<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_RestrictionCode"/>
+					</div><button type="button" class="add single-tag">+</button>
+				</div>
+			</div>
+			<span class="divider">&nbsp;</span>
+			<h4>Restrições de Segurança (obrigatório)</h4>
+			<button type="button" class="add main-button group">+</button>
+			<div class="tag shadow-tag tag-group ignore">
+				<div title="gmd:MD_SecurityConstraints" class="tag"> <!-- MD_SecurityConstraints-->
+					<div title="gmd:classification" class="tag"> <!-- classification-->
+						<span class="tag-group-label">Classificação:</span>
+						<div title="gmd:MD_ClassificationCode" class="tag self-closing"> <!-- classification-->
+							<select title="codeListValue#MD_RestrictionCode" data-desc="Restrição de Segurança (Informação de Restrição)" class="full-width input-field tag-attribute tag-value" required></select>
+							<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_RestrictionCode"/>
+						</div>
 					</div>
 				</div>
 			</div>
