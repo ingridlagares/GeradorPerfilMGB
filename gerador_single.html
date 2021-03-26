@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<!-- Gerador de Metadados - Perfil MGB -->
+<head>
+	<meta charset="utf-8" />
+	<title>Gerador de Metadados - Perfil MGB</title>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {    var header = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + br() + "<gmd:MD_Metadata xmlns:gmd=\"http://www.isotc211.org/2005/gmd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:gco=\"http://www.isotc211.org/2005/gco\" xmlns:geonet=\"http://www.fao.org/geonetwork\" xmlns:gml=\"http://www.opengis.net/gml\" xmlns:gts=\"http://www.isotc211.org/2005/gts\"" + ">" + br();  $("select[title]").each(function(){     var tagName = name($(this));     ps($(this), optionValues[tagName]);    });    $("#download").bind("click", save);    $("body").on("keyup", "input", function(event) {      event.preventDefault();      var xml = header;      $("div.section").each(function(){       xml += process($(this));      });      xml += ct("gmd:MD_Metadata");      metadata = xml;      $("div.right code").text(xml);      $(".right").show();    });    $("body").on("change", "select", function(event) {      event.preventDefault();      $("input").eq(0).keyup();    });    $("#reset").bind("click", function(event) {      event.preventDefault();      location.reload(true);    });    $("#selectall").bind("click", function(event) {      event.preventDefault();      st($("div code").get(0));    });    $("button.add.group").bind("click", function(event) {      event.preventDefault();      var d = $(this).parent().find(".tag-group:first").clone();      $(d).find("input,select").val("");      $(d).find("input + button.delete.element").each(function() {        $(this).prev("input").remove();        $(this).remove();      });      $("<button/>", {"class":"delete group", type:"button", text:"-"}).appendTo($(d).find(".tag:first"));      d.appendTo($(this).parent());    });      $("div.section").on("mouseenter mouseleave focusin focusout", "button.delete.group, button.delete.single-tag", function(event){    event.preventDefault();    $(this).parent().toggleClass("remove-highlight");    });    $("div.section").on("click", "button.delete.group", function(event) {      event.preventDefault();      $(this).parent().remove();      $("input").eq(0).keyup();    });    $("body").on("click", " button.add.single-tag", function(event) {      event.preventDefault();      var c = $(this).parent().clone();      $(c).find("input,select").val("");      $(this).before($("<button/>", {"class":"delete single-tag", type:"button", text:"-"}));      c.insertAfter($(this).parent());      $(this).remove();    });    $("body").on("click", "button.delete.single-tag", function(event) {      event.preventDefault();      $(this).parent().remove();      $("input").eq(0).keyup();    });    $("body").on("click", "button#more", function(event) {      event.preventDefault();      var div = $(this).parent();      $(div).find("button#more").hide();      $(div).find("div#subgroup,button#less").show();    });    $("body").on("click", "button#less", function(event) {      event.preventDefault();      var div = $(this).parent();      $(div).find("div#subgroup,button#less").hide();      $(div).find("button#more").show();      $(div).find("div#subgroup input,div#subgroup select").val("");      $("input").eq(0).keyup();    });    $("body").on("click", "h3.recommended,h3.other,h2.cdg", function(event) {      var div = $(this).next("div");      var text = $(this).html();      if (text.charAt(0) == "+") {        text = text.replace("+", "-");        $(this).html(text);        $(div).show();      } else {        if (text.charAt(0) == "-") {          text = text.replace("-", "+");          $(this).html(text);          $(div).hide();        }      }    });  });    var optionValues = {};  optionValues["descriptionType"] = ["Abstract", "Methods", "SeriesInformation", "TableOfContents", "TechnicalInfo", "Other"];  optionValues["relatedIdentifierType"] = ["ARK", "arXiv", "bibcode", "DOI", "EAN13", "EISSN", "Handle", "IGSN", "ISBN", "ISSN", "ISTC", "LISSN", "LSID", "PMID", "PURL", "UPC", "URL", "URN"];  optionValues["relationType"] = ["IsCitedBy", "Cites", "IsSupplementTo", "IsSupplementedBy", "IsContinuedBy", "Continues", "HasMetadata", "IsMetadataFor","IsNewVersionOf", "IsPreviousVersionOf", "IsPartOf", "HasPart", "IsReferencedBy", "References", "IsDocumentedBy", "Documents", "IsCompiledBy", "Compiles", "IsVariantFormOf", "IsOriginalFormOf", "IsIdenticalTo", "IsReviewedBy", "Reviews", "IsDerivedFrom", "IsSourceOf"];  optionValues["resourceTypeGeneral"] = ["Audiovisual", "Collection", "Dataset", "Event", "Image", "InteractiveResource", "Model", "PhysicalObject", "Service", "Software", "Sound", "Text", "Workflow", "Other"];  optionValues["dateType"] = ["Accepted", "Available", "Copyrighted", "Collected", "Created", "Issued", "Submitted", "Updated", "Valid"];  optionValues["contributorType"] = ["ContactPerson", "DataCollector", "DataCurator", "DataManager", "Distributor", "Editor", "HostingInstitution", "Producer", "ProjectLeader", "ProjectManager", "ProjectMember", "RegistrationAgency", "RegistrationAuthority", "RelatedPerson", "Researcher", "ResearchGroup", "RightsHolder", "Sponsor", "Supervisor", "WorkPackageLeader", "Other"];  optionValues["titleType"] = ["AlternativeTitle", "Subtitle", "TranslatedTitle", "Other"];  optionValues["funderIdentifierType"] = ["Crossref Funder ID", "GRID", "ISNI", "Other"];  optionValues["codeListValue#CI_RoleCode"] = ["author", "custodian", "distributor", "originator", "owner", "pointOfContact", "principalInvestigator", "processor", "publisher", "resourceProvider", "user"];  optionValues["codeListValue#CI_DateTypeCode"] = ["creation", "publication", "revision"];  optionValues["codeListValue#CI_OnLineFunctionCode"] = ["download", "information", "offlineAccess", "order", "search"];  optionValues["codeListValue#CI_PresentationFormCode"] = ["documentDigital", "documentHardcopy", "imageDigital", "imageHardcopy", "mapDigital", "mapHardcopy", "modelDigital", "modelHardcopy", "profileDigital", "profileHardcopy", "tableDigital", "tableHardcopy", "videoDigital", "videoHardcopy"];  optionValues["codeListValue#DQ_EvaluationMethodTypeCode"] = ["directExternal", "directInternal", "indirect"];  optionValues["codeListValue#DS_AssociationTypeCode"] = ["crossReference", "largerWorkCitation", "partOfSeamlessDatabase", "source", "stereoMate"];  optionValues["codeListValue#DS_InitiativeTypeCode"] = ["campaign", "collection", "exercise", "experiment", "investigation", "mission", "operation", "platform", "process", "program", "project", "sensor", "study", "task", "trial"];  optionValues["codeListValue#MD_CellGeometryCode"] = ["area", "point"];  optionValues["codeListValue#MD_CharacterSetCode"] = ["8859part1", "8859part10", "8859part11", "8859part13", "8859part14", "8859part15", "8859part16", "8859part2", "8859part3", "8859part4", "8859part5", "8859part6", "8859part7", "8859part8", "8859part9", "GB2312", "big5", "ebcdic", "eucJP", "eucKR", "jis", "shiftJIS", "ucs2", "ucs4", "usAscii", "utf16", "utf7", "utf8"];  optionValues["codeListValue#MD_ClassificationCode"] = ["confidential", "restricted", "secret", "topSecret", "unclassified"];  optionValues["codeListValue#MD_CoverageContentTypeCode"] = ["image", "physicalMeasurement", "thematicClassification"];  optionValues["codeListValue#MD_DatatypeCode"] = ["abstractClass", "aggregateClass", "association", "characterString", "class", "codelist", "codelistElement", "datatypeClass", "enumeration", "integer", "interfaceClass", "metaClass", "specifiedClass", "typeClass", "unionClass"];  optionValues["codeListValue#MD_DimensionNameTypeCode"] = ["column", "crossTrack", "line", "row", "sample", "time", "track", "vertical"];  optionValues["codeListValue#MD_GeometricObjectTypeCode"] = ["complex", "composite", "curve", "point", "solid", "surface"];  optionValues["codeListValue#MD_ImagingConditionCode"] = ["blurredImage", "cloud", "degradingObliquity", "fog", "heavySmokeOrDust", "night", "rain", "semiDarkness", "shadow", "snow", "terrainMasking"];  optionValues["codeListValue#MD_KeywordTypeCode"] = ["discipline", "place", "stratum", "temporal", "theme"];  optionValues["codeListValue#MD_MaintenanceFrequencyCode"] = ["annually", "asNeeded", "biannually", "continual", "daily", "fortnightly", "irregular", "monthly", "notPlanned", "quarterly", "unknown", "weekly"];  optionValues["codeListValue#MD_MediumFormatCode"] = ["cpio", "highSierra", "iso9660", "iso9660AppleHFS", "iso9660RockRidge", "tar"];  optionValues["codeListValue#MD_MediumNameCode"] = ["1quarterInchCartridgeTape", "3480Cartridge", "3490Cartridge", "3580Cartridge", "3halfInchFloppy", "4mmCartridgeTape", "5quarterInchFloppy", "7trackTape", "8mmCartridgeTape", "9trackType", "cdRom", "digitalLinearTape", "dvd", "dvdRom", "hardcopy", "onLine", "satellite", "telephoneLink"];  optionValues["codeListValue#MD_ObligationCode"] = ["conditional", "mandatory", "optional"];  optionValues["codeListValue#MD_PixelOrientationCode"] = ["center", "lowerLeft", "lowerRight", "upperLeft", "upperRight"];  optionValues["codeListValue#MD_RestrictionCode"] = ["copyright", "intellectualPropertyRights", "license", "otherRestrictions", "patent", "patentPending", "restricted", "trademark"];  optionValues["codeListValue#MD_ScopeCode"] = ["attribute", "attributeType", "collectionHardware", "collectionSession", "dataset", "dimensionGroup", "feature", "featureType", "fieldSession", "model", "nonGeographicDataset", "propertyType", "series", "service", "software", "tile"];  optionValues["codeListValue#MD_SpatialRepresentationTypeCode"] = ["grid", "stereoModel", "textTable", "tin", "vector", "video"];  optionValues["codeListValue#MD_TopicCategoryCode"] = ["biota", "boundaries", "climatologyMeteorologyAtmosphere", "economy", "elevation", "environment", "farming", "geoscientificInformation", "health", "imageryBaseMapsEarthCover", "inlandWaters", "intelligenceMilitary", "location", "oceans", "planningCadastre", "society", "structure", "transportation", "utilitiesCommunication"];  optionValues["codeListValue#MD_TopologyLevelCode"] = ["abstract", "fullPlanarGraph", "fullSurfaceGraph", "fullTopology3D", "geometryOnly", "planarGraph", "surfaceGraph", "topology1D", "topology3D"];  optionValues["codeListValue#MX_ScopeCode"] = ["attribute", "attributeType", "collectionHardware", "collectionSession", "dataset", "dimensionGroup", "feature", "featureType", "fieldSession", "initiative", "model", "nonGeographicDataset", "otherAggregate", "platformSeries", "productionSeries", "propertyType", "sensor", "sensorSeries", "series", "service", "software", "stereomate", "tile", "transferAggregate"];  optionValues["codeListValue#MD_ProgressCode"] = ["completed", "historicalArchive", "obsolete", "onGoing", "planned", "required", "underDevelopment"];    function process(section){   var isWrapper = $(section).hasClass("wrapper-tag");   var indent = 0;   var xml = "";      if ($(section).hasClass("ignore"))      return xml;     if (isWrapper){    indent = 1;   }      $(section).find(".tag-group:not([data-refid]):not(.ignore)>.tag").each(function(){      xml += processTag(this,indent);    });     if (xml.length > 0){    if (isWrapper){     var wrapperName = name(section);     xml = ot(wrapperName) + br() + xml + ct(wrapperName) + br();    }   }     return xml;  }    function processTag(tag, indent){   var xml = "";    if ($(tag).hasClass('tag-ref')) {      refto = $(tag).attr("data-refto");      tag = $("[data-refid='" + refto + "']");    };     var attributes;   var value;   var tagName = name(tag);   var attr = attribs(tag);    var selfClosing = $(tag).hasClass("self-closing");     var tagValues = $(tag).children(".tag-value");      if ($(tagValues).length) {      if ( $(this).is("select") ){     value = selectValue(tagValues[0]);    } else {        value = inputValue(tagValues[0]);      }    }      var shadowTag = $(tag).hasClass("shadow-tag");     $(tag).children(".tag").each(function(){    xml += processTag(this, indent + (shadowTag ? 0 : 1));   });      if (shadowTag) return xml;      if (xml.length > 0){      xml = tab(indent) + ota(tagName,attr) + br() + xml + tab(indent) + ct(tagName) + br();   } else if (typeof value !== "undefined" && (value.length > 0 || ($(tag).hasClass("allow-empty") && attr.length > 0))){       if (!selfClosing) {          xml = tab(indent) + ota(tagName,attr) + value + ct(tagName) + br();        } else {          xml = tab(indent) + scota(tagName,attr) + br();        }    }     return xml;  }    function attribs(element){   var attribs = "";     $(element).children(".tag-attribute").each(function(){    var value = "";    var n = name(this).replace(/#.*/g, "");      if ( $(this).is("select") ){     value = selectValue(this);    } else {        value = inputValue(this);      }      if (value.length > 0){     if (attribs.length > 0){      attribs += " ";     }     attribs += n + "=\"" + value +"\"";    }   });     return attribs;  }    function inputValue(input){   return $(input).val().encodeXML();  }    function selectValue(select){   return $(select).find("option").filter(":selected").val().encodeXML();  }    function name(tag){   return $(tag).attr("title");  }    function ps(s, sarr) {    addO(s, "", "" );    for (var i = 0;i < sarr.length;i++) {      addO(s, sarr[i], sarr[i]);    }  }    function addO(s, v, d) {    $(s).append($("<option>").val(v).html(d));  }    function br() {    return "\n";  }    function tab(number){   var tabs = "";   if (typeof number !== "undefined"){    for (var i = 1; i <= number; i++ ){     tabs += "\t";    }   }   else{    tabs = "\t";   }   return tabs;  }    function scota(tag, attr) {    if (attr.length > 0){    return "<" + tag +" "+ attr + "/>";   } else {    return scot(tag);   }  }    function scot(tag) {    return "<" + tag + "/>";  }    function ota(tag,attr) {   if (attr.length > 0){    return "<" + tag +" "+ attr + ">";   }   else{    return ot(tag);   }  }    function ot(tag) {    return "<" + tag + ">";  }    function ct(tag) {    return "</" + tag + ">";  }    function st(element) {    var doc = document, text = element, range, selection;    if (doc.body.createTextRange) {      range = doc.body.createTextRange();      range.moveToElementText(text);      range.select();    } else {      if (window.getSelection) {        selection = window.getSelection();        range = doc.createRange();        range.selectNodeContents(text);        selection.removeAllRanges();        selection.addRange(range);      }    }  }    String.prototype.encodeXML = function() {    return this.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&apos;");  };    var metadata = "";  var MIME_TYPE = "application/xml";  var cleanUp = function(a) {    setTimeout(function() {      window.URL.revokeObjectURL(a.href);    }, 1500);    $("span#output").html("");  };    var downloadFile = function() {    window.URL = window.webkitURL || window.URL;    var prevLink = $("span#output a");    if (prevLink) {      $("span#output").html("");    }    var bb = new Blob([metadata], {type:MIME_TYPE});    if (navigator.msSaveBlob) {        navigator.msSaveBlob(bb, "metadata.xml");    } else {      var a = document.createElement("a");      a.download = "metadata.xml";      a.href = window.URL.createObjectURL(bb);      a.onclick = function(e) {        if ($(this).is(":disabled")) {          return false;        }        cleanUp(this);      };      $(a).appendTo($("span#output"));      $(a)[0].click();    }  };    function save() {    if (false) {      alert("Not currently supported in Internet Explorer");    } else {      var invalids = [];      $("#main-form").find("input:invalid").each(function() {        invalids.push($(this).attr("data-desc"));      });      $("#main-form").find("select:invalid").each(function() {        invalids.push($(this).attr("data-desc"));      });       if (invalids.length) {        alert("Por favor preencha os campos:\n" + invalids.join("\n"));      } else {        downloadFile();      }    }  }  
+	</script>
+	<style>
+	body {font-family: sans-serif}.hidden {display: none}.visible {display: block}.input-field {margin-bottom: 2px;}.unbounded-width {width: 79%}.full-width {width: 89%;}input.half-width {width: 43%;}input.half-width-smaller {width: 41%;}select.half-width {width: 45%;}.tag-group-label {float: left;margin-top: 2px;width: 80%}.left {float: left;}.right {float: right;}div.left {width: 38%}div.right {width: 61%}div.form {padding: 12px;}div.form div {width: 100%;display: inline;}div.tag {margin-bottom: 4px;}div.tag-group input:nth-last-of-type(1),div.tag-group select:nth-last-of-type(1) {margin-bottom: 8px;}input,select {border-radius: 4px;border-style: solid;border-width: 1px;margin-bottom: 2px;margin-top: 0;min-height: 18px!important;padding: 4px}.right button {margin: 2px;float: right}button.main-button {margin-left: 100px;}button.add {width: 1.8em;font-weight: 400;margin-top: 3px;}button.delete {width: 1.8em;font-weight: 400;margin-left: 14px;position: absolute;margin-top: 10px;}button.group {float: right;}button.element {margin-left: 5px}button:hover {background-position: 0 -15px;outline-offset: -6px;text-decoration: none;transition: background-position 0.1s linear 0s}input:focus,select:focus {border-color: #176ca7;box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset, 0px 0 8px #99cdf1;transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s}div.right>div,div.left>div {background: none repeat scroll 0 center #f2f2f2;color: #323031 !important;outline: 1px solid gainsboro;}div.right h3 {background-color: #71ae37;background-image: linear-gradient(#71ae37, #58882b);background-repeat: repeat-x;background-size: 100% auto;border-collapse: collapse;border-spacing: 0;border-top-left-radius: 4px;border-top-right-radius: 4px;color: #fff;direction: ltr;font-family: sans-serif;font-size: 12.8px;font-weight: 700;line-height: 19.2px;margin: 0 0 1px;padding: 5px 10px;text-align: left;text-shadow: #222 0 1px 1px;vertical-align: bottom}div.left h3 {background-color: #323031;background-image: linear-gradient(#23833D, #1b652e);background-repeat: repeat-x;background-size: 100% auto;border-collapse: collapse;border-spacing: 0;color: #fff;direction: ltr;font-family: sans-serif;font-size: 12.8px;font-weight: 700;line-height: 19.2px;margin: 10px 1px;padding: 5px 10px;text-align: left;text-shadow: #222 0 1px 1px;vertical-align: bottom}.remove-highlight input,.remove-highlight select {border-color: rgb(239, 6, 6);border-style: solid;border-width: 1px;border-radius: 5px;-webkit-transition:all 0.1s linear 0s, border-color 0s;transition: all 0.1s linear 0s, border-color 0s;}h3.recommended:hover,h3.other:hover,h2.cdg:hover,button:hover {cursor: pointer}h1,h2 {color: #23833D;text-align: center;}span.divider {border-bottom: 2px #075f21 solid;float: left;line-height: 3px;margin-bottom: 5px;width: 100%}span.big-divider {border-bottom: 4px #8cc954 solid;float: left;line-height: 3px;margin-bottom: 15px;width: 100%}pre {white-space: pre-wrap;word-wrap: break-word;-moz-tab-size: 16px;tab-size: 16px;-o-tab-size: 16px;}span.output {float: left}a.button {-moz-text-blink: none;-moz-text-decoration-color: #fff;-moz-text-decoration-line: none;-moz-text-decoration-style: solid;background-color: #176ca7;background-image: linear-gradient(#176ca7, #114f7a);background-repeat: repeat-x;background-size: 100% auto;border-bottom-color: #0b324d;border-bottom-left-radius: 4px;border-bottom-right-radius: 4px;border-bottom-style: solid;border-bottom-width: 1px;border-collapse: collapse;border-left-color: #0e4164;border-left-style: solid;border-left-width: 1px;border-right-color: #0e4164;border-right-style: solid;border-right-width: 1px;border-spacing: 0;border-top-color: #0e4164;border-top-left-radius: 4px;border-top-right-radius: 4px;border-top-style: solid;border-top-width: 1px;box-shadow: rgba(255, 255, 255, 0.2) 0 1px 0 0 inset, rgba(0, 0, 0, 0.05) 0 1px 2px 0;color: #fff;cursor: pointer;direction: ltr;display: inline-block;font-family: Arial, Verdana, Helvetica, sans-serif;font-size: 13.3333px;font-weight: 400;line-height: 16px;padding: 4px 10px;text-align: center;text-decoration: none;text-shadow: #222 0 1px 1px;vertical-align: middle}
+	</style>
+</head>
+<body>
+	<h2 class="pagetitle">Gerador de Metadados - Perfil MGB</h2>
+<form id="main-form">
+	<div class="left">
+		<h3 class="other">+ Identificação</h3>
+		<div class="form other hidden">
+			<div title="gmd:identificationInfo" class="section wrapper-tag"> <!-- identificationInfo-->
+				<div class="tag-group">
+					<div title="gmd:MD_DataIdentification" class="tag">
+						<div title="gmd:citation" class="tag"> <!-- citation-->
+							<div title="gmd:CI_Citation" class="tag"> <!-- CI_Citation-->
+								<span class="tag-group-label">Título (obrigatório):</span>
+								<div title="gmd:title" class="tag">
+									<input class="full-width input-field tag-value" data-desc="Título (Identificação)" placeholder="Atlas Geográfico Escolar" type="text" title="gmd:title" value="" required/>
+								</div>
+								<span class="divider">&nbsp;</span>
+								<button type="button" class="add main-button group">+</button>
+								<div class="tag shadow-tag tag-group ignore">
+									<div title="gmd:date" class="tag"> <!-- date-->
+										<div title="gmd:CI_Date" class="tag"> <!-- CI_Date-->
+											<div title="gmd:date" class="tag"> <!-- gmd:date-->
+												<span class="tag-group-label">Data (obrigatório):</span>
+												<div title="gco:Date" class="tag">
+													<input class="full-width input-field tag-value" data-desc="Data (Identificação)" placeholder="AAAA-MM-DD" type="date" title="gco:Date" value="" required/>
+												</div>
+											</div>
+											<div title="gmd:dateType" class="tag"> <!-- gmd:dateType-->
+												<span class="tag-group-label">Tipo de data (obrigatório):</span>
+												<div title="gmd:CI_DateTypeCode" class="tag self-closing">
+													<select title="codeListValue#CI_DateTypeCode" data-desc="Tipo de Data (Identificação)" class="full-width input-field tag-attribute tag-value" required></select>
+													<input type="hidden" title="codeList" class="tag-attribute"  value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode"/>
+												</div>
+											</div>
+											<span class="divider">&nbsp;</span>
+										</div>
+									</div>
+							  </div>
+							</div>
+						</div>
+						<div title="gmd:abstract" class="tag"> <!-- gmd:abstract-->
+							<span class="tag-group-label">Resumo (obrigatório):</span>
+							<div title="gco:CharacterString" class="tag">
+								<input class="full-width input-field tag-value" data-desc="Resumo (Identificação)" placeholder="O Atlas é um conjunto de dados sobre diversos temas, sistematicamente organizados e servindo de referência para a construção de informações de acordo com a necessidade do usuário." type="text" title="gco:CharacterString" value="" required/>
+							</div>
+						</div>
+						<div title="gmd:status" class="tag"> <!-- gmd:status-->
+							<span class="tag-group-label">Status (obrigatório):</span>
+							<div title="gmd:MD_ProgressCode" class="tag self-closing">
+								<select title="codeListValue#MD_ProgressCode" data-desc="Status (Identificação)" class="full-width input-field tag-attribute tag-value" required></select>
+								<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_ProgressCode"/>
+							</div>
+						</div>
+						<h3 class="other">- Responsável (obrigatório)</h3>
+						<div class="tag shadow-tag form other hidden">
+							<button type="button" class="add main-button group">+</button>
+							<div class="tag shadow-tag tag-group ignore">
+								<div title="gmd:pointOfContact" class="tag"> <!-- pointOfContact-->
+									<div title="gmd:CI_ResponsibleParty" class="tag"> <!-- CI_ResponsibleParty-->
+										<div title="gmd:individualName" class="tag"> <!-- individualName-->
+											<span class="tag-group-label">Nome:</span>
+											<div title="gco:CharacterString" class="tag">
+												<input class="full-width input-field tag-value" placeholder="Francisco Edson Mendonça Gomes" type="text" title="gco:CharacterString" value="" />
+											</div>
+										</div>
+										<div title="gmd:organisationName" class="tag"> <!-- organisationName-->
+											<span class="tag-group-label">Nome da Organização:</span>
+											<div title="gco:CharacterString" class="tag">
+												<input class="unbounded-width input-field tag-value" data-desc="Nome da Organização (Identificação)" placeholder="Fundação Instituto Brasileiro de Geografia e Estatística – IBGE" type="text" title="gco:CharacterString" value="" required/>
+											</div>
+											<button type="button" class="add single-tag">+</button>
+										</div>
+
+										<div title="gmd:role" class="tag"> <!-- role-->
+											<span class="tag-group-label">Função:</span>
+											<div title="gmd:CI_RoleCode" class="tag self-closing">
+												<select title="codeListValue#CI_RoleCode" data-desc="Função (Identificação)" class="unbounded-width input-field tag-attribute tag-value" required></select>
+												<input type="hidden" title="codeList" class="tag-attribute" value="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode"/>
+											</div>
+											<button type="button" class="add single-tag">+</button>
+										</div>
+										<div title="gmd:contactInfo" class="tag"> <!-- contactInfo-->
+											<div title="gmd:CI_Contact" class="tag"> <!-- CI_Contact-->
+												<div title="gmd:phone" class="tag"> <!-- phone-->
+													<div title="gmd:CI_Telephone" class="tag"> <!-- CI_Telephone-->
+														<div title="gmd:voice" class="tag"> <!-- voice-->
+															<span class="tag-group-label">Telefone:</span>
+															<div title="gco:CharacterString" class="tag">
+																<input class="full-width input-field tag-value" placeholder="3878.0229" type="number" title="gco:CharacterString" value="" />
+															</div>
+														</div>
+														<div title="gmd:facsimile" class="tag"> <!-- facsimile-->
+															<span class="tag-group-label">Fax:</span>
+															<div title="gco:CharacterString" class="tag">
+																<input class="full-width input-field tag-value" placeholder="3574.0174" type="number" title="gco:CharacterString" value="" />
+															</div>
+														</div>
+													</div>
+												</div>
+												<div title="gmd:address" class="tag"> <!-- address-->
+													<div title="gmd:CI_Address" class="tag"> <!-- CI_Address-->
+														<div title="gmd:address" class="tag"> <!-- address-->
+															<span class="tag-group-label">Endereço:</span>
+															<div title="gco:CharacterString" class="tag">
+																<input class="full-width input-field tag-value" placeholder="Av. Antonio Sales, 1418" type="text" title="gco:CharacterString" value="" />
+															</div>
+														</div>
+														<div title="gmd:city" class="tag"> <!-- city-->
+															<span class="tag-group-label">Cidade:</span>
+															<div title="gco:CharacterString" class="tag">
+																<input class="full-width input-field tag-value" placeholder="Fortaleza" type="text" title="gco:CharacterString" value="" />
+															</div>
+														</div>
+														<div title="gmd:administrativeArea" class="tag"> <!-- administrativeArea-->
+															<span class="tag-group-label">Área Administrativa:</span>
+															<div title="gmd:UF_TypeCode" class="tag">
+																<input class="full-width input-field tag-value" placeholder="Ceará" type="text" title="gmd:UF_TypeCode" value="" />
+															</div>
+														</div>
+														<div title="gmd:postalCode" class="tag"> <!-- postalCode-->
+															<span class="tag-group-label">CEP:</span>
+															<div title="gco:CharacterString" class="tag">
+																<input class="full-width input-field tag-value" placeholder="Código Postal" type="text" title="gco:CharacterString" value="" />
+															</div>
+														</div>
+														<div title="gmd:country" class="tag"> <!-- country-->
+															<span class="tag-group-label">País:</span>
+															<div title="gco:CharacterString" class="tag">
+																<input class="full-width input-field tag-value" placeholder="br" type="text" title="gco:CharacterString" value="" />
+															</div>
+														</div>
+														<div title="gmd:electronicMailAddress" class="tag"> <!-- electronicMailAddress-->
+															<span class="tag-group-label">Email:</span>
+															<div title="gco:CharacterString" class="tag">
+																<input class="full-width input-field tag-value" placeholder="Email" type="email" title="gco:CharacterString" value="" />
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div><span class="divider">&nbsp;</span>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<h3 class="other">- Palavra Chave</h3>
+						<div class="tag shadow-tag form other hidden">
+							<button type="button" class="add main-button group">+</button>
+							<div class="tag shadow-tag tag-group ignore">
+								<div title="gmd:descriptiveKeywords" class="tag"> <!-- descriptiveKeywords-->
+									<div title="gmd:MD_Keywords" class="tag"> <!-- MD_Keywords-->
+										<div title="gmd:keyword" class="tag"> <!-- keyword-->
+											<span class="tag-group-label">Palavra-chave:</span>
+											<div title="gco:CharacterString" class="tag">
+												<input class="unbounded-width input-field tag-value" placeholder="Atlas Escolar" type="text" title="gco:CharacterString" value="" />
+											</div><button type="button" class="add single-tag">+</button>
+										</div>
+										<div title="gmd:type" class="tag"> <!-- type-->
+											<span class="tag-group-label">Tipo de Palavra-chave:</span>
+											<div title="gmd:MD_KeywordTypeCode" class="tag self-closing">
+												<select title="codeListValue#MD_KeywordTypeCode" class="full-width input-field tag-attribute tag-value"></select>
+												<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_KeywordTypeCode"/>
+											</div>
+										</div>
+										<span class="divider">&nbsp;</span>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<h3 class="other">- Pré Visualização Gráfica</h3>
+						<div class="tag shadow-tag form other hidden">
+							<div title="gmd:graphicOverview" class="tag"> <!-- graphicOverview-->
+								<button type="button" class="add main-button group">+</button>
+								<div class="tag shadow-tag tag-group ignore">
+									<div title="gmd:MD_BrowseGraphic" class="tag"> <!-- MD_BrowseGraphic-->
+										<div title="gmd:fileName" class="tag"> <!-- keyword-->
+											<span class="tag-group-label">Url do arquivo:</span>
+											<div title="gco:CharacterString" class="tag">
+												<input class="unbounded-width input-field tag-value" placeholder="http://www.metadados.geo.ibge.gov.br:80/geonetwork_ibge/srv/por/resources.get?uuid=960a0333-5765-43cc-9f30-c9c70056facc&fname=GIM_FIGMGB_Ortofoto25273ne_set2011_s.png" type="text" title="gco:CharacterString" value="" />
+											</div>
+										</div>
+										<div title="gmd:fileDescription" class="tag"> <!-- fileDescription-->
+											<span class="tag-group-label">Descrição do arquivo:</span>
+											<div title="gco:CharacterString" class="tag">
+												<input class="full-width input-field tag-value" placeholder="Thumbnail" type="text" title="gco:CharacterString" value="" />
+											</div>
+										</div>
+										<div title="gmd:fileType" class="tag"> <!-- fileType-->
+											<span class="tag-group-label">Tipo do arquivo:</span>
+											<div title="gco:CharacterString" class="tag">
+												<input class="full-width input-field tag-value" placeholder="png" type="text" title="gco:CharacterString" value="" />
+											</div>
+										</div>
+										<span class="divider">&nbsp;</span>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="tag tag-ref" data-refto="gmd:spatialRepresentationType"></div>
+						<div class="tag tag-ref" data-refto="gmd:spatialResolution"></div>
+						<div class="tag tag-ref" data-refto="gmd:language"></div>
+						<div class="tag tag-ref" data-refto="gmd:characterSet"></div>
+						<div class="tag tag-ref" data-refto="gmd:topicCategory"></div>
+						<div class="tag tag-ref" data-refto="gmd:extentgeo"></div>
+						<div class="tag tag-ref" data-refto="gmd:resourceConstraints"></div>
+					</div> <!-- MD_DataIdentification-->
+				</div>
+			</div>  <!-- identificationInfo-->
+		</div>
+		<h3 class="other">+ Identificação CDG</h3>
+<div class="form other hidden">
+			<div title="" class="section ignore"> <!-- identificationInfo-->
+				<div title="gmd:spatialRepresentationType" data-refid="gmd:spatialRepresentationType" class="tag"> <!-- spatialRepresentationType-->
+					<span class="tag-group-label">Tipo de Representação Espacial:</span>
+					<div title="gmd:MD_SpatialRepresentationTypeCode" class="tag self-closing"> <!-- MD_SpatialRepresentationTypeCode-->
+						<select title="codeListValue#MD_SpatialRepresentationTypeCode" class="unbounded-width input-field tag-attribute tag-value"></select>
+						<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_SpatialRepresentationTypeCode"/>
+					</div>
+					<button type="button" class="add single-tag">+</button>
+				</div>
+				<div title="gmd:spatialResolution" data-refid="gmd:spatialResolution" class="tag"> <!-- spatialResolution-->
+					<div title="gmd:MD_Resolution" class="tag"> <!-- MD_Resolution-->
+						<div title="gmd:equivalentScale" class="tag"> <!-- equivalentScale-->
+							<div title="gmd:MD_RepresentativeFraction" class="tag"> <!-- MD_RepresentativeFraction-->
+								<div title="gmd:denominator" class="tag"> <!-- denominator-->
+									<span class="tag-group-label">Escala:</span>
+									<div title="gco:Integer" class="tag"> <!-- MD_SpatialRepresentationTypeCode-->
+										<input class="unbounded-width input-field tag-value" placeholder="2000" type="text" title="gco:Integer" value="" />
+									</div>
+								</div>
+							</div>
+						</div>
+						<button type="button" class="add single-tag">+</button>
+					</div>
+				</div>
+				<span class="tag-group-label">Idioma:</span>
+				<div title="gmd:language" data-refid="gmd:language" class="tag"> <!-- language-->
+					<div title="gco:CharacterString" class="tag">
+						<input class="unbounded-width input-field tag-value" type="text" title="gco:CharacterString" value="por" />
+					</div>
+					<button type="button" class="add single-tag">+</button>
+				</div>
+				<div title="gmd:characterSet" data-refid="gmd:characterSet" class="tag"> <!-- gmd:characterSet-->
+					<span class="tag-group-label">Norma de Codificação de Caracteres:</span>
+					<div title="gmd:MD_CharacterSetCode" class="tag self-closing"> <!-- gmd:LanguageCode-->
+						<select title="codeListValue#MD_CharacterSetCode" class="full-width input-field tag-attribute tag-value"></select>
+						<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_CharacterSetCode"/>
+					</div>
+				</div>
+				<div title="gmd:topicCategory" data-refid="gmd:topicCategory" class="tag"> <!-- gmd:topicCategory-->
+					<span class="tag-group-label">Categoria Temática:</span>
+					<div title="gmd:MD_TopicCategoryCode" class="tag self-closing"> <!-- gmd:LanguageCode-->
+						<select title="codeListValue#MD_TopicCategoryCode" class="unbounded-width input-field tag-attribute tag-value"></select>
+						<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_TopicCategoryCode"/>
+					</div>
+					<button type="button" class="add single-tag">+</button>
+				</div>
+				<h3 class="other">- Extensão Geográfica (obrigatório)</h3>
+				<div class="form other hidden">
+					<button type="button" class="add main-button group">+</button>
+					<div class="tag-group tag shadow-tag">
+						<div title="gmd:extent" data-refid="gmd:extentgeo" class="tag"> <!-- extent-->
+							<div title="gmd:EX_Extent" class="tag"> <!-- EX_Extent-->
+								<div title="gmd:geographicElement" class="tag"> <!-- geographicElement-->
+									<!--
+									<div title="gmd:EX_BoundingPolygon" class="tag">
+									<div title="gmd:polygon" class="tag">
+									<span class="tag-group-label">Polígono delimitador:</span>
+									<div title="gco:CharacterString" class="tag">
+									<input class="full-width input-field tag-value" placeholder="png" type="text" title="gco:CharacterString" value="" />
+								</div>
+							</div>
+						</div> -->
+						<h4>Retângulo Envolvente</h4>
+						<div title="gmd:EX_GeographicExtent" class="tag"> <!-- EX_GeographicExtent-->
+							<button type="button" class="add button group">+</button>
+							<div class="tag-group tag shadow-tag">
+								<div title="gmd:EX_GeographicBoundingBox" class="tag"> <!-- EX_GeographicBoundingBox-->
+									<div title="gmd:westBoundLongitude" class="tag"> <!-- westBoundLongitude-->
+										<span class="tag-group-label">Longitude limítrofe oeste:</span>
+										<div title="gco:Decimal" class="tag"> <!-- MD_SpatialRepresentationTypeCode-->
+											<input class="full-width input-field tag-value" placeholder="-45.178" type="text" title="gco:Decimal" value="" />
+										</div>
+									</div>
+									<div title="gmd:eastBoundLongitude" class="tag"> <!-- eastBoundLongitude-->
+										<span class="tag-group-label">Longitude limítrofe este:</span>
+										<div title="gco:Decimal" class="tag">
+											<input class="full-width input-field tag-value" placeholder="-5.452" type="text" title="gco:Decimal" value="" />
+										</div>
+									</div>
+									<div title="gmd:southBoundLongitude" class="tag"> <!-- southBoundLongitude-->
+										<span class="tag-group-label">Longitude Limítrofe Sul:</span>
+										<div title="gco:Decimal" class="tag">
+											<input class="full-width input-field tag-value" placeholder="25.57" type="text" title="gco:Decimal" value="" />
+										</div>
+									</div>
+									<div title="gmd:northBoundLongitude" class="tag"> <!-- northBoundLongitude-->
+										<span class="tag-group-label">Longitude Limítrofe Norte:</span>
+										<div title="gco:Decimal" class="tag">
+											<input class="full-width input-field tag-value" placeholder="-18.81" type="text" title="gco:Decimal" value="" />
+										</div>
+									</div>
+															<span class="divider">&nbsp;</span>
+								</div>
+							</div>
+						</div>
+						<h4>Identificadores geográficos: </h4>
+						<div title="gmd:EX_GeographicExtent" class="tag"> <!-- EX_GeographicExtent-->
+							<div title="gmd:EX_GeographicDescription" class="tag"> <!-- EX_GeographicDescription-->
+								<div title="gmd:geographicIdentifier" class="tag"> <!-- geographicIdentifier-->
+									<span class="tag-group-label">Indicador Geográfico:</span>
+									<div title="gco:CharacterString" class="tag">
+										<input class="full-width input-field tag-value" placeholder="Geocódigo: 3303906" type="text" title="gco:CharacterString" value="" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<span class="divider">&nbsp;</span>
+					<h4>Extensão temporal</h4>
+					<div title="gmd:temporalElement" class="tag"><!-- temporalElement-->
+						<div title="gmd:EX_TemporalExtent" class="tag"><!-- EX_TemporalExtent-->
+							<div title="gmd:extent" class="tag"><!-- extent-->
+								<div title="gml:TimePeriod" class="tag"><!-- TimePeriod-->
+									<span class="tag-group-label">Data Inicial:</span>
+									<div title="gml:beginPosition" class="tag">
+										<input class="full-width input-field tag-value" placeholder="AAAA-MM-DDThh:mm:ss" type="text" title="gml:beginPosition" value="" />
+									</div>
+									<span class="tag-group-label">Data Final:</span>
+									<div title="gml:endPosition" class="tag">
+										<input class="full-width input-field tag-value" placeholder="AAAA-MM-DDThh:mm:ss" type="text" title="gml:endPosition" value="" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<span class="divider">&nbsp;</span>
+					<h4>Extensão altimétrica-batimétrica</h4>
+					<div title="gmd:EX_VerticalExtent" class="tag"><!-- EX_VerticalExtent-->
+						<div title="gmd:minimumValue" class="tag"> <!-- minimumValue-->
+							<span class="tag-group-label">Valor mínimo:</span>
+							<div title="gco:Real" class="tag">
+								<input class="full-width input-field tag-value" placeholder="0" type="text" title="gco:Real" value="" />
+							</div>
+						</div>
+						<div title="gmd:maximumValue" class="tag"> <!-- maximumValue-->
+							<span class="tag-group-label">Valor máximo:</span>
+							<div title="gco:Real" class="tag">
+								<input class="full-width input-field tag-value" placeholder="200" type="text" title="gco:Real" value="" />
+							</div>
+						</div>
+						<div title="gmd:unitOfMeasure" class="tag"> <!-- unitOfMeasure-->
+							<span class="tag-group-label">Unidade de medida:</span>
+							<div title="gco:CharacterString" class="tag">
+								<input class="full-width input-field tag-value" placeholder="metros" type="text" title="gco:CharacterString" value="" />
+							</div>
+						</div>
+						<div title="gmd:verticalDatum" class="tag"> <!-- verticalDatum-->
+							<span class="tag-group-label">Datum altimétrico: </span>
+							<div title="gco:CharacterString" class="tag">
+								<input class="full-width input-field tag-value" placeholder="Marégrafo de Imbituba" type="text" title="gco:CharacterString" value="" />
+							</div>
+						</div>
+					</div>
+					<span class="big-divider">&nbsp;</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+<h3 class="other">+ Informação de Restrição</h3>
+<div class="form other hidden">
+	<div title="" class="section ignore"> <!-- identificationInfo-->
+		<div title="gmd:resourceConstraints" data-refid="gmd:resourceConstraints" class="tag"> <!-- resourceConstraints-->
+			<h4>Restrições Legais</h4>
+			<div title="gmd:MD_LegalConstraints" class="tag"> <!-- MD_LegalConstraints-->
+				<span class="tag-group-label">Restrições de Uso:</span>
+				<div title="gmd:useConstraints" class="tag"> <!-- useConstraints-->
+					<div title="gmd:MD_RestrictionCode" class="tag self-closing"> <!-- classification-->
+						<select title="codeListValue#MD_RestrictionCode" class="unbounded-width input-field tag-attribute tag-value"></select>
+						<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_RestrictionCode"/>
+					</div><button type="button" class="add single-tag">+</button>
+				</div>
+				<span class="tag-group-label">Restrições de Acesso:</span>
+				<div title="gmd:accessConstraints" class="tag"> <!-- accessConstraints-->
+					<div title="gmd:MD_RestrictionCode" class="tag self-closing"> <!-- classification-->
+						<select title="codeListValue#MD_RestrictionCode" class="unbounded-width input-field tag-attribute tag-value"></select>
+						<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_RestrictionCode"/>
+					</div><button type="button" class="add single-tag">+</button>
+				</div>
+			</div>
+			<span class="divider">&nbsp;</span>
+			<h4>Restrições de Segurança (obrigatório)</h4>
+			<button type="button" class="add main-button group">+</button>
+			<div class="tag shadow-tag tag-group ignore">
+				<div title="gmd:MD_SecurityConstraints" class="tag"> <!-- MD_SecurityConstraints-->
+					<div title="gmd:classification" class="tag"> <!-- classification-->
+						<span class="tag-group-label">Classificação:</span>
+						<div title="gmd:MD_ClassificationCode" class="tag self-closing"> <!-- classification-->
+							<select title="codeListValue#MD_RestrictionCode" data-desc="Restrição de Segurança (Informação de Restrição)" class="full-width input-field tag-attribute tag-value" required></select>
+							<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_RestrictionCode"/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<h3 class="other">+ Qualidade</h3>
+<div class="form other hidden">
+	<div title="gmd:dataQualityInfo" class="section wrapper-tag"><!-- dataQualityInfo-->
+		<div class="tag-group">
+			<div title="gmd:DQ_DataQuality" class="tag"> <!-- DQ_DataQuality-->
+				<div title="gmd:scope" class="tag"> <!-- scope-->
+					<div title="gmd:DQ_Scope" class="tag"> <!-- DQ_Scope-->
+						<div title="gmd:level" class="tag"> <!-- level-->
+							<span class="tag-group-label">Nível Hierárquico (obrigatório):</span>
+							<div title="gmd:MD_ScopeCode" class="tag"> <!-- MD_ScopeCode-->
+								<select title="codeListValue#MD_ScopeCode" data-desc="Nível Hierárquico (Qualidade)" class="full-width input-field tag-attribute tag-value" required></select>
+								<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_ScopeCode"/>
+							</div>
+						</div>
+					</div>
+				</div>
+				<h3 class="other">- Linhagem</h3>
+				<div class="tag shadow-tag form other hidden">
+						<div title="gmd:lineage" class="tag"> <!-- lineage-->
+							<div title="gmd:LI_Lineage" class="tag"> <!-- LI_Lineage-->
+								<div title="gmd:statement" class="tag"> <!-- statement-->
+									<span class="tag-group-label">Declaração (obrigatório):</span>
+									<div title="gco:CharacterString" class="tag">
+										<input class="full-width input-field tag-value" data-desc="Declaração (Qualidade)" placeholder="A informação é obtida através de processos fotogramétricos com fotografias à escala 1:30000." type="text" title="gco:CharacterString" value="" required/>
+									</div>
+								</div>
+								<span class="divider">&nbsp;</span>
+								<h4>Etapas do Processo</h4>
+								<div title="gmd:processStep" class="tag"> <!-- processStep-->
+									<div title="gmd:LI_ProcessStep" class="tag"> <!-- LI_ProcessStep-->
+										<div title="gmd:description" class="tag"> <!-- description-->
+											<span class="tag-group-label">Descrição:</span>
+											<div title="gco:CharacterString" class="tag">
+												<input class="full-width input-field tag-value" placeholder="Análise do vôo, planejamento do apoio de campo, aerotriangulação e restituição." type="text" title="gco:CharacterString" value="" />
+											</div>
+										</div>
+									</div>
+								</div>
+								<span class="divider">&nbsp;</span>
+
+								<button type="button" class="add main-button group">+</button>
+								<h4>Fonte dos Dados</h4>
+								<div class="tag shadow-tag tag-group ignore">
+									<div title="gmd:source" class="tag"> <!-- source-->
+										<div title="gmd:LI_Source" class="tag"> <!-- LI_Source-->
+											<span class="tag-group-label">Descrição:</span>
+											<div title="gmd:description" class="tag"> <!-- description-->
+												<div title="gco:CharacterString" class="tag">
+													<input class="full-width input-field tag-value" placeholder="Voo executado para a elaboração dos dados." type="text" title="gco:CharacterString" value="" />
+												</div>
+											</div>
+											<!--
+											<span class="tag-group-label">Extensão da fonte:</span>
+											<div title="gmd:sourceExtent" class="tag">
+												<div title="gco:CharacterString" class="tag">
+													<input class="full-width input-field tag-value" placeholder="" type="text" title="gco:CharacterString" value="" />
+												</div>
+											</div>
+											-->
+											<span class="tag-group-label"> Denominador da escala da fonte: </span>
+											<div title="gmd:scaleDenominator" class="tag"> <!-- scaleDenominator-->
+												<div title="gco:CharacterString" class="tag">
+													<input class="full-width input-field tag-value" placeholder="30000" type="text" title="gco:CharacterString" value="" />
+												</div>
+											</div>
+										</div>
+										<span class="divider">&nbsp;</span>
+									</div>
+								</div>
+							</div>
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<h3 class="other">+ Frequência de Manutenção e Atualização</h3>
+<div class="form other hidden">
+	<div title="gmd:metadataMaintenance" class="section wrapper-tag"><!-- metadataMaintenance-->
+		<span class="tag-group-label">Periodicidade prevista para atualização (obrigatório):</span>
+		<div class="tag-group">
+			<div title="gmd:MD_MaintenanceInformation" class="tag"> <!-- MD_MaintenanceInformation-->
+				<div title="gmd:maintenanceAndUpdateFrequency" class="tag"> <!-- maintenanceAndUpdateFrequency-->
+					<div title="gmd:MD_MaintenanceFrequencyCode" class="tag self-closing"> <!-- maintenanceAndUpdateFrequency-->
+						<select title="codeListValue#MD_MaintenanceFrequencyCode"  data-desc="Periodicidade (Frequência de Manutenção)" class="full-width input-field tag-attribute tag-value" required></select>
+						<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_MaintenanceFrequencyCode"/>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<h3 class="other">+ Informação de Representação Espacial</h3>
+<div class="form other hidden">
+	<div title="gmd:spatialRepresentationInfo" class="section wrapper-tag"><!-- spatialRepresentationInfo-->
+		<div class="tag-group">
+			<div title="gmd:MD_SpatialRepresentation" class="tag"> <!-- MD_SpatialRepresentation-->
+				<h3 class="other">- Representação Espacial Vetorial (Obrigatório para dados vetoriais)</h3>
+				<div class="tag shadow-tag form other hidden">
+						<div title="gmd:MD_VectorSpatialRepresentation" class="tag"><!-- MD_VectorSpatialRepresentation-->
+							<div title="gmd:topologyLevel" class="tag"><!-- topologyLevel-->
+								<span class="tag-group-label">Nível Topológico:</span>
+								<div title="gmd:MD_TopologyLevelCode" class="tag self-closing">
+									<select title="codeListValue#MD_TopologyLevelCode" class="full-width input-field tag-attribute tag-value"></select>
+									<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_TopologyLevelCode"/>
+								</div>
+							</div>
+							<div title="gmd:geometricObjects" class="tag"><!-- topologyLevel-->
+								<span class="tag-group-label">Tipo dos Objetos Geométricos</span>
+								<div title="gmd:MD_GeometricObjectTypeCode" class="tag self-closing">
+									<select title="codeListValue#MD_GeometricObjectTypeCode" class="unbounded-width input-field tag-attribute tag-value"></select>
+									<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_GeometricObjectTypeCode"/>
+								</div><button type="button" class="add single-tag">+</button>
+							</div>
+						</div>
+						<span class="divider">&nbsp;</span>
+				</div>
+				<h3 class="other">- Representação Espacial Matricial (Obrigatório para dados matriciais de Sensoriamento Remoto / imagens)</h3>
+				<div class="tag shadow-tag form other hidden">
+					<div class="tag shadow-tag tag-group ignore">
+						<div title="gmd:MD_GridSpatialRepresentation" class="tag"><!-- MD_GridSpatialRepresentation-->
+							<h3 class="other">- Representação Espacial Matricial Georretificada</h3>
+							<div class="tag shadow-tag form other hidden">
+								<div class="tag shadow-tag tag-group ignore">
+									<div title="gmd:MD_Georectified" class="tag"><!-- MD_Georectified-->
+										<div title="gmd:checkPointAvailability" class="tag"><!-- checkPointAvailability-->
+											<span class="tag-group-label">Disponibilidade dos Pontos de Verificação:</span>
+											<div title="gco:Boolean" class="tag">
+												<input class="full-width input-field tag-value" placeholder="0 (não)" type="text" title="gco:Boolean" value="" />
+											</div>
+										</div>
+										<div title="gmd:checkPointDescription" class="tag"><!-- checkPointDescription-->
+											<span class="tag-group-label">Descrição dos Pontos de Verificação:</span>
+											<div title="gco:CharacterString" class="tag">
+												<input class="full-width input-field tag-value" placeholder="" type="text" title="gco:CharacterString" value="" />
+											</div>
+										</div>
+										<div title="gmd:cornerPoints" class="tag"><!-- cornerPoints-->
+											<span class="tag-group-label">Pontos Extremos:</span>
+											<div title="gco:CharacterString" class="tag">
+												<input class="full-width input-field tag-value" placeholder="NO: 39º00' / 12º00' NE: 38º30' / 12º00' SE: 39º30' / 12º30' SO:39º00' / 12º30'" type="text" title="gco:CharacterString" value="" />
+											</div>
+										</div>
+										<div title="gmd:pointInPixel" class="tag"><!-- pointInPixel-->
+											<span class="tag-group-label">Referência no Pixel:</span>
+											<div title="gmd:MD_PixelOrientationCode" class="tag self-closing">
+												<select title="codeListValue#MD_PixelOrientationCode" class="full-width input-field tag-attribute tag-value"></select>
+												<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_PixelOrientationCode"/>
+											</div>
+										</div>
+										<div title="gmd:transformationDimensionDescription" class="tag"><!-- transformationDimensionDescription-->
+											<span class="tag-group-label">Descrição da Transformação:</span>
+											<div title="gco:CharacterString" class="tag">
+												<input class="full-width input-field tag-value" placeholder="Imagem obtida por mosaicagem de 05 cenas do sensor HRV do satélite SPOT4" type="text" title="gco:CharacterString" value="" />
+											</div>
+										</div>
+										<span class="divider">&nbsp;</span>
+									</div>
+								</div>
+							</div>
+							<h3 class="other">- Representação Espacial Matricial Georreferenciável</h3>
+							<div class="tag shadow-tag form other hidden">
+									<div title="gmd:MD_Georeferenceable" class="tag"><!-- MD_Georectified-->
+										<div title="gmd:controlPointAvailability" class="tag"><!-- topologyLevel-->
+											<span class="tag-group-label">Disponibilidade de Pontos de Controle:</span>
+											<div title="gco:Boolean" class="tag">
+												<input class="full-width input-field tag-value" placeholder="" type="text" title="gco:Boolean" value="" />
+											</div>
+										</div>
+										<div title="gmd:orientationParameterAvailability" class="tag"><!-- orientationParameterAvailability-->
+											<span class="tag-group-label">Disponibilidade de Parâmetros de Orientação</span>
+											<div title="gco:Boolean" class="tag">
+												<input class="full-width input-field tag-value" placeholder="" type="text" title="gco:Boolean" value="" />
+											</div>
+										</div>
+										<div title="gmd:georeferencedParameters" class="tag"><!-- georeferencedParameters-->
+											<span class="tag-group-label">Parâmetros Georreferenciáveis</span>
+											<div title="gco:CharacterString" class="tag">
+												<input class="full-width input-field tag-value" placeholder="" type="text" title="gco:CharacterString" value="" />
+											</div>
+										</div>
+										<span class="divider">&nbsp;</span>
+									</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<h3 class="other">+ Informação de Conteúdo</h3>
+<div class="form other hidden">
+	<div title="gmd:contentInfo" class="section wrapper-tag"><!-- contentInfo-->
+		<div class="tag-group">
+			<div title="gmd:MD_ContentInformation" class="tag"> <!-- MD_ContentInformation-->
+				<h3 class="other">- Descrição do Catálogo de Feições (Obrigatório para dados vetoriais)</h3>
+				<div class="tag shadow-tag form other hidden">
+					<button type="button" class="add main-button group">+</button>
+					<div class="tag shadow-tag tag-group ignore">
+						<div title="gmd:MD_FeatureCatalogueDescription" class="tag"><!-- MD_FeatureCatalogueDescription-->
+							<div title="gmd:includedWithDataset" class="tag"><!-- includedWithDataset-->
+								<span class="tag-group-label">Catálogo Incluído no CDG:</span>
+								<div title="gco:Boolean" class="tag">
+									<input class="full-width input-field tag-value" placeholder="1" type="text" title="gco:Boolean" value="" />
+								</div>
+							</div>
+							<div title="gmd:featureCatalogueCitation" class="tag"><!-- featureCatalogueCitation-->
+								<span class="tag-group-label">Citação do Catálogo de Feições</span>
+								<div title="gco:CharacterString" class="tag">
+									<input class="full-width input-field tag-value" placeholder="Modelo de Dados: versão 5.0 - Mapoteca Digital" type="text" title="gco:CharacterString" value="" />
+								</div>
+							</div>
+							<span class="divider">&nbsp;</span>
+						</div>
+					</div>
+				</div>
+				<h3 class="other">- Descrição do Catálogo de Dados Matriciais (Obrigatório para dados matriciais)</h3>
+				<div class="tag shadow-tag form other hidden">
+					<button type="button" class="add main-button group">+</button>
+					<div class="tag shadow-tag tag-group ignore">
+						<div title="gmd:MD_CoverageDescription" class="tag"><!-- MD_CoverageDescription-->
+							<div title="gmd:attributeDescription" class="tag"><!-- attributeDescription-->
+								<span class="tag-group-label">Descrição de Atributos:</span>
+								<div title="gco:RecordType" class="tag">
+									<input class="full-width input-field tag-value" placeholder="banda espectral" type="text" title="gco:RecordType" value="" />
+								</div>
+							</div>
+							<div title="gmd:contentType" class="tag"><!-- contentType-->
+								<span class="tag-group-label">Tipo de Conteúdo:</span>
+								<div title="gmd:MD_CoverageContentTypeCode" class="tag self-closing">
+									<select title="codeListValue#MD_CoverageContentTypeCode" class="full-width input-field tag-attribute tag-value"></select>
+									<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_CoverageContentTypeCode"/>
+								</div>
+							</div>
+							<div title="gmd:MD_ImageDescription" class="tag"><!-- MD_ImageDescription-->
+								<span class="tag-group-label">Descrição de Imagem</span>
+								<div title="gco:CharacterString" class="tag">
+									<input class="full-width input-field tag-value" placeholder="PALSAR" type="text" title="gco:CharacterString" value="" />
+								</div>
+							</div>
+						</div>
+						<span class="divider">&nbsp;</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<h3 class="other">+ Distribuição</h3>
+<div class="form other hidden">
+	<div title="gmd:distributionInfo" class="section wrapper-tag"><!-- distributionInfo-->
+		<div class="tag-group">
+			<div title="gmd:MD_Distribution" class="tag"> <!-- MD_Distribution-->
+				<h3 class="other">- Formato de Distribuição (obrigatório)</h3>
+				<div class="tag shadow-tag form other hidden">
+					<button type="button" class="add main-button group">+</button>
+					<div class="tag shadow-tag tag-group ignore">
+						<div title="gmd:distributionFormat" class="tag"><!-- distributionFormat-->
+							<div title="gmd:MD_Format" class="tag"><!-- MD_Format-->
+								<div title="gmd:name" class="tag"><!-- name-->
+									<span class="tag-group-label">Nome do Formato:</span>
+									<div title="gco:CharacterString" class="tag">
+										<input class="unbounded-width input-field tag-value" data-desc="Nome do Formato (Distribuição)" placeholder="ESRI" type="text" title="gco:CharacterString" value="" required/>
+									</div><button type="button" class="add single-tag">+</button>
+								</div>
+								<div title="gmd:version" class="tag"><!-- version-->
+									<span class="tag-group-label">Versão do Formato</span>
+									<div title="gco:CharacterString" class="tag">
+										<input class="unbounded-width input-field tag-value" data-desc="Versão do Formato (Distribuição)" placeholder="9.2" type="text" title="gco:CharacterString" value="" required/>
+									</div><button type="button" class="add single-tag">+</button>
+								</div>
+							</div>
+						</div>
+						<span class="divider">&nbsp;</span>
+					</div>
+				</div>
+				<h3 class="other">- Opções de Transferência Digital de Distribuição</h3>
+				<div class="tag shadow-tag form other hidden">
+					<button type="button" class="add main-button group">+</button>
+					<div class="tag shadow-tag tag-group ignore">
+						<div title="gmd:transferOptions" class="tag"><!-- transferOptions-->
+							<div title="gmd:MD_DigitalTransferOption" class="tag"><!-- MD_DigitalTransferOption-->
+								<div title="gmd:onLine" class="tag"><!-- online-->
+									<div title="gmd:CI_OnlineResource" class="tag"><!-- CI_OnlineResource-->
+										<div title="gmd:linkage" class="tag"><!-- linkage-->
+											<span class="tag-group-label">Acesso Online:</span>
+											<div title="gmd:URL" class="tag">
+												<input class="full-width input-field tag-value" placeholder="http://www.ibge.gov.br/home/geociencias/geografia/atlas" type="text" title="gmd:URL" value="" />
+											</div>
+										</div>
+									</div>
+								</div>
+								<div title="gmd:offLine" class="tag"><!-- version-->
+									<div title="gmd:MD_Medium" class="tag"><!-- MD_Medium-->
+										<div title="gmd:name" class="tag"><!-- name-->
+											<span class="tag-group-label">Acesso Offline</span>
+											<div title="gmd:MD_MediumNameCode" class="tag self-closing">
+												<select title="codeListValue#MD_MediumNameCode" class="unbounded-width input-field tag-attribute tag-value"></select>
+												<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_MediumNameCode"/>
+											</div>
+											<button type="button" class="add single-tag">+</button>
+										</div>
+									</div>
+									<span class="divider">&nbsp;</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<h3 class="other">- Contato do Distribuidor (Obrigatório)</h3>
+				<div class="tag shadow-tag form other hidden">
+					<button type="button" class="add main-button group">+</button>
+					<div class="tag shadow-tag tag-group ignore">
+						<div title="gmd:distributor" class="tag"> <!-- distributor-->
+							<div title="gmd:pointOfContact" class="tag"> <!-- pointOfContact-->
+								<div title="gmd:CI_ResponsibleParty" class="tag"> <!-- CI_ResponsibleParty-->
+									<div title="gmd:individualName" class="tag"> <!-- individualName-->
+										<span class="tag-group-label">Nome:</span>
+										<div title="gco:CharacterString" class="tag">
+											<input class="full-width input-field tag-value" placeholder="Francisco Edson Mendonça Gomes" type="text" title="gco:CharacterString" value="" />
+										</div>
+									</div>
+									<div title="gmd:organisationName" class="tag"> <!-- organisationName-->
+										<span class="tag-group-label">Nome da Organização:</span>
+										<div title="gco:CharacterString" class="tag">
+											<input class="unbounded-width input-field tag-value" data-desc="Nome da Organização (Distribuição)" placeholder="Fundação Instituto Brasileiro de Geografia e Estatística – IBGE" type="text" title="gco:CharacterString" value=""/>
+										</div>
+										<button type="button" class="add single-tag">+</button>
+									</div>
+
+									<div title="gmd:role" class="tag"> <!-- role-->
+										<span class="tag-group-label">Função:</span>
+										<div title="gmd:CI_RoleCode" class="tag self-closing">
+											<select title="codeListValue#CI_RoleCode" data-desc="Função (Distribuição)" class="unbounded-width input-field tag-attribute tag-value"></select>
+											<input type="hidden" title="codeList" class="tag-attribute" value="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode"/>
+										</div>
+										<button type="button" class="add single-tag">+</button>
+									</div>
+									<div title="gmd:contactInfo" class="tag"> <!-- contactInfo-->
+										<div title="gmd:CI_Contact" class="tag"> <!-- CI_Contact-->
+											<div title="gmd:phone" class="tag"> <!-- phone-->
+												<div title="gmd:CI_Telephone" class="tag"> <!-- CI_Telephone-->
+													<div title="gmd:voice" class="tag"> <!-- voice-->
+														<span class="tag-group-label">Telefone:</span>
+														<div title="gco:CharacterString" class="tag">
+															<input class="full-width input-field tag-value" placeholder="3878.0229" type="number" title="gco:CharacterString" value="" />
+														</div>
+													</div>
+													<div title="gmd:facsimile" class="tag"> <!-- facsimile-->
+														<span class="tag-group-label">Fax:</span>
+														<div title="gco:CharacterString" class="tag">
+															<input class="full-width input-field tag-value" placeholder="3574.0174" type="number" title="gco:CharacterString" value="" />
+														</div>
+													</div>
+												</div>
+											</div>
+											<div title="gmd:address" class="tag"> <!-- address-->
+												<div title="gmd:CI_Address" class="tag"> <!-- CI_Address-->
+													<div title="gmd:address" class="tag"> <!-- address-->
+														<span class="tag-group-label">Endereço:</span>
+														<div title="gco:CharacterString" class="tag">
+															<input class="full-width input-field tag-value" placeholder="Av. Antonio Sales, 1418" type="text" title="gco:CharacterString" value="" />
+														</div>
+													</div>
+													<div title="gmd:city" class="tag"> <!-- city-->
+														<span class="tag-group-label">Cidade:</span>
+														<div title="gco:CharacterString" class="tag">
+															<input class="full-width input-field tag-value" placeholder="Fortaleza" type="text" title="gco:CharacterString" value="" />
+														</div>
+													</div>
+													<div title="gmd:administrativeArea" class="tag"> <!-- administrativeArea-->
+														<span class="tag-group-label">Área Administrativa:</span>
+														<div title="gmd:UF_TypeCode" class="tag">
+															<input class="full-width input-field tag-value" placeholder="Ceará" type="text" title="gmd:UF_TypeCode" value="" />
+														</div>
+													</div>
+													<div title="gmd:postalCode" class="tag"> <!-- postalCode-->
+														<span class="tag-group-label">CEP:</span>
+														<div title="gco:CharacterString" class="tag">
+															<input class="full-width input-field tag-value" placeholder="Código Postal" type="text" title="gco:CharacterString" value="" />
+														</div>
+													</div>
+													<div title="gmd:country" class="tag"> <!-- country-->
+														<span class="tag-group-label">País:</span>
+														<div title="gco:CharacterString" class="tag">
+															<input class="full-width input-field tag-value" placeholder="br" type="text" title="gco:CharacterString" value="" />
+														</div>
+													</div>
+													<div title="gmd:electronicMailAddress" class="tag"> <!-- electronicMailAddress-->
+														<span class="tag-group-label">Email:</span>
+														<div title="gco:CharacterString" class="tag">
+															<input class="full-width input-field tag-value" placeholder="Email" type="email" title="gco:CharacterString" value="" />
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div><span class="divider">&nbsp;</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<h3 class="other">+ Metadados</h3>
+<div class="form other hidden">
+	<div title="gmd:dateStamp"  class="section wrapper-tag"><!-- dateStamp-->
+		<div class="tag-group">
+			<span class="tag-group-label">Data dos Metadados:</span>
+			<div title="gco:DateTime" class="tag"> <!-- gco:DateTime-->
+				<input class="full-width input-field tag-value" data-desc="Data (Metadados)" placeholder="2012-01-12T16:56:25" type="date" title="gco:DateTime" value="" required/>
+			</div>
+		</div>
+	</div>
+	<span class="divider">&nbsp;</span>
+	<div title="gmd:fileIdentifier"  class="section wrapper-tag"><!-- fileIdentifier-->
+		<div class="tag-group">
+			<span class="tag-group-label">Identificador Único dos Metadados:</span>
+			<div title="gco:CharacterString" class="tag"> <!-- gco:CharacterString-->
+				<input class="full-width input-field tag-value" data-desc="Identificador (Metadados)" placeholder="18c55ed0-86b6-11eb-9881-0800200c9a66" type="text" title="gco:CharacterString" value="" required/>
+			</div>
+		</div>
+	</div>
+	<span class="divider">&nbsp;</span>
+	<div title="gmd:language"  class="section wrapper-tag"><!-- language-->
+		<div class="tag-group">
+			<span class="tag-group-label">Idioma dos Metadados (obrigatório):</span>
+			<div title="gco:CharacterString" class="tag"> <!-- gco:CharacterString-->
+				<input class="unbounded-width input-field tag-value" data-desc="Idioma (Metadados)" placeholder="por" type="text" title="gco:CharacterString" value="" required/>
+			</div><button type="button" class="add single-tag">+</button>
+		</div>
+	</div>
+	<span class="divider">&nbsp;</span>
+	<div title="gmd:characterSet"  class="section wrapper-tag"><!-- characterSet-->
+		<div class="tag-group">
+			<span class="tag-group-label">Norma de Codificação dos Metadados (obrigatório):</span>
+			<div title="gmd:MD_CharacterSetCode" class="tag self-closing"> <!-- gco:CharacterString-->
+				<select title="codeListValue#MD_CharacterSetCode" data-desc="Norma de Codificação (Metadados)" class="unbounded-width input-field tag-attribute tag-value" required></select>
+				<input type="hidden" title="codeList" class="tag-attribute" value="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_CharacterSetCode"/>
+			</div>
+		</div><button type="button" class="add single-tag">+</button>
+	</div>
+	<h4>Responsável pelos Metadados (obrigatório):</h4>
+	<span class="divider">&nbsp;</span>
+	<div title="gmd:contact"  class="section wrapper-tag"><!-- contact-->
+		<div class="tag-group">
+			<button type="button" class="add main-button group">+</button>
+			<div class="tag shadow-tag tag-group ignore">
+				<div title="gmd:CI_ResponsibleParty" class="tag"> <!-- CI_ResponsibleParty-->
+					<div title="gmd:individualName" class="tag"> <!-- individualName-->
+						<span class="tag-group-label">Nome:</span>
+						<div title="gco:CharacterString" class="tag">
+							<input class="full-width input-field tag-value" placeholder="Francisco Edson Mendonça Gomes" type="text" title="gco:CharacterString" value="" />
+						</div>
+					</div>
+					<div title="gmd:organisationName" class="tag"> <!-- organisationName-->
+						<span class="tag-group-label">Nome da Organização:</span>
+						<div title="gco:CharacterString" class="tag">
+							<input class="unbounded-width input-field tag-value" data-desc="Nome da Organização (Metadados)" placeholder="Fundação Instituto Brasileiro de Geografia e Estatística – IBGE" type="text" title="gco:CharacterString" value="" required/>
+						</div>
+						<button type="button" class="add single-tag">+</button>
+					</div>
+					<div title="gmd:role" class="tag"> <!-- role-->
+						<span class="tag-group-label">Função:</span>
+						<div title="gmd:CI_RoleCode" class="tag self-closing">
+							<select title="codeListValue#CI_RoleCode" data-desc="Função (Metadados)" class="unbounded-width input-field tag-attribute tag-value" required></select>
+							<input type="hidden" title="codeList" class="tag-attribute" value="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode"/>
+						</div>
+						<button type="button" class="add single-tag">+</button>
+					</div>
+					<div title="gmd:contactInfo" class="tag"> <!-- contactInfo-->
+						<div title="gmd:CI_Contact" class="tag"> <!-- CI_Contact-->
+							<div title="gmd:phone" class="tag"> <!-- phone-->
+								<div title="gmd:CI_Telephone" class="tag"> <!-- CI_Telephone-->
+									<div title="gmd:voice" class="tag"> <!-- voice-->
+										<span class="tag-group-label">Telefone:</span>
+										<div title="gco:CharacterString" class="tag">
+											<input class="full-width input-field tag-value" placeholder="3878.0229" type="number" title="gco:CharacterString" value="" />
+										</div>
+									</div>
+									<div title="gmd:facsimile" class="tag"> <!-- facsimile-->
+										<span class="tag-group-label">Fax:</span>
+										<div title="gco:CharacterString" class="tag">
+											<input class="full-width input-field tag-value" placeholder="3574.0174" type="number" title="gco:CharacterString" value="" />
+										</div>
+									</div>
+								</div>
+							</div>
+							<div title="gmd:address" class="tag"> <!-- address-->
+								<div title="gmd:CI_Address" class="tag"> <!-- CI_Address-->
+									<div title="gmd:address" class="tag"> <!-- address-->
+										<span class="tag-group-label">Endereço:</span>
+										<div title="gco:CharacterString" class="tag">
+											<input class="full-width input-field tag-value" placeholder="Av. Antonio Sales, 1418" type="text" title="gco:CharacterString" value="" />
+										</div>
+									</div>
+									<div title="gmd:city" class="tag"> <!-- city-->
+										<span class="tag-group-label">Cidade:</span>
+										<div title="gco:CharacterString" class="tag">
+											<input class="full-width input-field tag-value" placeholder="Fortaleza" type="text" title="gco:CharacterString" value="" />
+										</div>
+									</div>
+									<div title="gmd:administrativeArea" class="tag"> <!-- administrativeArea-->
+										<span class="tag-group-label">Área Administrativa:</span>
+										<div title="gmd:UF_TypeCode" class="tag">
+											<input class="full-width input-field tag-value" placeholder="Ceará" type="text" title="gmd:UF_TypeCode" value="" />
+										</div>
+									</div>
+									<div title="gmd:postalCode" class="tag"> <!-- postalCode-->
+										<span class="tag-group-label">CEP:</span>
+										<div title="gco:CharacterString" class="tag">
+											<input class="full-width input-field tag-value" placeholder="Código Postal" type="text" title="gco:CharacterString" value="" />
+										</div>
+									</div>
+									<div title="gmd:country" class="tag"> <!-- country-->
+										<span class="tag-group-label">País:</span>
+										<div title="gco:CharacterString" class="tag">
+											<input class="full-width input-field tag-value" placeholder="br" type="text" title="gco:CharacterString" value="" />
+										</div>
+									</div>
+									<div title="gmd:electronicMailAddress" class="tag"> <!-- electronicMailAddress-->
+										<span class="tag-group-label">Email:</span>
+										<div title="gco:CharacterString" class="tag">
+											<input class="full-width input-field tag-value" placeholder="Email" type="email" title="gco:CharacterString" value="" />
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div><span class="divider">&nbsp;</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div title="gmd:metadataStandardName"  class="section wrapper-tag"><!-- metadataStandardName-->
+		<div class="tag-group">
+			<span class="tag-group-label">Nome da Norma de metadados Utilizada:</span>
+			<div title="gco:CharacterString" class="tag"> <!-- gco:CharacterString-->
+				<input class="full-width input-field tag-value" data-desc="Norma de Metadados (Metadados)" placeholder="" type="text" title="gco:CharacterString" value="ISO 19115:2003" required/>
+			</div>
+		</div>
+	</div>
+	<span class="divider">&nbsp;</span>
+	<div title="gmd:metadataStandardVersion"  class="section wrapper-tag"><!-- metadataStandardVersion-->
+		<div class="tag-group">
+			<span class="tag-group-label">Versão da Norma de Metadados:</span>
+			<div title="gco:CharacterString" class="tag"> <!-- gco:CharacterString-->
+				<input class="full-width input-field tag-value" placeholder="1.0" type="text" title="gco:CharacterString" value="2003" />
+			</div>
+		</div>
+	</div>
+
+</div>
+
+</div>
+<br />
+</form>
+<div class="right hidden">
+	<h3 class="results">Metadata</h3>
+	<div class="form results">
+		<pre><code style="display:inline-block;"></code></pre>
+	</div>
+	<br />
+	<button type="button" id="download">Save as file</button>
+	<button type="button" id="reset">Reset</button>
+	<button type="button" id="selectall">Select All</button>
+	<span class="output" id="output"></span>
+</div>
+</body>
+</html>
